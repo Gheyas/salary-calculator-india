@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Frequently Asked Questions | Government Employee Salary Calculator</title>
+    <meta name="description" content="Find answers to frequently asked questions about government employee salary calculations, pay commissions, DA, HRA, and retirement planning.">
+    <meta name="keywords" content="government employee faq, pay commission faq, salary calculator faq, DA questions, HRA faq">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="FAQ - Government Employee Salary Calculator">
+    <meta property="og:description" content="Find answers to frequently asked questions about government employee salary calculations">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://paycommissions.in/faq.html">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #2563eb 0%, #10b981 100%); }
+        .card-shadow { box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .transition-all { transition: all 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-2px); }
+        .sticky-header { position: sticky; top: 0; z-index: 50; }
+        .faq-item { border-bottom: 1px solid #e5e7eb; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question { cursor: pointer; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .faq-answer.open { max-height: 500px; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="sticky-header bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-green-500 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">₹</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-800">paycommissions.in</h1>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600 transition-colors">Calculator</a>
+                    <a href="about.html" class="text-gray-600 hover:text-blue-600 transition-colors">About</a>
+                    <a href="pay-commission.html" class="text-gray-600 hover:text-blue-600 transition-colors">Pay Commission</a>
+                    <a href="blog.html" class="text-gray-600 hover:text-blue-600 transition-colors">Blog</a>
+                    <a href="faq.html" class="text-blue-600 font-medium hover:text-blue-800 transition-colors">FAQ</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <nav class="flex flex-col space-y-2">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600 py-2">Calculator</a>
+                    <a href="about.html" class="text-gray-600 hover:text-blue-600 py-2">About</a>
+                    <a href="pay-commission.html" class="text-gray-600 hover:text-blue-600 py-2">Pay Commission</a>
+                    <a href="blog.html" class="text-gray-600 hover:text-blue-600 py-2">Blog</a>
+                    <a href="faq.html" class="text-blue-600 font-medium py-2">FAQ</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-blue-600 py-2">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                Frequently Asked <span class="text-blue-600">Questions</span>
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Find answers to common questions about government employee salary calculations, pay commissions, and retirement planning
+            </p>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="bg-white rounded-lg card-shadow p-8 mb-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-8">General Questions</h3>
+            
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-question flex items-center justify-between py-4" onclick="toggleFAQ(1)">
+                        <h4 class="text-lg font-semibold text-gray-800">How accurate is this calculator?</h4>
+                        <svg id="icon-1" class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div id="answer-1" class="faq-answer pb-4">
+                        <p class="text-gray-600">
+                            Our calculator provides highly accurate estimates based on current government policies and historical trends. However, actual salary calculations may vary based on future policy changes, individual circumstances, and specific government notifications. We regularly update our calculations to reflect the latest official guidelines.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question flex items-center justify-between py-4" onclick="toggleFAQ(2)">
+                        <h4 class="text-lg font-semibold text-gray-800">What happens during pay commission changes?</h4>
+                        <svg id="icon-2" class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div id="answer-2" class="faq-answer pb-4">
+                        <p class="text-gray-600">
+                            When a new pay commission is implemented (every 10 years), a fitment factor is applied to your basic pay only. Your existing DA is not merged into basic pay for fitment calculation. After the transition, your DA percentage resets to 0% and starts accumulating again from the new basic pay structure.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question flex items-center justify-between py-4" onclick="toggleFAQ(3)">
+                        <h4 class="text-lg font-semibold text-gray-800">How is DA calculated?</h4>
+                        <svg id="icon-3" class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div id="answer-3" class="faq-answer pb-4">
+                        <p class="text-gray-600">
+                            Dearness Allowance (DA) is calculated as a percentage of your basic pay. It is revised twice a year (January and July) based on the Consumer Price Index. The formula is: DA Amount = Basic Pay × (DA Percentage / 100). DA helps offset inflation's impact on your purchasing power.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <div class="faq-question flex items-center justify-between py-4" onclick="toggleFAQ(4)">
+                        <h4 class="text-lg font-semibold text-gray-800">Can I use this for state government employees?</h4>
+                        <svg id="icon-4" class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div id="answer-4" class="faq-answer pb-4">
+                        <p class="text-gray-600">
+                            This calculator is specifically designed for central government employees following central pay commission guidelines. State government employees may have different pay structures, allowances, and implementation timelines. We recommend checking with your state finance department for accurate calculations.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <div class="faq-question flex items-center justify-between py-4" onclick="toggleFAQ(5)">
+                        <h4 class="text-lg font-semibold text-gray-800">What is the difference between pay level and stage?</h4>
+                        <svg id="icon-5" class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div id="answer-5" class="faq-answer pb-4">
+                        <p class="text-gray-600">
+                            Pay Level (1-18) represents your position in the hierarchy and corresponds to your grade and responsibilities. Stage represents your progression within that level through annual increments. You typically advance one stage each year until you reach the maximum of your pay level.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <div class="faq-question flex items-center justify-between py-4" onclick="toggleFAQ(6)">
+                        <h4 class="text-lg font-semibold text-gray-800">How often do I get increments?</h4>
+                        <svg id="icon-6" class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div id="answer-6" class="faq-answer pb-4">
+                        <p class="text-gray-600">
+                            Annual increments are granted on July 1st each year, representing a 3% increase in your basic pay. You receive one increment per year until you reach the maximum of your pay level. The increment helps your salary keep pace with inflation and rewards your service.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Questions Section -->
+        <section class="bg-white rounded-lg card-shadow p-8 mb-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-8">Technical Questions</h3>
+            
+            <div class="space-y-4">
+                <!-- FAQ Item 7 -->
+                <div class="faq-item">
+                    <div class="faq-question flex items-center justify-between py-4" onclick="toggleFAQ(7)">
+                        <h4 class="text-lg font-semibold text-gray-800">How do I calculate my HRA?</h4>
+                        <svg id="icon-7" class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div id="answer-7" class="faq-answer pb-4">
+                        <p class="text-gray-600">
+                            House Rent Allowance (HRA) is calculated as a percentage of your basic pay based on your city classification: X Class Cities (30%), Y Class Cities (20%), or Z Class Cities (10%). The minimum HRA is ₹6,000, ₹4,800, and ₹2,400 respectively. HRA is calculated on basic pay only, excluding DA.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 8 -->
+                <div class="faq-item">
+                    <div class="faq-question flex items-center justify-between py-4" onclick="toggleFAQ(8)">
+                        <h4 class="text-lg font-semibold text-gray-800">What is the fitment factor and how is it applied?</h4>
+                        <svg id="icon-8" class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div id="answer-8" class="faq-answer pb-4">
+                        <p class="text-gray-600">
+                            The fitment factor is a multiplication factor applied to your basic pay when a new pay commission is implemented. For example, the 7th CPC used a fitment factor of 2.57. If your basic pay was ₹20,000 under 6th CPC, it became ₹51,400 (20,000 × 2.57) under 7th CPC. Future fitment factors are estimates.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 9 -->
+                <div class="faq-item">
+                    <div class="faq-question flex items-center justify-between py-4" onclick="toggleFAQ(9)">
+                        <h4 class="text-lg font-semibold text-gray-800">Can I change the fitment factors in the calculator?</h4>
+                        <svg id="icon-9" class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div id="answer-9" class="faq-answer pb-4">
+                        <p class="text-gray-600">
+                            Yes, our calculator allows you to adjust fitment factors for future pay commissions (8th, 9th, 10th, and 11th CPC). You can use the default estimates or input your own predictions. The calculator will automatically apply your selected fitment factors only to the pay commissions that occur before your retirement year.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 10 -->
+                <div class="faq-item">
+                    <div class="faq-question flex items-center justify-between py-4" onclick="toggleFAQ(10)">
+                        <h4 class="text-lg font-semibold text-gray-800">How do I download my calculation results?</h4>
+                        <svg id="icon-10" class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div id="answer-10" class="faq-answer pb-4">
+                        <p class="text-gray-600">
+                            After calculating your retirement salary, click the "Download PDF" button in the results section. This will generate a PDF document containing your input parameters, final results, and a summary of your salary projection. The PDF can be saved for your records or shared with financial advisors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Retirement Planning Questions Section -->
+        <section class="bg-white rounded-lg card-shadow p-8 mb-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-8">Retirement Planning Questions</h3>
+            
+            <div class="space-y-4">
+                <!-- FAQ Item 11 -->
+                <div class="faq-item">
+                    <div class="faq-question flex items-center justify-between py-4" onclick="toggleFAQ(11)">
+                        <h4 class="text-lg font-semibold text-gray-800">How can I maximize my retirement benefits?</h4>
+                        <svg id="icon-11" class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div id="answer-11" class="faq-answer pb-4">
+                        <p class="text-gray-600">
+                            To maximize retirement benefits: contribute regularly to GPF/CPF, take advantage of NPS with government matching, plan your increments and promotions, consider voluntary retirement options if beneficial, and maintain good health for better commutation benefits. Consult with financial advisors for personalized strategies.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 12 -->
+                <div class="faq-item">
+                    <div class="faq-question flex items-center justify-between py-4" onclick="toggleFAQ(12)">
+                        <h4 class="text-lg font-semibold text-gray-800">What is the impact of promotions on retirement salary?</h4>
+                        <svg id="icon-12" class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div id="answer-12" class="faq-answer pb-4">
+                        <p class="text-gray-600">
+                            Promotions increase your pay level, resulting in higher basic pay and consequently higher DA and HRA. This significantly boosts your retirement benefits as pension is calculated based on your last drawn basic pay. Promotions closer to retirement have a compounding effect on your final retirement corpus.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 13 -->
+                <div class="faq-item">
+                    <div class="faq-question flex items-center justify-between py-4" onclick="toggleFAQ(13)">
+                        <h4 class="text-lg font-semibold text-gray-800">Should I consider voluntary retirement?</h4>
+                        <svg id="icon-13" class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div id="answer-13" class="faq-answer pb-4">
+                        <p class="text-gray-600">
+                            Voluntary retirement can be beneficial if you have alternative income sources, business opportunities, or health concerns. However, it reduces your service period, potentially lowering pension and gratuity amounts. Use our calculator to compare scenarios and consult with financial advisors before making this decision.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 14 -->
+                <div class="faq-item">
+                    <div class="faq-question flex items-center justify-between py-4" onclick="toggleFAQ(14)">
+                        <h4 class="text-lg font-semibold text-gray-800">How do I plan for inflation in retirement?</h4>
+                        <svg id="icon-14" class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div id="answer-14" class="faq-answer pb-4">
+                        <p class="text-gray-600">
+                            Government pensions include DA adjustments that help combat inflation. Additionally, consider investing in inflation-protected instruments like PPF, inflation-indexed bonds, and diversified mutual funds. Plan for expenses that typically rise faster than general inflation, such as healthcare costs.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 15 -->
+                <div class="faq-item">
+                    <div class="faq-question flex items-center justify-between py-4" onclick="toggleFAQ(15)">
+                        <h4 class="text-lg font-semibold text-gray-800">What are the tax implications of retirement benefits?</h4>
+                        <svg id="icon-15" class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div id="answer-15" class="faq-answer pb-4">
+                        <p class="text-gray-600">
+                            Gratuity is tax-free up to ₹20 lakh for government employees. Commuted pension has specific tax exemptions. Leave encashment is tax-free for government employees. Regular pension is fully taxable. Consult with tax advisors for current regulations and optimal tax planning strategies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="bg-gradient-to-r from-blue-600 to-green-500 rounded-lg text-white p-8">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold mb-4">Still Have Questions?</h3>
+                <p class="text-blue-100">
+                    Can't find the answer you're looking for? Our team is here to help with any additional questions.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold mb-2">Email Support</h4>
+                    <p class="text-blue-100 text-sm">support@paycommissions.in</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold mb-2">Live Chat</h4>
+                    <p class="text-blue-100 text-sm">Available 9 AM - 6 PM</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold mb-2">Help Center</h4>
+                    <p class="text-blue-100 text-sm">Comprehensive guides</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="contact.html" class="inline-block bg-white text-blue-600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition-all">
+                    Contact Us
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h5 class="text-lg font-bold mb-4">paycommissions.in</h5>
+                    <p class="text-gray-300">Accurate salary calculations for government employees across multiple pay commissions.</p>
+                </div>
+                <div>
+                    <h5 class="text-lg font-bold mb-4">Quick Links</h5>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-300 hover:text-white transition-colors">About</a></li>
+                        <li><a href="pay-commission.html" class="text-gray-300 hover:text-white transition-colors">Pay Commission</a></li>
+                        <li><a href="blog.html" class="text-gray-300 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="faq.html" class="text-gray-300 hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-bold mb-4">Disclaimer</h5>
+                    <p class="text-gray-300 text-sm">This calculator provides estimates only. Actual salary depends on future government policies.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 paycommissions.in. Made with ❤️ in India. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // FAQ Toggle Function
+        function toggleFAQ(id) {
+            const answer = document.getElementById(`answer-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            
+            if (answer.classList.contains('open')) {
+                answer.classList.remove('open');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    item.classList.remove('open');
+                });
+                document.querySelectorAll('[id^="icon-"]').forEach(item => {
+                    item.style.transform = 'rotate(0deg)';
+                });
+                
+                // Open current FAQ
+                answer.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+</body>
+</html>
