@@ -104,6 +104,12 @@ class RetirementCalculator {
         // Show results section
         document.getElementById('resultsSection').classList.remove('hidden');
         
+        // Show "View Results" button
+        const viewResultsBtn = document.getElementById('viewResultsBtn');
+        if (viewResultsBtn) {
+            viewResultsBtn.classList.remove('hidden');
+        }
+        
         // Update summary cards
         const finalResult = this.results[this.results.length - 1];
         document.getElementById('finalBasicPay').textContent = `₹${finalResult.basicPay.toLocaleString()}`;
@@ -148,8 +154,7 @@ class RetirementCalculator {
         // Create chart
         this.createChart();
         
-        // Scroll to results
-        document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+        // NO automatic scrolling - let user control when to view results
     }
 
     createChart() {
@@ -246,56 +251,135 @@ class RetirementCalculator {
 // Initialize calculator
 const calculator = new RetirementCalculator();
 
-// Event listeners
+// ===== VALIDATION FUNCTIONS =====
+
+// Clear all validation errors
+function clearValidationErrors() {
+    // Hide error message container
+    const errorContainer = document.getElementById('validationErrors');
+    if (errorContainer) {
+        errorContainer.classList.add('hidden');
+        errorContainer.innerHTML = '';
+    }
+    
+    // Remove red borders from all input fields
+    const allInputs = document.querySelectorAll('input[type="number"], input[type="text"]');
+    allInputs.forEach(input => {
+        input.classList.remove('border-red-500', 'border-2');
+        input.classList.add('border-gray-300');
+    });
+}
+
+// Show validation error for specific field
+function showFieldError(fieldId, errorMessage) {
+    const field = document.getElementById(fieldId);
+    if (field) {
+        // Add red border to invalid field
+        field.classList.remove('border-gray-300');
+        field.classList.add('border-red-500', 'border-2');
+        
+        // Set aria-invalid for accessibility
+        field.setAttribute('aria-invalid', 'true');
+    }
+    
+    // Add error to container
+    const errorContainer = document.getElementById('validationErrors');
+    if (errorContainer) {
+        errorContainer.classList.remove('hidden');
+        const errorItem = document.createElement('li');
+        errorItem.textContent = errorMessage;
+        errorContainer.appendChild(errorItem);
+    }
+}
+
+// Validate inputs (called ONLY on Calculate button click)
+function validateInputs() {
+    // Clear previous errors
+    clearValidationErrors();
+    
+    let isValid = true;
+    const errors = [];
+    
+    // Get values
+    const basicPay = parseFloat(document.getElementById('basicPay').value);
+    const currentDA = parseFloat(document.getElementById('currentDA').value);
+    const retirementYear = parseInt(document.getElementById('retirementYear').value);
+    const hraPercent = parseFloat(document.getElementById('hraPercent').value);
+    const annualDAGrowth = parseFloat(document.getElementById('annualDAGrowth').value);
+    const annualIncrement = parseFloat(document.getElementById('annualIncrement').value);
+    
+    // Validate Basic Pay
+    if (!basicPay || isNaN(basicPay) || basicPay <= 0) {
+        showFieldError('basicPay', 'Please enter a valid basic pay amount (must be greater than 0)');
+        isValid = false;
+    }
+    
+    // Validate Current DA
+    if (isNaN(currentDA) || currentDA < 0 || currentDA > 100) {
+        showFieldError('currentDA', 'DA percentage must be between 0 and 100');
+        isValid = false;
+    }
+    
+    // Validate Retirement Year
+    const currentYear = new Date().getFullYear();
+    if (isNaN(retirementYear) || retirementYear < currentYear || retirementYear > 2070) {
+        showFieldError('retirementYear', `Retirement year must be between ${currentYear} and 2070`);
+        isValid = false;
+    }
+    
+    // Validate HRA Percent
+    if (isNaN(hraPercent) || hraPercent < 0 || hraPercent > 100) {
+        showFieldError('hraPercent', 'HRA percentage must be between 0 and 100');
+        isValid = false;
+    }
+    
+    // Validate Annual DA Growth
+    if (isNaN(annualDAGrowth) || annualDAGrowth < 0 || annualDAGrowth > 50) {
+        showFieldError('annualDAGrowth', 'Annual DA growth must be between 0 and 50');
+        isValid = false;
+    }
+    
+    // Validate Annual Increment
+    if (isNaN(annualIncrement) || annualIncrement < 0 || annualIncrement > 20) {
+        showFieldError('annualIncrement', 'Annual increment must be between 0 and 20');
+        isValid = false;
+    }
+    
+    // If errors exist, scroll to error message smoothly
+    if (!isValid) {
+        const errorContainer = document.getElementById('validationErrors');
+        if (errorContainer) {
+            errorContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }
+    
+    return isValid;
+}
+
+// ===== EVENT LISTENERS =====
+
+// Calculate button - ONLY validation trigger
 document.getElementById('calculateBtn').addEventListener('click', () => {
     if (validateInputs()) {
         calculator.calculate();
     }
 });
 
+// Download PDF button
 document.getElementById('downloadPDF').addEventListener('click', () => {
     calculator.downloadPDF();
 });
 
-// Input validation
-function validateInputs() {
-    const basicPay = parseFloat(document.getElementById('basicPay').value);
-    const currentDA = parseFloat(document.getElementById('currentDA').value);
-    const retirementYear = parseInt(document.getElementById('retirementYear').value);
-    
-    if (!basicPay || basicPay <= 0) {
-        alert('Please enter a valid basic pay amount');
-        return false;
-    }
-    
-    if (currentDA < 0 || currentDA > 100) {
-        alert('DA percentage should be between 0 and 100');
-        return false;
-    }
-    
-    if (retirementYear < new Date().getFullYear() || retirementYear > 2070) {
-        alert('Please enter a valid retirement year');
-        return false;
-    }
-    
-    return true;
+// Optional: "View Results" button for user-controlled scrolling
+const viewResultsBtn = document.getElementById('viewResultsBtn');
+if (viewResultsBtn) {
+    viewResultsBtn.addEventListener('click', () => {
+        const resultsSection = document.getElementById('resultsSection');
+        if (resultsSection) {
+            resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
 }
 
-// Real-time calculation on input change
-['basicPay', 'currentDA', 'retirementYear', 'hraPercent', 'annualDAGrowth', 'annualIncrement', 'fitment8th', 'fitment9th', 'fitment10th', 'fitment11th'].forEach(id => {
-    const element = document.getElementById(id);
-    if (element) {
-        element.addEventListener('input', () => {
-            // Only calculate if all required fields have values
-            const basicPay = document.getElementById('basicPay').value;
-            const currentDA = document.getElementById('currentDA').value;
-            const retirementYear = document.getElementById('retirementYear').value;
-            
-            if (basicPay && currentDA && retirementYear) {
-                if (validateInputs()) {
-                    calculator.calculate();
-                }
-            }
-        });
-    }
-});
+// Remove all auto-calculation on input change
+// Users must click "Calculate Projections" button to see results
