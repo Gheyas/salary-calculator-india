@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | PayCommissions.in - Government Employee Retirement Salary Calculator</title>
+    <meta name="description" content="Privacy Policy for PayCommissions.in. Learn how we protect your data when using our retirement salary calculator for Indian government employees.">
+    <meta name="keywords" content="privacy policy, paycommissions.in, data protection, government employee calculator, retirement planning">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <span class="text-2xl font-bold text-blue-600">PayCommissions.in</span>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 transition">Calculator</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600 transition">About</a>
+                    <a href="guide.html" class="text-gray-700 hover:text-blue-600 transition">Guide</a>
+                    <a href="privacy.html" class="text-blue-600 font-semibold">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Privacy Policy Content -->
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+        <!-- Header -->
+        <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
+            <div class="flex space-x-4 text-sm text-gray-600">
+                <span><strong>Effective Date:</strong> October 26, 2025</span>
+                <span>|</span>
+                <span><strong>Last Updated:</strong> October 26, 2025</span>
+            </div>
+        </div>
+
+        <!-- Section 1 -->
+        <section class="bg-white rounded-lg shadow-lg p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">1. Introduction</h2>
+            <p class="text-gray-700 mb-4">
+                Welcome to <strong>PayCommissions.in</strong> ("we," "our," or "the Website"). We are committed to protecting your privacy and ensuring transparency about how we collect, use, and safeguard your personal information. This Privacy Policy explains our practices regarding data collection and usage when you use our Government Employee Retirement Salary Calculator.
+            </p>
+            <p class="text-gray-700">
+                PayCommissions.in is an independent informational tool designed to help Indian government employees estimate their retirement salary based on <a href="https://en.wikipedia.org/wiki/Central_Pay_Commission" target="_blank" class="text-blue-600 hover:underline">Central Pay Commission</a> structures and historical patterns. We are <strong>not affiliated with the Government of India</strong> or any official government agency.
+            </p>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="bg-white rounded-lg shadow-lg p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">2. Information We Collect</h2>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">2.1 Information You Provide</h3>
+            <p class="text-gray-700 mb-3">When you use our salary calculator, you voluntarily provide the following information:</p>
+            <ul class="list-disc list-inside text-gray-700 mb-4 space-y-1">
+                <li>Current Basic Pay</li>
+                <li>Current Dearness Allowance (DA) percentage</li>
+                <li>Pay Level and Stage (7th Pay Commission structure)</li>
+                <li>Date of Birth or Retirement Year</li>
+                <li>HRA percentage and city classification</li>
+                <li>Fitment factor preferences for future pay commissions (8th, 9th, 10th CPC)</li>
+            </ul>
+            <div class="bg-blue-50 border-l-4 border-blue-600 p-4 mb-4">
+                <p class="text-gray-700"><strong>Important:</strong> All calculations are performed <strong>locally in your web browser</strong>. We do not transmit your salary details to our servers or any third party.</p>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">2.2 Automatically Collected Information</h3>
+            <p class="text-gray-700 mb-3">We may collect non-personal information automatically through:</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li><strong>Cookies:</strong> Small text files stored on your device to remember your preferences</li>
+                <li><strong>Local Storage:</strong> Browser storage to save your calculation inputs for convenience</li>
+                <li><strong>Usage Analytics:</strong> Anonymous data about page visits, browser type, and device information</li>
+            </ul>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="bg-white rounded-lg shadow-lg p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">3. How We Use Your Information</h2>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">3.1 Calculator Functionality</h3>
+            <ul class="list-disc list-inside text-gray-700 mb-4 space-y-1">
+                <li>To perform retirement salary projections based on official <a href="https://dcsem.gov.in/resources/uploads/rti_links/l4Paymatrix.pdf" target="_blank" class="text-blue-600 hover:underline">Pay Matrix structures</a></li>
+                <li>To display year-by-year salary breakdowns accounting for multiple pay commission transitions</li>
+                <li>To save your inputs locally on your device for future reference</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">3.2 Website Improvement</h3>
+            <ul class="list-disc list-inside text-gray-700 mb-4 space-y-1">
+                <li>To analyze aggregated, anonymous usage patterns to improve calculator accuracy</li>
+                <li>To understand which features are most helpful to government employees</li>
+                <li>To optimize website performance and user experience</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">3.3 Legal Compliance</h3>
+            <p class="text-gray-700">We may process information to comply with applicable laws, regulations, or legal requests from government authorities.</p>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="bg-white rounded-lg shadow-lg p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">4. Data Storage and Security</h2>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">4.1 Local Storage Only</h3>
+            <p class="text-gray-700 mb-3">Your salary calculation inputs are stored <strong>only on your device</strong> using browser local storage technology. This means:</p>
+            <ul class="list-disc list-inside text-gray-700 mb-4 space-y-1">
+                <li>Your data never leaves your browser</li>
+                <li>We cannot access your personal salary information</li>
+                <li>Clearing your browser data will delete all saved calculations</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">4.2 Security Measures</h3>
+            <p class="text-gray-700 mb-3">While we do not collect or store your personal data on our servers, we implement industry-standard security measures including:</p>
+            <ul class="list-disc list-inside text-gray-700 mb-4 space-y-1">
+                <li>HTTPS encryption for all website connections</li>
+                <li>Regular security audits of our code</li>
+                <li>Protection against common web vulnerabilities (XSS, CSRF)</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">4.3 Data Retention</h3>
+            <p class="text-gray-700">Since calculations are performed client-side, your inputs remain on your device until you clear browser data. No retention period applies to server-stored data as we don't store any personal information on our servers.</p>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="bg-white rounded-lg shadow-lg p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">5. Third-Party Services</h2>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">5.1 External Links</h3>
+            <p class="text-gray-700 mb-3">Our website contains links to official government resources for your reference:</p>
+            <ul class="list-disc list-inside text-gray-700 mb-4 space-y-1">
+                <li><a href="https://doe.gov.in/central-pay-commission" target="_blank" class="text-blue-600 hover:underline">Department of Expenditure - Central Pay Commission</a></li>
+                <li><a href="https://doe.gov.in/order-central-pay-commission/16" target="_blank" class="text-blue-600 hover:underline">Ministry of Finance - Pay Commission Orders</a></li>
+                <li><a href="https://dcsem.gov.in/resources/uploads/rti_links/l4Paymatrix.pdf" target="_blank" class="text-blue-600 hover:underline">Official 7th CPC Pay Matrix</a></li>
+            </ul>
+            <p class="text-gray-700">These external websites have their own privacy policies, and we are not responsible for their content or data practices.</p>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-3 mt-6">5.2 Analytics Services</h3>
+            <p class="text-gray-700 mb-3">We may use Google Analytics to collect anonymous usage statistics. This service:</p>
+            <ul class="list-disc list-inside text-gray-700 mb-4 space-y-1">
+                <li>Does not collect personally identifiable information</li>
+                <li>Uses cookies to track aggregate visitor behavior</li>
+                <li>Helps us understand which calculator features are most used</li>
+            </ul>
+            <p class="text-gray-700">You can opt out of Google Analytics by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" class="text-blue-600 hover:underline">Google Analytics Opt-out Browser Add-on</a>.</p>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="bg-white rounded-lg shadow-lg p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">6. Your Privacy Rights</h2>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">6.1 Access and Control</h3>
+            <p class="text-gray-700 mb-3">You have the right to:</p>
+            <ul class="list-disc list-inside text-gray-700 mb-4 space-y-1">
+                <li><strong>Access Your Data:</strong> View your saved calculations in browser storage at any time</li>
+                <li><strong>Delete Your Data:</strong> Clear your browser's local storage or cookies to remove all saved information</li>
+                <li><strong>Download Your Data:</strong> Export calculation results as PDF (feature available in calculator)</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">6.2 Cookie Management</h3>
+            <p class="text-gray-700 mb-3">You can control cookies through your browser settings:</p>
+            <ul class="list-disc list-inside text-gray-700 mb-4 space-y-1">
+                <li><strong>Google Chrome:</strong> Settings > Privacy and Security > Cookies</li>
+                <li><strong>Mozilla Firefox:</strong> Settings > Privacy & Security > Cookies and Site Data</li>
+                <li><strong>Safari:</strong> Preferences > Privacy > Manage Website Data</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">6.3 Do Not Track</h3>
+            <p class="text-gray-700">We respect "Do Not Track" browser signals. If enabled, we will not collect analytics data from your session.</p>
+        </section>
+
+        <!-- Section 7 -->
+        <section class="bg-white rounded-lg shadow-lg p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">7. Children's Privacy</h2>
+            <p class="text-gray-700">
+                PayCommissions.in is designed for adult government employees and job candidates. We do not knowingly collect information from individuals under 18 years of age. If you believe a minor has provided information to us, please contact us immediately.
+            </p>
+        </section>
+
+        <!-- Section 8 -->
+        <section class="bg-white rounded-lg shadow-lg p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">8. Data Accuracy and Disclaimers</h2>
+            
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">8.1 Calculation Accuracy</h3>
+            <p class="text-gray-700 mb-3">Our salary projections are based on:</p>
+            <ul class="list-disc list-inside text-gray-700 mb-4 space-y-1">
+                <li>Official <a href="https://doe.gov.in/central-pay-commission" target="_blank" class="text-blue-600 hover:underline">7th Central Pay Commission</a> pay matrix data</li>
+                <li>Historical fitment factor patterns from previous pay commissions</li>
+                <li>Projected parameters for <a href="https://doe.gov.in/order-central-pay-commission/16" target="_blank" class="text-blue-600 hover:underline">8th Pay Commission</a> (implementation pending)</li>
+            </ul>
+            
+            <div class="bg-yellow-50 border-l-4 border-yellow-600 p-4 mb-4">
+                <p class="text-gray-700 mb-2"><strong>Disclaimer:</strong> All projections are estimates for planning purposes only. Actual retirement salary depends on:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
+                    <li>Future government policy decisions</li>
+                    <li>Official 8th, 9th, and 10th Pay Commission recommendations</li>
+                    <li>DA merger patterns and implementation dates</li>
+                    <li>Individual service conditions and promotions</li>
+                </ul>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">8.2 No Guarantee</h3>
+            <p class="text-gray-700 mb-3">This calculator does <strong>not guarantee</strong> specific salary outcomes. For official retirement benefit information, consult:</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li>Your Pay & Accounts Office</li>
+                <li>Central Pension Accounting Office (CPAO)</li>
+                <li>Department of Pension & Pensioners' Welfare</li>
+            </ul>
+        </section>
+
+        <!-- Section 9 -->
+        <section class="bg-white rounded-lg shadow-lg p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">9. Updates to This Policy</h2>
+            <p class="text-gray-700 mb-4">We may update this Privacy Policy periodically to reflect changes in our data practices, new features, or legal requirements.</p>
+            <p class="text-gray-700 mb-4"><strong>Notice of Changes:</strong> We will display a notice on our homepage for 30 days after any material changes. Continued use of the calculator after updates constitutes acceptance of the revised policy.</p>
+            <p class="text-gray-700"><strong>Version History:</strong><br>Version 1.0 (October 26, 2025): Initial privacy policy published</p>
+        </section>
+
+        <!-- Section 10 -->
+        <section class="bg-white rounded-lg shadow-lg p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">10. Contact Information</h2>
+            <p class="text-gray-700 mb-4">If you have questions, concerns, or requests regarding this Privacy Policy or your data:</p>
+            <div class="bg-gray-100 p-4 rounded-lg">
+                <p class="text-gray-700"><strong>Email:</strong> privacy@paycommissions.in</p>
+                <p class="text-gray-700"><strong>Website:</strong> <a href="https://www.paycommissions.in" class="text-blue-600 hover:underline">https://www.paycommissions.in</a></p>
+                <p class="text-gray-700"><strong>Response Time:</strong> We aim to respond within 7 business days</p>
+            </div>
+            <p class="text-gray-700 mt-4">For official government inquiries about pay commissions, please visit the <a href="https://doe.gov.in/central-pay-commission" target="_blank" class="text-blue-600 hover:underline">Department of Expenditure website</a>.</p>
+        </section>
+
+        <!-- Section 11 -->
+        <section class="bg-white rounded-lg shadow-lg p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">11. Legal Basis (For Indian Users)</h2>
+            <p class="text-gray-700 mb-3">Our processing of information complies with:</p>
+            <ul class="list-disc list-inside text-gray-700 mb-4 space-y-1">
+                <li>Information Technology Act, 2000</li>
+                <li>Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011</li>
+                <li>Digital Personal Data Protection Act, 2023 (when enacted)</li>
+            </ul>
+            <p class="text-gray-700">Since we process data locally on your device and do not store sensitive personal information on servers, we maintain minimal data protection obligations while respecting your privacy rights.</p>
+        </section>
+
+        <!-- Section 12 -->
+        <section class="bg-white rounded-lg shadow-lg p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">12. International Users</h2>
+            <p class="text-gray-700 mb-3">PayCommissions.in is primarily designed for Indian government employees. If you access our website from outside India:</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+                <li>Data protection laws in your jurisdiction may differ</li>
+                <li>We do not specifically target international users</li>
+                <li>Your use of the calculator is at your own discretion</li>
+            </ul>
+        </section>
+
+        <!-- Section 13 -->
+        <section class="bg-white rounded-lg shadow-lg p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">13. Consent</h2>
+            <p class="text-gray-700">
+                By using PayCommissions.in, you acknowledge that you have read, understood, and agree to this Privacy Policy. If you do not agree with our practices, please discontinue use of the calculator.
+            </p>
+        </section>
+
+        <!-- Additional Resources -->
+        <section class="bg-blue-50 rounded-lg shadow-lg p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Additional Resources</h2>
+            <ul class="space-y-2">
+                <li><a href="https://en.wikipedia.org/wiki/Central_Pay_Commission" target="_blank" class="text-blue-600 hover:underline">Central Pay Commission - Wikipedia</a></li>
+                <li><a href="https://dcsem.gov.in/resources/uploads/rti_links/l4Paymatrix.pdf" target="_blank" class="text-blue-600 hover:underline">Official Pay Matrix Table (7th CPC)</a></li>
+                <li><a href="https://doe.gov.in/order-central-pay-commission/16" target="_blank" class="text-blue-600 hover:underline">Ministry of Finance - Pay Commission Orders</a></li>
+                <li><a href="https://doe.gov.in/central-pay-commission" target="_blank" class="text-blue-600 hover:underline">Department of Expenditure - Central Pay Commission</a></li>
+            </ul>
+        </section>
+
+        <!-- Last Reviewed -->
+        <div class="text-center text-gray-600 py-4">
+            <p><strong>Last Reviewed:</strong> October 26, 2025</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">PayCommissions.in</h3>
+                    <p class="text-gray-400">Government Employee Retirement Salary Calculator</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html" class="hover:text-white">Calculator</a></li>
+                        <li><a href="about.html" class="hover:text-white">About</a></li>
+                        <li><a href="guide.html" class="hover:text-white">Guide</a></li>
+                        <li><a href="privacy.html" class="hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Official Resources</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="https://doe.gov.in/central-pay-commission" target="_blank" class="hover:text-white">Pay Commission</a></li>
+                        <li><a href="https://dcsem.gov.in/resources/uploads/rti_links/l4Paymatrix.pdf" target="_blank" class="hover:text-white">Pay Matrix</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2025 PayCommissions.in. All rights reserved.</p>
+                <p class="text-sm mt-2">This is not an official government website. For official information, visit government portals.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
