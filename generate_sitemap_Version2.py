@@ -10,7 +10,7 @@ pip install requests beautifulsoup4
 python generate_sitemap.py --url https://paycommissions.in --output sitemap.xml --max-pages 1000
 
 Defaults:
-max-pages: 5000
+max-pages: 5001
 changefreq: monthly
 priority: 0.5
 """
