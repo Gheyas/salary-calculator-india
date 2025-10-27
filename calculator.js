@@ -10,6 +10,74 @@ class RetirementCalculator {
             11: { year: 2056, name: '11th CPC' }
         };
         this.results = [];
+        
+        // Add event listener for retirement year to show/hide fitment factors
+        this.setupRetirementYearListener();
+    }
+
+    setupRetirementYearListener() {
+        const retirementYearInput = document.getElementById('retirementYear');
+        if (retirementYearInput) {
+            retirementYearInput.addEventListener('input', () => {
+                this.updateVisibleFitmentFactors();
+            });
+            retirementYearInput.addEventListener('change', () => {
+                this.updateVisibleFitmentFactors();
+            });
+        }
+    }
+
+    updateVisibleFitmentFactors() {
+        const retirementYear = parseInt(document.getElementById('retirementYear').value);
+        
+        // If no valid retirement year, hide all fitment factors
+        if (!retirementYear || isNaN(retirementYear)) {
+            this.hideFitmentFactor('fitment8thContainer');
+            this.hideFitmentFactor('fitment9thContainer');
+            this.hideFitmentFactor('fitment10thContainer');
+            this.hideFitmentFactor('fitment11thContainer');
+            return;
+        }
+
+        // Always show 8th Pay Commission (2026) to all users
+        this.showFitmentFactor('fitment8thContainer');
+
+        // Show 9th CPC (2036) if retirement year is 2036 or later
+        if (retirementYear >= 2036) {
+            this.showFitmentFactor('fitment9thContainer');
+        } else {
+            this.hideFitmentFactor('fitment9thContainer');
+        }
+
+        // Show 10th CPC (2046) if retirement year is 2046 or later
+        if (retirementYear >= 2046) {
+            this.showFitmentFactor('fitment10thContainer');
+        } else {
+            this.hideFitmentFactor('fitment10thContainer');
+        }
+
+        // Show 11th CPC (2056) if retirement year is 2056 or later
+        if (retirementYear >= 2056) {
+            this.showFitmentFactor('fitment11thContainer');
+        } else {
+            this.hideFitmentFactor('fitment11thContainer');
+        }
+    }
+
+    showFitmentFactor(containerId) {
+        const container = document.getElementById(containerId);
+        if (container) {
+            container.classList.remove('hidden');
+            container.style.display = 'block';
+        }
+    }
+
+    hideFitmentFactor(containerId) {
+        const container = document.getElementById(containerId);
+        if (container) {
+            container.classList.add('hidden');
+            container.style.display = 'none';
+        }
     }
 
     calculate() {
@@ -21,12 +89,12 @@ class RetirementCalculator {
         const annualDAGrowth = parseFloat(document.getElementById('annualDAGrowth').value) || 0;
         const annualIncrement = parseFloat(document.getElementById('annualIncrement').value) || 0;
         
-        // Get fitment factors
+        // Get fitment factors - only use those relevant to retirement year
         const fitmentFactors = {
             8: parseFloat(document.getElementById('fitment8th').value) || 2.10,
-            9: parseFloat(document.getElementById('fitment9th').value) || 2.10,
-            10: parseFloat(document.getElementById('fitment10th').value) || 2.10,
-            11: parseFloat(document.getElementById('fitment11th').value) || 2.10
+            9: retirementYear >= 2036 ? (parseFloat(document.getElementById('fitment9th').value) || 2.10) : null,
+            10: retirementYear >= 2046 ? (parseFloat(document.getElementById('fitment10th').value) || 2.10) : null,
+            11: retirementYear >= 2056 ? (parseFloat(document.getElementById('fitment11th').value) || 2.10) : null
         };
 
         // Clear previous results
@@ -42,27 +110,30 @@ class RetirementCalculator {
             const commissionKeys = Object.keys(this.payCommissions).map(Number);
             for (const commission of commissionKeys) {
                 if (year === this.payCommissions[commission].year && commission > 7) {
-                    // Apply fitment factor to basic pay only
-                    const fitmentFactor = fitmentFactors[commission];
-                    const oldBasicPay = currentBasicPay;
-                    currentBasicPay = Math.round(currentBasicPay * fitmentFactor);
-                    currentDAPercent = 0; // DA resets to 0
-                    currentCommission = commission;
-                    
-                    // Add transition note
-                    this.results.push({
-                        year: year,
-                        commission: `${this.payCommissions[commission].name} Transition`,
-                        basicPay: currentBasicPay,
-                        daPercent: 0,
-                        daAmount: 0,
-                        hraAmount: Math.round(currentBasicPay * hraPercent / 100),
-                        grossSalary: Math.round(currentBasicPay * (1 + hraPercent / 100)),
-                        isTransition: true,
-                        fitmentFactor: fitmentFactor,
-                        oldBasicPay: oldBasicPay
-                    });
-                    break;
+                    // Only apply fitment if it's relevant to retirement year
+                    if (fitmentFactors[commission] !== null) {
+                        // Apply fitment factor to basic pay only
+                        const fitmentFactor = fitmentFactors[commission];
+                        const oldBasicPay = currentBasicPay;
+                        currentBasicPay = Math.round(currentBasicPay * fitmentFactor);
+                        currentDAPercent = 0; // DA resets to 0
+                        currentCommission = commission;
+                        
+                        // Add transition note
+                        this.results.push({
+                            year: year,
+                            commission: `${this.payCommissions[commission].name} Transition`,
+                            basicPay: currentBasicPay,
+                            daPercent: 0,
+                            daAmount: 0,
+                            hraAmount: Math.round(currentBasicPay * hraPercent / 100),
+                            grossSalary: Math.round(currentBasicPay * (1 + hraPercent / 100)),
+                            isTransition: true,
+                            fitmentFactor: fitmentFactor,
+                            oldBasicPay: oldBasicPay
+                        });
+                        break;
+                    }
                 }
             }
             
@@ -153,8 +224,6 @@ class RetirementCalculator {
         
         // Create chart
         this.createChart();
-        
-        // NO automatic scrolling - let user control when to view results
     }
 
     createChart() {
@@ -345,6 +414,39 @@ function validateInputs() {
         isValid = false;
     }
     
+    // Validate visible fitment factors
+    if (retirementYear >= 2026) {
+        const fitment8th = parseFloat(document.getElementById('fitment8th').value);
+        if (isNaN(fitment8th) || fitment8th <= 0 || fitment8th > 5) {
+            showFieldError('fitment8th', '8th CPC fitment factor must be between 0 and 5');
+            isValid = false;
+        }
+    }
+    
+    if (retirementYear >= 2036) {
+        const fitment9th = parseFloat(document.getElementById('fitment9th').value);
+        if (isNaN(fitment9th) || fitment9th <= 0 || fitment9th > 5) {
+            showFieldError('fitment9th', '9th CPC fitment factor must be between 0 and 5');
+            isValid = false;
+        }
+    }
+    
+    if (retirementYear >= 2046) {
+        const fitment10th = parseFloat(document.getElementById('fitment10th').value);
+        if (isNaN(fitment10th) || fitment10th <= 0 || fitment10th > 5) {
+            showFieldError('fitment10th', '10th CPC fitment factor must be between 0 and 5');
+            isValid = false;
+        }
+    }
+    
+    if (retirementYear >= 2056) {
+        const fitment11th = parseFloat(document.getElementById('fitment11th').value);
+        if (isNaN(fitment11th) || fitment11th <= 0 || fitment11th > 5) {
+            showFieldError('fitment11th', '11th CPC fitment factor must be between 0 and 5');
+            isValid = false;
+        }
+    }
+    
     // If errors exist, scroll to error message smoothly
     if (!isValid) {
         const errorContainer = document.getElementById('validationErrors');
@@ -380,6 +482,3 @@ if (viewResultsBtn) {
         }
     });
 }
-
-// Remove all auto-calculation on input change
-// Users must click "Calculate Projections" button to see results
