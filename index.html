@@ -39,15 +39,18 @@
                     <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-green-500 rounded-lg flex items-center justify-center">
                         <span class="text-white font-bold text-lg">₹</span>
                     </div>
-                    <h1 class="text-2xl font-bold text-gray-800">paycommissions.in</h1>
+                    <h1 class="text-2xl font-bold text-gray-800"><a href="https://paycommissions.in/index.html" class="hover:text-blue-600">paycommissions.in</a></h1>
                 </div>
                 
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-blue-600 font-medium hover:text-blue-700">Calculator</a>
-                    <a href="about.html" class="text-gray-600 hover:text-blue-600">About</a>
-                    <a href="guide.html" class="text-gray-600 hover:text-blue-600">Guide</a>
-                    <a href="contact.html" class="text-gray-600 hover:text-blue-600">Contact</a>
+                <!-- Desktop Navigation - UPDATED -->
+                <nav class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-blue-600 font-medium hover:text-blue-700 transition">Calculator</a>
+                    <a href="about.html" class="text-gray-600 hover:text-blue-600 transition">About</a>
+                    <a href="pay-commission.html" class="text-gray-600 hover:text-blue-600 transition">Pay Commission</a>
+                    <a href="blog.html" class="text-gray-600 hover:text-blue-600 transition">Blog</a>
+                    <a href="faq.html" class="text-gray-600 hover:text-blue-600 transition">FAQ</a>
+                    <a href="privacy.html" class="text-gray-600 hover:text-blue-600 transition">Privacy</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-blue-600 transition">Contact</a>
                 </nav>
                 
                 <!-- Mobile Menu Button -->
@@ -58,11 +61,14 @@
                 </button>
             </div>
             
-            <!-- Mobile Navigation -->
+            <!-- Mobile Navigation - UPDATED -->
             <nav id="mobileMenu" class="hidden mt-4 space-y-2">
                 <a href="index.html" class="block text-blue-600 font-medium py-2">Calculator</a>
                 <a href="about.html" class="block text-gray-600 hover:text-blue-600 py-2">About</a>
-                <a href="guide.html" class="block text-gray-600 hover:text-blue-600 py-2">Guide</a>
+                <a href="pay-commission.html" class="block text-gray-600 hover:text-blue-600 py-2">Pay Commission</a>
+                <a href="blog.html" class="block text-gray-600 hover:text-blue-600 py-2">Blog</a>
+                <a href="faq.html" class="block text-gray-600 hover:text-blue-600 py-2">FAQ</a>
+                <a href="privacy.html" class="block text-gray-600 hover:text-blue-600 py-2">Privacy</a>
                 <a href="contact.html" class="block text-gray-600 hover:text-blue-600 py-2">Contact</a>
             </nav>
         </div>
@@ -79,319 +85,653 @@
 
     <!-- Main Calculator -->
     <main class="container mx-auto px-4 py-12">
-        <div class="grid md:grid-cols-2 gap-8 mb-8">
-            <!-- Input Section -->
-            <div class="bg-white rounded-xl shadow-lg p-6 card-shadow">
-                <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                    <span class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                        <span class="text-blue-600 font-bold">1</span>
-                    </span>
-                    Salary Details
-                </h3>
-                
-                <div class="space-y-4">
-                    <div>
-                        <label for="basicPay" class="block text-sm font-semibold text-gray-700 mb-2">
-                            Current Basic Pay (₹)
-                            <span class="text-red-500">*</span>
-                        </label>
-                        <input 
-                            type="number" 
-                            id="basicPay" 
-                            name="basicPay"
-                            min="1" 
-                            max="1000000"
-                            step="1"
-                            placeholder="e.g., 56900"
-                            required
-                            aria-label="Current Basic Pay"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        />
+        <!-- Validation Errors Container -->
+        <div id="validationErrors" class="hidden bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded">
+            <div class="flex items-center mb-2">
+                <svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                </svg>
+                <h3 class="text-lg font-semibold text-red-800">Please correct the following errors:</h3>
+            </div>
+            <ul class="list-disc list-inside text-red-700 space-y-1"></ul>
+        </div>
+
+        <!-- Calculator Form -->
+        <div class="bg-white rounded-lg card-shadow p-8 mb-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">
+                <span class="bg-blue-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-2">1</span>
+                Salary Details
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Basic Pay -->
+                <div>
+                    <label for="basicPay" class="block text-sm font-medium text-gray-700 mb-2">Current Basic Pay (₹) *</label>
+                    <input type="number" id="basicPay" placeholder="e.g., 78800" 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <p class="text-xs text-gray-500 mt-1">Your current basic pay as per 7th CPC</p>
+                </div>
+
+                <!-- Current DA -->
+                <div>
+                    <label for="currentDA" class="block text-sm font-medium text-gray-700 mb-2">Current DA (%) *</label>
+                    <input type="number" id="currentDA" step="0.1" placeholder="e.g., 53" 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <p class="text-xs text-gray-500 mt-1">Current Dearness Allowance percentage</p>
+                </div>
+
+                <!-- Retirement Year -->
+                <div>
+                    <label for="retirementYear" class="block text-sm font-medium text-gray-700 mb-2">Retirement Year *</label>
+                    <input type="number" id="retirementYear" placeholder="e.g., 2050" 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <p class="text-xs text-gray-500 mt-1">Year when you plan to retire</p>
+                </div>
+
+                <!-- HRA Percent -->
+                <div>
+                    <label for="hraPercent" class="block text-sm font-medium text-gray-700 mb-2">HRA (%) *</label>
+                    <select id="hraPercent" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="30">30% (X-Class City)</option>
+                        <option value="20">20% (Y-Class City)</option>
+                        <option value="10">10% (Z-Class City)</option>
+                        <option value="0">0% (No HRA)</option>
+                    </select>
+                </div>
+
+                <!-- Annual DA Growth -->
+                <div>
+                    <label for="annualDAGrowth" class="block text-sm font-medium text-gray-700 mb-2">Annual DA Growth (%) *</label>
+                    <input type="number" id="annualDAGrowth" step="0.1" value="4" 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <p class="text-xs text-gray-500 mt-1">Expected annual increase in DA</p>
+                </div>
+
+                <!-- Annual Increment -->
+                <div>
+                    <label for="annualIncrement" class="block text-sm font-medium text-gray-700 mb-2">Annual Increment (%) *</label>
+                    <input type="number" id="annualIncrement" step="0.1" value="3" 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <p class="text-xs text-gray-500 mt-1">Annual increment to basic pay</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW: Dynamic Fitment Factors Section -->
+        <div class="bg-white rounded-lg card-shadow p-8 mb-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                <span class="bg-green-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-2">2</span>
+                Pay Commission Fitment Factors
+            </h3>
+            
+            <!-- Info Box -->
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                        </svg>
                     </div>
-                    
-                    <div>
-                        <label for="currentDA" class="block text-sm font-semibold text-gray-700 mb-2">
-                            Current DA (%)
-                            <span class="text-red-500">*</span>
-                        </label>
-                        <input 
-                            type="number" 
-                            id="currentDA" 
-                            name="currentDA"
-                            min="0" 
-                            max="100"
-                            step="0.1"
-                            placeholder="e.g., 53.0"
-                            required
-                            aria-label="Current DA Percentage"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        />
-                    </div>
-                    
-                    <div>
-                        <label for="retirementYear" class="block text-sm font-semibold text-gray-700 mb-2">
-                            Retirement Year
-                            <span class="text-red-500">*</span>
-                        </label>
-                        <input 
-                            type="number" 
-                            id="retirementYear" 
-                            name="retirementYear"
-                            min="2025" 
-                            max="2070"
-                            step="1"
-                            placeholder="e.g., 2045"
-                            required
-                            aria-label="Retirement Year"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        />
-                    </div>
-                    
-                    <div>
-                        <label for="hraPercent" class="block text-sm font-semibold text-gray-700 mb-2">
-                            HRA (%)
-                        </label>
-                        <select 
-                            id="hraPercent" 
-                            name="hraPercent"
-                            aria-label="HRA Percentage"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        >
-                            <option value="0">0% (No HRA)</option>
-                            <option value="10">10%</option>
-                            <option value="20">20%</option>
-                            <option value="30">30%</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <label for="annualDAGrowth" class="block text-sm font-semibold text-gray-700 mb-2">
-                            Annual DA Growth (%)
-                        </label>
-                        <input 
-                            type="number" 
-                            id="annualDAGrowth" 
-                            name="annualDAGrowth"
-                            value="4" 
-                            min="0" 
-                            max="50"
-                            step="0.1"
-                            placeholder="e.g., 4.0"
-                            aria-label="Annual DA Growth"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        />
-                    </div>
-                    
-                    <div>
-                        <label for="annualIncrement" class="block text-sm font-semibold text-gray-700 mb-2">
-                            Annual Increment (%)
-                        </label>
-                        <input 
-                            type="number" 
-                            id="annualIncrement" 
-                            name="annualIncrement"
-                            value="3" 
-                            min="0" 
-                            max="20"
-                            step="0.1"
-                            placeholder="e.g., 3.0"
-                            aria-label="Annual Increment"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        />
+                    <div class="ml-3">
+                        <p class="text-sm text-blue-700">
+                            <strong>How it works:</strong> Enter your retirement year above, and only the relevant pay commission fitment factors will appear below. These factors determine your salary increase when a new pay commission is implemented.
+                        </p>
                     </div>
                 </div>
             </div>
             
-            <!-- Fitment Factors Section -->
-            <div class="bg-white rounded-xl shadow-lg p-6 card-shadow">
-                <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                    <span class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                        <span class="text-green-600 font-bold">2</span>
+            <!-- 8th Pay Commission (2026) - Always visible -->
+            <div id="fitment8thContainer" class="mb-6 bg-white p-5 rounded-lg border-2 border-blue-200 shadow-sm">
+                <label for="fitment8th" class="block text-sm font-semibold text-gray-800 mb-3">
+                    <span class="inline-flex items-center">
+                        <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">8</span>
+                        8th Pay Commission (2026) Fitment Factor *
                     </span>
-                    Pay Commission Fitment Factors
-                </h3>
-                
-                <p class="text-sm text-gray-600 mb-4">Select fitment factors for future pay commissions. Only commissions applicable before your retirement year will be used.</p>
-                
-                <div class="space-y-4">
-                    <div>
-                        <label for="fitment8th" class="block text-sm font-semibold text-gray-700 mb-2">
-                            8th Pay Commission (2026)
-                        </label>
-                        <input 
-                            type="number" 
-                            id="fitment8th" 
-                            name="fitment8th"
-                            value="2.10" 
-                            step="0.01"
-                            min="1.5"
-                            max="3.0"
-                            aria-label="8th Pay Commission Fitment Factor"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        />
-                    </div>
-                    
-                    <div>
-                        <label for="fitment9th" class="block text-sm font-semibold text-gray-700 mb-2">
-                            9th Pay Commission (2036)
-                        </label>
-                        <input 
-                            type="number" 
-                            id="fitment9th" 
-                            name="fitment9th"
-                            value="2.10" 
-                            step="0.01"
-                            min="1.5"
-                            max="3.0"
-                            aria-label="9th Pay Commission Fitment Factor"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        />
-                    </div>
-                    
-                    <div>
-                        <label for="fitment10th" class="block text-sm font-semibold text-gray-700 mb-2">
-                            10th Pay Commission (2046)
-                        </label>
-                        <input 
-                            type="number" 
-                            id="fitment10th" 
-                            name="fitment10th"
-                            value="2.10" 
-                            step="0.01"
-                            min="1.5"
-                            max="3.0"
-                            aria-label="10th Pay Commission Fitment Factor"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        />
-                    </div>
-                    
-                    <div>
-                        <label for="fitment11th" class="block text-sm font-semibold text-gray-700 mb-2">
-                            11th Pay Commission (2056)
-                        </label>
-                        <input 
-                            type="number" 
-                            id="fitment11th" 
-                            name="fitment11th"
-                            value="2.10" 
-                            step="0.01"
-                            min="1.5"
-                            max="3.0"
-                            aria-label="11th Pay Commission Fitment Factor"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        />
-                    </div>
-                </div>
+                </label>
+                <input type="number" id="fitment8th" step="0.01" min="1" max="5" value="2.10" 
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                       placeholder="e.g., 2.10">
+                <p class="text-xs text-gray-500 mt-2">Expected implementation: January 2026</p>
+            </div>
+            
+            <!-- 9th Pay Commission (2036) -->
+            <div id="fitment9thContainer" class="mb-6 bg-white p-5 rounded-lg border-2 border-green-200 shadow-sm hidden" style="display: none;">
+                <label for="fitment9th" class="block text-sm font-semibold text-gray-800 mb-3">
+                    <span class="inline-flex items-center">
+                        <span class="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">9</span>
+                        9th Pay Commission (2036) Fitment Factor *
+                    </span>
+                </label>
+                <input type="number" id="fitment9th" step="0.01" min="1" max="5" value="2.10" 
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                       placeholder="e.g., 2.10">
+                <p class="text-xs text-gray-500 mt-2">Expected implementation: January 2036</p>
+            </div>
+            
+            <!-- 10th Pay Commission (2046) -->
+            <div id="fitment10thContainer" class="mb-6 bg-white p-5 rounded-lg border-2 border-purple-200 shadow-sm hidden" style="display: none;">
+                <label for="fitment10th" class="block text-sm font-semibold text-gray-800 mb-3">
+                    <span class="inline-flex items-center">
+                        <span class="bg-purple-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">10</span>
+                        10th Pay Commission (2046) Fitment Factor *
+                    </span>
+                </label>
+                <input type="number" id="fitment10th" step="0.01" min="1" max="5" value="2.10" 
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                       placeholder="e.g., 2.10">
+                <p class="text-xs text-gray-500 mt-2">Expected implementation: January 2046</p>
+            </div>
+            
+            <!-- 11th Pay Commission (2056) -->
+            <div id="fitment11thContainer" class="mb-6 bg-white p-5 rounded-lg border-2 border-orange-200 shadow-sm hidden" style="display: none;">
+                <label for="fitment11th" class="block text-sm font-semibold text-gray-800 mb-3">
+                    <span class="inline-flex items-center">
+                        <span class="bg-orange-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">11</span>
+                        11th Pay Commission (2056) Fitment Factor *
+                    </span>
+                </label>
+                <input type="number" id="fitment11th" step="0.01" min="1" max="5" value="2.10" 
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                       placeholder="e.g., 2.10">
+                <p class="text-xs text-gray-500 mt-2">Expected implementation: January 2056</p>
+            </div>
+            
+            <!-- Help Text -->
+            <div class="mt-4 p-4 bg-gray-100 rounded-lg">
+                <p class="text-xs text-gray-600">
+                    <strong>💡 Tip:</strong> The fitment factor is the multiplier applied to your basic pay when a new pay commission is implemented. The 7th CPC used a factor of 2.57. Most experts expect future commissions to use a factor between 2.0 and 2.5.
+                </p>
             </div>
         </div>
-        
-        <!-- Validation Errors Container -->
-        <div id="validationErrors" class="hidden bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded-md" role="alert">
-            <div class="flex items-start">
-                <svg class="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293z" clip-rule="evenodd"/>
-                </svg>
-                <div>
-                    <h3 class="font-semibold mb-2">Please correct the following errors:</h3>
-                    <ul class="list-disc list-inside space-y-1"></ul>
-                </div>
-            </div>
-        </div>
-        
+
         <!-- Calculate Button -->
         <div class="text-center mb-8">
-            <button id="calculateBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all hover-lift">
-                Calculate Retirement Salary
+            <button id="calculateBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-12 rounded-lg text-lg transition-all hover-lift shadow-lg">
+                Calculate Projections
             </button>
         </div>
-        
+
+        <!-- View Results Button (hidden initially) -->
+        <div class="text-center mb-8 hidden" id="viewResultsBtn">
+            <button class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-lg transition-all">
+                👇 View Results Below
+            </button>
+        </div>
+
         <!-- Results Section -->
         <div id="resultsSection" class="hidden">
-            <div class="bg-white rounded-xl shadow-lg p-6 card-shadow mb-8">
-                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Your Retirement Salary Projection</h3>
-                
-                <!-- View Results Button -->
-                <div class="text-center mb-6">
-                    <button id="viewResultsBtn" class="hidden bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-200 inline-flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                        View Results Below
-                    </button>
+            <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">Your Retirement Salary Projection</h3>
+            
+            <!-- Summary Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-blue-50 rounded-lg p-6 card-shadow">
+                    <h4 class="text-sm font-medium text-blue-600 mb-2">Final Basic Pay</h4>
+                    <p id="finalBasicPay" class="text-3xl font-bold text-blue-900">₹0</p>
                 </div>
-                
-                <div class="grid md:grid-cols-3 gap-6 mb-8">
-                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 text-center">
-                        <h4 class="text-sm font-semibold text-gray-600 mb-2">Final Basic Pay</h4>
-                        <p id="finalBasicPay" class="text-3xl font-bold text-blue-600">₹0</p>
-                    </div>
-                    
-                    <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 text-center">
-                        <h4 class="text-sm font-semibold text-gray-600 mb-2">Final DA Amount</h4>
-                        <p id="finalDAAmount" class="text-3xl font-bold text-green-600">₹0</p>
-                    </div>
-                    
-                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-6 text-center">
-                        <h4 class="text-sm font-semibold text-gray-600 mb-2">Final Gross Salary</h4>
-                        <p id="finalGrossSalary" class="text-3xl font-bold text-purple-600">₹0</p>
-                    </div>
+                <div class="bg-green-50 rounded-lg p-6 card-shadow">
+                    <h4 class="text-sm font-medium text-green-600 mb-2">Final DA Amount</h4>
+                    <p id="finalDAAmount" class="text-3xl font-bold text-green-900">₹0</p>
                 </div>
-                
-                <!-- Chart -->
-                <div class="mb-8">
-                    <h4 class="text-xl font-bold text-gray-800 mb-4">Salary Progression Chart</h4>
-                    <div id="salaryChart" class="w-full h-96"></div>
+                <div class="bg-purple-50 rounded-lg p-6 card-shadow">
+                    <h4 class="text-sm font-medium text-purple-600 mb-2">Final Gross Salary</h4>
+                    <p id="finalGrossSalary" class="text-3xl font-bold text-purple-900">₹0</p>
                 </div>
-                
-                <!-- Table -->
-                <div>
-                    <h4 class="text-xl font-bold text-gray-800 mb-4">Detailed Year-wise Breakdown</h4>
-                    <div class="result-table overflow-x-auto">
-                        <table class="w-full border-collapse border border-gray-300">
-                            <thead class="bg-gray-100 sticky top-0">
-                                <tr>
-                                    <th class="border border-gray-300 px-4 py-2 text-left">Year</th>
-                                    <th class="border border-gray-300 px-4 py-2 text-left">Pay Commission</th>
-                                    <th class="border border-gray-300 px-4 py-2 text-right">Basic Pay</th>
-                                    <th class="border border-gray-300 px-4 py-2 text-right">DA %</th>
-                                    <th class="border border-gray-300 px-4 py-2 text-right">DA Amount</th>
-                                    <th class="border border-gray-300 px-4 py-2 text-right">HRA Amount</th>
-                                    <th class="border border-gray-300 px-4 py-2 text-right">Gross Salary</th>
-                                </tr>
-                            </thead>
-                            <tbody id="resultsTableBody">
-                            </tbody>
-                        </table>
-                    </div>
+            </div>
+
+            <!-- Chart -->
+            <div class="bg-white rounded-lg card-shadow p-6 mb-8">
+                <h4 class="text-xl font-bold text-gray-800 mb-4">Salary Progression Chart</h4>
+                <div id="salaryChart"></div>
+            </div>
+
+            <!-- Table -->
+            <div class="bg-white rounded-lg card-shadow p-6 mb-8">
+                <h4 class="text-xl font-bold text-gray-800 mb-4">Detailed Year-wise Breakdown</h4>
+                <div class="overflow-x-auto result-table">
+                    <table class="w-full border-collapse">
+                        <thead class="bg-gray-100 sticky top-0">
+                            <tr>
+                                <th class="border border-gray-300 px-4 py-2">Year</th>
+                                <th class="border border-gray-300 px-4 py-2">Pay Commission</th>
+                                <th class="border border-gray-300 px-4 py-2">Basic Pay</th>
+                                <th class="border border-gray-300 px-4 py-2">DA %</th>
+                                <th class="border border-gray-300 px-4 py-2">DA Amount</th>
+                                <th class="border border-gray-300 px-4 py-2">HRA Amount</th>
+                                <th class="border border-gray-300 px-4 py-2">Gross Salary</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsTableBody"></tbody>
+                    </table>
                 </div>
-                
-                <!-- Download Button -->
-                <div class="text-center mt-6">
-                    <button id="downloadPDF" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition-all hover-lift">
-                        Download PDF Report
-                    </button>
-                </div>
+            </div>
+
+            <!-- Download Button -->
+            <div class="text-center">
+                <button id="downloadPDF" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition-all hover-lift">
+                    Download PDF Report
+                </button>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8 mt-12">
-        <div class="container mx-auto px-4 text-center">
-            <p class="mb-2">&copy; 2025 paycommissions.in - All rights reserved</p>
-            <p class="text-sm text-gray-400">Disclaimer: This calculator provides estimates only. Actual salary depends on future government policies and decisions.</p>
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h5 class="text-lg font-bold mb-4"><a href="https://paycommissions.in/index.html" class="hover:text-blue-400">paycommissions.in</a></h5>
+                    <p class="text-gray-300">Accurate salary calculations for government employees across multiple pay commissions.</p>
+                </div>
+                <div>
+                    <h5 class="text-lg font-bold mb-4">Quick Links</h5>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-300 hover:text-white transition-colors">About</a></li>
+                        <li><a href="pay-commission.html" class="text-gray-300 hover:text-white transition-colors">Pay Commission</a></li>
+                        <li><a href="blog.html" class="text-gray-300 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="faq.html" class="text-gray-300 hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="privacy.html" class="text-gray-300 hover:text-white transition-colors">Privacy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-bold mb-4">Disclaimer</h5>
+                    <p class="text-gray-300 text-sm">This calculator provides estimates only. Actual salary depends on future government policies.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2025 paycommissions.in. Made with ❤️ in India. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Mobile Menu Script -->
+    <!-- JavaScript -->
     <script>
-        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
+        // Calculator Logic
+        class RetirementCalculator {
+            constructor() {
+                this.currentYear = new Date().getFullYear();
+                this.payCommissions = {
+                    7: { year: 2016, name: '7th CPC' },
+                    8: { year: 2026, name: '8th CPC' },
+                    9: { year: 2036, name: '9th CPC' },
+                    10: { year: 2046, name: '10th CPC' },
+                    11: { year: 2056, name: '11th CPC' }
+                };
+                this.results = [];
+                this.setupRetirementYearListener();
+            }
+
+            setupRetirementYearListener() {
+                const retirementYearInput = document.getElementById('retirementYear');
+                if (retirementYearInput) {
+                    retirementYearInput.addEventListener('input', () => {
+                        this.updateVisibleFitmentFactors();
+                    });
+                    retirementYearInput.addEventListener('change', () => {
+                        this.updateVisibleFitmentFactors();
+                    });
+                }
+            }
+
+            updateVisibleFitmentFactors() {
+                const retirementYear = parseInt(document.getElementById('retirementYear').value);
+                
+                if (!retirementYear || isNaN(retirementYear)) {
+                    this.hideFitmentFactor('fitment8thContainer');
+                    this.hideFitmentFactor('fitment9thContainer');
+                    this.hideFitmentFactor('fitment10thContainer');
+                    this.hideFitmentFactor('fitment11thContainer');
+                    return;
+                }
+
+                // Always show 8th Pay Commission (2026)
+                this.showFitmentFactor('fitment8thContainer');
+
+                // Show 9th CPC (2036) if retirement >= 2036
+                if (retirementYear >= 2036) {
+                    this.showFitmentFactor('fitment9thContainer');
+                } else {
+                    this.hideFitmentFactor('fitment9thContainer');
+                }
+
+                // Show 10th CPC (2046) if retirement >= 2046
+                if (retirementYear >= 2046) {
+                    this.showFitmentFactor('fitment10thContainer');
+                } else {
+                    this.hideFitmentFactor('fitment10thContainer');
+                }
+
+                // Show 11th CPC (2056) if retirement >= 2056
+                if (retirementYear >= 2056) {
+                    this.showFitmentFactor('fitment11thContainer');
+                } else {
+                    this.hideFitmentFactor('fitment11thContainer');
+                }
+            }
+
+            showFitmentFactor(containerId) {
+                const container = document.getElementById(containerId);
+                if (container) {
+                    container.classList.remove('hidden');
+                    container.style.display = 'block';
+                }
+            }
+
+            hideFitmentFactor(containerId) {
+                const container = document.getElementById(containerId);
+                if (container) {
+                    container.classList.add('hidden');
+                    container.style.display = 'none';
+                }
+            }
+
+            calculate() {
+                const basicPay = parseFloat(document.getElementById('basicPay').value) || 0;
+                const currentDA = parseFloat(document.getElementById('currentDA').value) || 0;
+                const retirementYear = parseInt(document.getElementById('retirementYear').value) || this.currentYear;
+                const hraPercent = parseFloat(document.getElementById('hraPercent').value) || 0;
+                const annualDAGrowth = parseFloat(document.getElementById('annualDAGrowth').value) || 0;
+                const annualIncrement = parseFloat(document.getElementById('annualIncrement').value) || 0;
+                
+                const fitmentFactors = {
+                    8: parseFloat(document.getElementById('fitment8th').value) || 2.10,
+                    9: retirementYear >= 2036 ? (parseFloat(document.getElementById('fitment9th').value) || 2.10) : null,
+                    10: retirementYear >= 2046 ? (parseFloat(document.getElementById('fitment10th').value) || 2.10) : null,
+                    11: retirementYear >= 2056 ? (parseFloat(document.getElementById('fitment11th').value) || 2.10) : null
+                };
+
+                this.results = [];
+                let currentBasicPay = basicPay;
+                let currentDAPercent = currentDA;
+                let currentCommission = 7;
+                
+                for (let year = this.currentYear; year <= retirementYear; year++) {
+                    const commissionKeys = Object.keys(this.payCommissions).map(Number);
+                    for (const commission of commissionKeys) {
+                        if (year === this.payCommissions[commission].year && commission > 7) {
+                            if (fitmentFactors[commission] !== null) {
+                                const fitmentFactor = fitmentFactors[commission];
+                                const oldBasicPay = currentBasicPay;
+                                currentBasicPay = Math.round(currentBasicPay * fitmentFactor);
+                                currentDAPercent = 0;
+                                currentCommission = commission;
+                                
+                                this.results.push({
+                                    year: year,
+                                    commission: `${this.payCommissions[commission].name} Transition`,
+                                    basicPay: currentBasicPay,
+                                    daPercent: 0,
+                                    daAmount: 0,
+                                    hraAmount: Math.round(currentBasicPay * hraPercent / 100),
+                                    grossSalary: Math.round(currentBasicPay * (1 + hraPercent / 100)),
+                                    isTransition: true,
+                                    fitmentFactor: fitmentFactor,
+                                    oldBasicPay: oldBasicPay
+                                });
+                                break;
+                            }
+                        }
+                    }
+                    
+                    const daAmount = Math.round(currentBasicPay * currentDAPercent / 100);
+                    const hraAmount = Math.round(currentBasicPay * hraPercent / 100);
+                    const grossSalary = currentBasicPay + daAmount + hraAmount;
+                    
+                    if (!this.results.some(r => r.year === year && r.isTransition)) {
+                        this.results.push({
+                            year: year,
+                            commission: this.payCommissions[currentCommission].name,
+                            basicPay: currentBasicPay,
+                            daPercent: currentDAPercent,
+                            daAmount: daAmount,
+                            hraAmount: hraAmount,
+                            grossSalary: grossSalary,
+                            isTransition: false
+                        });
+                    }
+                    
+                    if (year < retirementYear) {
+                        currentBasicPay = Math.round(currentBasicPay * (1 + annualIncrement / 100));
+                        if (currentDAPercent > 0 || (year + 1) > this.payCommissions[currentCommission].year) {
+                            currentDAPercent += annualDAGrowth;
+                        }
+                    }
+                }
+                
+                this.displayResults();
+            }
+
+            displayResults() {
+                document.getElementById('resultsSection').classList.remove('hidden');
+                const viewResultsBtn = document.getElementById('viewResultsBtn');
+                if (viewResultsBtn) {
+                    viewResultsBtn.classList.remove('hidden');
+                }
+                
+                const finalResult = this.results[this.results.length - 1];
+                document.getElementById('finalBasicPay').textContent = `₹${finalResult.basicPay.toLocaleString()}`;
+                document.getElementById('finalDAAmount').textContent = `₹${finalResult.daAmount.toLocaleString()}`;
+                document.getElementById('finalGrossSalary').textContent = `₹${finalResult.grossSalary.toLocaleString()}`;
+                
+                const tableBody = document.getElementById('resultsTableBody');
+                tableBody.innerHTML = '';
+                
+                this.results.forEach(result => {
+                    const row = document.createElement('tr');
+                    if (result.isTransition) {
+                        row.className = 'commission-transition';
+                    }
+                    
+                    row.innerHTML = `
+                        <td class="border border-gray-300 px-4 py-2">${result.year}</td>
+                        <td class="border border-gray-300 px-4 py-2">${result.commission}</td>
+                        <td class="border border-gray-300 px-4 py-2 text-right">₹${result.basicPay.toLocaleString()}</td>
+                        <td class="border border-gray-300 px-4 py-2 text-right">${result.daPercent.toFixed(1)}%</td>
+                        <td class="border border-gray-300 px-4 py-2 text-right">₹${result.daAmount.toLocaleString()}</td>
+                        <td class="border border-gray-300 px-4 py-2 text-right">₹${result.hraAmount.toLocaleString()}</td>
+                        <td class="border border-gray-300 px-4 py-2 text-right font-semibold">₹${result.grossSalary.toLocaleString()}</td>
+                    `;
+                    
+                    tableBody.appendChild(row);
+                    
+                    if (result.isTransition) {
+                        const noteRow = document.createElement('tr');
+                        noteRow.className = 'bg-yellow-50';
+                        noteRow.innerHTML = `
+                            <td colspan="7" class="border border-gray-300 px-4 py-2 text-sm text-yellow-700 italic">
+                                <strong>Note:</strong> Fitment factor applied: ₹${result.oldBasicPay.toLocaleString()} × ${result.fitmentFactor} = ₹${result.basicPay.toLocaleString()}. DA reset to 0%.
+                            </td>
+                        `;
+                        tableBody.appendChild(noteRow);
+                    }
+                });
+                
+                this.createChart();
+            }
+
+            createChart() {
+                const years = this.results.map(r => r.year);
+                const basicPay = this.results.map(r => r.basicPay);
+                const grossSalary = this.results.map(r => r.grossSalary);
+                
+                const trace1 = {
+                    x: years,
+                    y: basicPay,
+                    type: 'scatter',
+                    mode: 'lines+markers',
+                    name: 'Basic Pay',
+                    line: { color: '#2563eb', width: 3 },
+                    marker: { size: 6 }
+                };
+                
+                const trace2 = {
+                    x: years,
+                    y: grossSalary,
+                    type: 'scatter',
+                    mode: 'lines+markers',
+                    name: 'Gross Salary',
+                    line: { color: '#10b981', width: 3 },
+                    marker: { size: 6 }
+                };
+                
+                const layout = {
+                    title: { text: 'Salary Progression Over Time', font: { size: 18, family: 'Poppins' } },
+                    xaxis: { title: 'Year', gridcolor: '#e5e7eb' },
+                    yaxis: { title: 'Salary (₹)', gridcolor: '#e5e7eb', tickformat: '₹,.0f' },
+                    plot_bgcolor: '#f9fafb',
+                    paper_bgcolor: '#ffffff',
+                    font: { family: 'Inter' },
+                    legend: { x: 0.02, y: 0.98, bgcolor: 'rgba(255,255,255,0.8)' },
+                    margin: { t: 60, r: 30, b: 60, l: 80 }
+                };
+                
+                Plotly.newPlot('salaryChart', [trace1, trace2], layout, {responsive: true});
+            }
+
+            downloadPDF() {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                
+                doc.setFontSize(20);
+                doc.text('Government Employee Retirement Salary Calculation', 20, 30);
+                
+                doc.setFontSize(12);
+                doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 20, 45);
+                
+                doc.setFontSize(14);
+                doc.text('Input Parameters:', 20, 60);
+                doc.setFontSize(10);
+                doc.text(`Current Basic Pay: ₹${document.getElementById('basicPay').value}`, 20, 75);
+                doc.text(`Current DA: ${document.getElementById('currentDA').value}%`, 20, 85);
+                doc.text(`Retirement Year: ${document.getElementById('retirementYear').value}`, 20, 95);
+                doc.text(`HRA: ${document.getElementById('hraPercent').value}%`, 20, 105);
+                
+                const finalResult = this.results[this.results.length - 1];
+                doc.setFontSize(14);
+                doc.text('Final Results:', 20, 125);
+                doc.setFontSize(10);
+                doc.text(`Basic Pay: ₹${finalResult.basicPay.toLocaleString()}`, 20, 140);
+                doc.text(`DA Amount: ₹${finalResult.daAmount.toLocaleString()}`, 20, 150);
+                doc.text(`Gross Salary: ₹${finalResult.grossSalary.toLocaleString()}`, 20, 160);
+                
+                doc.setFontSize(8);
+                doc.text('Disclaimer: This calculator provides estimates only. Actual salary depends on future government policies.', 20, 280);
+                
+                doc.save('retirement-salary-calculation.pdf');
+            }
+        }
+
+        const calculator = new RetirementCalculator();
+
+        // Validation
+        function clearValidationErrors() {
+            const errorContainer = document.getElementById('validationErrors');
+            if (errorContainer) {
+                errorContainer.classList.add('hidden');
+                errorContainer.innerHTML = '<div class="flex items-center mb-2"><svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg><h3 class="text-lg font-semibold text-red-800">Please correct the following errors:</h3></div><ul class="list-disc list-inside text-red-700 space-y-1"></ul>';
+            }
+            
+            const allInputs = document.querySelectorAll('input[type="number"]');
+            allInputs.forEach(input => {
+                input.classList.remove('border-red-500', 'border-2');
+                input.classList.add('border-gray-300');
+            });
+        }
+
+        function showFieldError(fieldId, errorMessage) {
+            const field = document.getElementById(fieldId);
+            if (field) {
+                field.classList.remove('border-gray-300');
+                field.classList.add('border-red-500', 'border-2');
+                field.setAttribute('aria-invalid', 'true');
+            }
+            
+            const errorContainer = document.getElementById('validationErrors');
+            if (errorContainer) {
+                errorContainer.classList.remove('hidden');
+                const ul = errorContainer.querySelector('ul');
+                const errorItem = document.createElement('li');
+                errorItem.textContent = errorMessage;
+                ul.appendChild(errorItem);
+            }
+        }
+
+        function validateInputs() {
+            clearValidationErrors();
+            
+            let isValid = true;
+            const basicPay = parseFloat(document.getElementById('basicPay').value);
+            const currentDA = parseFloat(document.getElementById('currentDA').value);
+            const retirementYear = parseInt(document.getElementById('retirementYear').value);
+            const hraPercent = parseFloat(document.getElementById('hraPercent').value);
+            const annualDAGrowth = parseFloat(document.getElementById('annualDAGrowth').value);
+            const annualIncrement = parseFloat(document.getElementById('annualIncrement').value);
+            
+            if (!basicPay || isNaN(basicPay) || basicPay <= 0) {
+                showFieldError('basicPay', 'Please enter a valid basic pay (must be greater than 0)');
+                isValid = false;
+            }
+            
+            if (isNaN(currentDA) || currentDA < 0 || currentDA > 100) {
+                showFieldError('currentDA', 'DA percentage must be between 0 and 100');
+                isValid = false;
+            }
+            
+            const currentYear = new Date().getFullYear();
+            if (isNaN(retirementYear) || retirementYear < currentYear || retirementYear > 2070) {
+                showFieldError('retirementYear', `Retirement year must be between ${currentYear} and 2070`);
+                isValid = false;
+            }
+            
+            if (isNaN(hraPercent) || hraPercent < 0 || hraPercent > 100) {
+                showFieldError('hraPercent', 'HRA percentage must be between 0 and 100');
+                isValid = false;
+            }
+            
+            if (isNaN(annualDAGrowth) || annualDAGrowth < 0 || annualDAGrowth > 50) {
+                showFieldError('annualDAGrowth', 'Annual DA growth must be between 0 and 50');
+                isValid = false;
+            }
+            
+            if (isNaN(annualIncrement) || annualIncrement < 0 || annualIncrement > 20) {
+                showFieldError('annualIncrement', 'Annual increment must be between 0 and 20');
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                const errorContainer = document.getElementById('validationErrors');
+                if (errorContainer) {
+                    errorContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            }
+            
+            return isValid;
+        }
+
+        // Event Listeners
+        document.getElementById('calculateBtn').addEventListener('click', () => {
+            if (validateInputs()) {
+                calculator.calculate();
+            }
+        });
+
+        document.getElementById('downloadPDF').addEventListener('click', () => {
+            calculator.downloadPDF();
+        });
+
+        const viewResultsBtn = document.getElementById('viewResultsBtn');
+        if (viewResultsBtn) {
+            viewResultsBtn.addEventListener('click', () => {
+                const resultsSection = document.getElementById('resultsSection');
+                if (resultsSection) {
+                    resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        }
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
         });
     </script>
-
-    <!-- Calculator Script -->
-    <script src="calculator.js"></script>
 </body>
 </html>
