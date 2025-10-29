@@ -5,41 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     
     <!-- Enhanced SEO Meta Tags -->
-    <title>8th Pay Commission Calculator 2026 | NPS & UPS Retirement Benefits Calculator</title>
+    <title>8th Pay Commission Calculator 2026 - NPS & UPS Retirement Benefits Calculator</title>
     <meta name="description" content="Free 8th Pay Commission Calculator with NPS & UPS retirement benefits comparison. Calculate salary progression, pay commission fitment, and retirement planning for Indian government employees.">
     <meta name="keywords" content="8th pay commission calculator, NPS calculator, UPS calculator, government employee salary, retirement calculator India, pay commission fitment factor, central government salary, 9th pay commission, 10th pay commission">
     <meta name="author" content="PayCommissions.in">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://paycommissions.in/">
+    <link rel="canonical" href="https://paycommissions.in">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="8th Pay Commission & Retirement Benefits Calculator">
     <meta property="og:description" content="Calculate your future salary and retirement benefits (NPS & UPS) with pay commission projections">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://paycommissions.in/">
+    <meta property="og:url" content="https://paycommissions.in">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Pay Commission Calculator">
     <meta name="twitter:description" content="Free retirement planning tool for government employees">
-    
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "8th Pay Commission & Retirement Calculator",
-      "description": "Calculate salary progression and retirement benefits for Indian government employees",
-      "url": "https://paycommissions.in/",
-      "applicationCategory": "FinanceApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "INR"
-      },
-      "featureList": "Salary projection, NPS calculator, UPS calculator, Pay commission, PDF export"
-    }
-    </script>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -59,58 +41,87 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+        
         h1, h2, h3 {
             font-family: 'Poppins', sans-serif;
         }
         
         /* Mobile Optimizations */
         @media (max-width: 768px) {
-            .text-3xl { font-size: 1.5rem !important; }
-            .text-2xl { font-size: 1.25rem !important; }
-            body { font-size: 14px; }
+            .text-3xl {
+                font-size: 1.5rem !important;
+            }
+            .text-2xl {
+                font-size: 1.25rem !important;
+            }
+            body {
+                font-size: 14px;
+            }
         }
         
         /* Touch Targets */
-        button, input { min-height: 44px; }
+        button, input {
+            min-height: 44px;
+        }
         
         /* Smooth Scroll */
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
         
         /* Animations */
         @keyframes fade-in {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .animate-fade-in { animation: fade-in 0.5s ease-out; }
+        
+        .animate-fade-in {
+            animation: fade-in 0.5s ease-out;
+        }
         
         /* Print Styles */
         @media print {
-            button, .no-print { display: none !important; }
-            .bg-gradient-to-r { background: #fff !important; }
+            button, .no-print {
+                display: none !important;
+            }
+            .bg-gradient-to-r {
+                background: #fff !important;
+            }
         }
         
         /* Custom scrollbar */
         .overflow-x-auto::-webkit-scrollbar {
             height: 8px;
         }
+        
         .overflow-x-auto::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
+        
         .overflow-x-auto::-webkit-scrollbar-thumb {
             background: #888;
             border-radius: 4px;
         }
+        
         .overflow-x-auto::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
     </style>
 </head>
+
 <body class="bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-screen">
     <div class="container mx-auto px-4 py-8 max-w-7xl">
+        
         <!-- Header -->
         <header class="text-center mb-8">
             <h1 class="text-3xl md:text-5xl font-bold text-gray-800 mb-3">
-                🧮 8th Pay Commission Calculator 2026
+                8th Pay Commission Calculator 2026
             </h1>
             <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
                 Calculate your future salary progression with upcoming pay commissions and plan your retirement with NPS & UPS benefits comparison
@@ -147,6 +158,7 @@
 
         <!-- Main Calculator Form -->
         <div class="bg-white rounded-2xl shadow-xl p-4 md:p-8 mb-8 border border-gray-200">
+            
             <!-- Validation Errors Container -->
             <ul id="validationErrors" class="hidden bg-red-50 border-l-4 border-red-500 p-4 mb-6 text-red-700 text-sm space-y-1"></ul>
 
@@ -156,56 +168,53 @@
                     <span class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">1</span>
                     Salary Details
                 </h2>
-
+                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     <div>
                         <label for="basicPay" class="block text-sm font-medium text-gray-700 mb-2">
-                            Your current basic pay as per 7th CPC <span class="text-red-500">*</span>
+                            Current Basic Pay <span class="text-red-500">*</span>
                         </label>
                         <div class="relative">
                             <span class="absolute left-3 top-3 text-gray-500">₹</span>
                             <input type="number" id="basicPay" placeholder="43600" 
-                                   class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                                   required>
+                                   class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" required>
                         </div>
                     </div>
-
+                    
                     <div>
                         <label for="currentDA" class="block text-sm font-medium text-gray-700 mb-2">
-                            Current Dearness Allowance percentage <span class="text-red-500">*</span>
+                            Current DA (%) <span class="text-red-500">*</span>
                         </label>
                         <div class="relative">
                             <input type="number" id="currentDA" value="58" min="0" max="100" step="1"
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                                   required>
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" required>
                             <span class="absolute right-3 top-3 text-gray-500">%</span>
                         </div>
                     </div>
 
                     <div>
                         <label for="retirementYear" class="block text-sm font-medium text-gray-700 mb-2">
-                            Year when you plan to retire <span class="text-red-500">*</span>
+                            Retirement Year <span class="text-red-500">*</span>
                         </label>
                         <input type="number" id="retirementYear" placeholder="2053" min="2026" max="2070"
-                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                               required>
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" required>
                     </div>
-
+                    
                     <div>
                         <label for="hraPercent" class="block text-sm font-medium text-gray-700 mb-2">
                             HRA Percentage
                         </label>
                         <select id="hraPercent" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
-                            <option value="30">X-Class Cities (30%)</option>
-                            <option value="20">Y-Class Cities (20%)</option>
-                            <option value="10">Z-Class Cities (10%)</option>
+                            <option value="27" selected>X-Class Cities (27%)</option>
+                            <option value="18">Y-Class Cities (18%)</option>
+                            <option value="9">Z-Class Cities (9%)</option>
                             <option value="0">No HRA (0%)</option>
                         </select>
                     </div>
 
                     <div>
                         <label for="annualDAGrowth" class="block text-sm font-medium text-gray-700 mb-2">
-                            Expected annual increase in DA
+                            Annual DA Growth (%)
                         </label>
                         <div class="relative">
                             <input type="number" id="annualDAGrowth" value="4" min="0" max="50" step="0.5"
@@ -213,10 +222,10 @@
                             <span class="absolute right-3 top-3 text-gray-500">%</span>
                         </div>
                     </div>
-
+                    
                     <div>
                         <label for="annualIncrement" class="block text-sm font-medium text-gray-700 mb-2">
-                            Annual increment to basic pay
+                            Annual Basic Increment (%)
                         </label>
                         <div class="relative">
                             <input type="number" id="annualIncrement" value="3" min="0" max="20" step="0.1"
@@ -236,10 +245,10 @@
 
                 <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6 rounded text-sm">
                     <p class="text-blue-800 mb-2">
-                        <strong>How it works:</strong> Enter your retirement year above, and only the relevant pay commission fitment factors will appear below. These factors determine your salary increase when a new pay commission is implemented.
+                        <strong>How it works:</strong> Enter your retirement year above, and only the relevant pay commission fitment factors will appear below.
                     </p>
                     <p class="text-blue-700 text-xs">
-                        💡 <strong>Tip:</strong> The fitment factor is the multiplier applied to your basic pay when a new pay commission is implemented. The 7th CPC used a factor of 2.57. Most experts expect future commissions to use a factor between 2.0 and 2.5.
+                        <strong>Tip:</strong> The fitment factor is the multiplier applied to your basic pay when a new pay commission is implemented. The 7th CPC used a factor of 2.57. Most experts expect future commissions to use a factor between 2.0 and 2.5.
                     </p>
                 </div>
 
@@ -308,19 +317,19 @@
 
             <!-- Calculate Button -->
             <div class="text-center">
-                <button id="calculateBtn" 
-                        class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 md:px-12 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 duration-200">
-                    🧮 Calculate Salary Projection
+                <button id="calculateBtn" class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 md:px-12 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 duration-200">
+                    Calculate Salary Projection
                 </button>
             </div>
+
         </div>
 
         <!-- Results Section -->
         <div id="resultsSection" class="hidden">
+            
             <!-- Final Results Summary -->
             <div class="bg-gradient-to-r from-green-600 to-green-700 text-white rounded-2xl shadow-xl p-6 md:p-8 mb-8">
                 <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">Your Retirement Salary Projection</h2>
-                
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                     <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-xl p-4 md:p-6">
                         <h3 class="text-sm md:text-base font-semibold mb-2 text-green-100">Final Basic Pay</h3>
@@ -346,7 +355,6 @@
             <!-- Detailed Table -->
             <div class="bg-white rounded-2xl shadow-xl p-4 md:p-8 mb-8 border border-gray-200">
                 <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-4">Detailed Year-wise Breakdown</h3>
-                
                 <div class="overflow-x-auto -mx-4 md:mx-0">
                     <table class="w-full border-collapse text-xs md:text-sm min-w-[800px]">
                         <thead>
@@ -369,11 +377,11 @@
 
             <!-- Download Button -->
             <div class="text-center mb-8">
-                <button id="downloadPDF" 
-                        class="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 md:px-10 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg hover:from-red-700 hover:to-red-800 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 duration-200">
-                    📥 Download Salary Report (PDF)
+                <button id="downloadPDF" class="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 md:px-10 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg hover:from-red-700 hover:to-red-800 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 duration-200">
+                    📄 Download Salary Report (PDF)
                 </button>
             </div>
+
         </div>
 
         <!-- Retirement Benefits Button (Initially Hidden) -->
@@ -398,11 +406,11 @@
                     <label for="existingNPSCorpus" class="block text-sm font-medium text-gray-700 mb-2">
                         Existing NPS Corpus <span class="text-gray-500">(₹)</span>
                     </label>
-                    <input type="number" id="existingNPSCorpus" value="0" min="0" step="10000"
+                    <input type="number" id="existingNPSCorpus" value="1500000" min="0" step="10000"
                            class="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm md:text-base">
                     <p class="text-xs text-gray-500 mt-1">Enter 0 if starting fresh</p>
                 </div>
-
+                
                 <div>
                     <label for="expectedReturn" class="block text-sm font-medium text-gray-700 mb-2">
                         Expected Annual Return <span class="text-gray-500">(%)</span>
@@ -411,7 +419,7 @@
                            class="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm md:text-base">
                     <p class="text-xs text-gray-500 mt-1">Range: 8-12% typical</p>
                 </div>
-
+                
                 <div>
                     <label for="annuityRate" class="block text-sm font-medium text-gray-700 mb-2">
                         Annuity Rate <span class="text-gray-500">(%)</span>
@@ -424,13 +432,12 @@
 
             <div class="mt-4 md:mt-6 bg-blue-50 border-l-4 border-blue-500 p-3 md:p-4 rounded text-sm">
                 <p class="text-blue-800">
-                    <strong>💡 Note:</strong> This calculator compares NPS (National Pension System) and UPS (Unified Pension Scheme) benefits based on your salary progression above.
+                    <strong>📌 Note:</strong> This calculator compares NPS (National Pension System) and UPS (Unified Pension Scheme) benefits based on your salary progression above.
                 </p>
             </div>
 
             <div class="mt-4 md:mt-6 text-center">
-                <button id="calculateRetirementBtn" 
-                        class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 md:px-10 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 duration-200">
+                <button id="calculateRetirementBtn" class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 md:px-10 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 duration-200">
                     Calculate Retirement Benefits
                 </button>
             </div>
@@ -438,6 +445,7 @@
 
         <!-- Retirement Results Section -->
         <section id="retirementResultsSection" class="hidden mt-8">
+            
             <!-- NPS Results -->
             <div class="bg-white rounded-2xl shadow-xl p-4 md:p-8 border border-gray-200">
                 <h2 class="text-xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
@@ -447,7 +455,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                     <!-- Conservative -->
                     <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-4 md:p-6 rounded-xl border-2 border-yellow-300">
-                        <h3 class="font-bold text-base md:text-lg text-yellow-800 mb-3 md:mb-4">Conservative (8%)</h3>
+                        <h3 class="font-bold text-base md:text-lg text-yellow-800 mb-3 md:mb-4">🔒 Conservative (8%)</h3>
                         <div class="space-y-2 md:space-y-3 text-xs md:text-sm">
                             <div>
                                 <span class="text-gray-600">Total Invested:</span>
@@ -470,7 +478,7 @@
 
                     <!-- Moderate -->
                     <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-4 md:p-6 rounded-xl border-2 border-blue-400 ring-2 md:ring-4 ring-blue-200">
-                        <h3 class="font-bold text-base md:text-lg text-blue-800 mb-3 md:mb-4">Moderate (10%) ⭐</h3>
+                        <h3 class="font-bold text-base md:text-lg text-blue-800 mb-3 md:mb-4">⚖️ Moderate (10%) ⭐</h3>
                         <div class="space-y-2 md:space-y-3 text-xs md:text-sm">
                             <div>
                                 <span class="text-gray-600">Total Invested:</span>
@@ -493,7 +501,7 @@
 
                     <!-- Aggressive -->
                     <div class="bg-gradient-to-br from-green-50 to-green-100 p-4 md:p-6 rounded-xl border-2 border-green-300">
-                        <h3 class="font-bold text-base md:text-lg text-green-800 mb-3 md:mb-4">Aggressive (12%)</h3>
+                        <h3 class="font-bold text-base md:text-lg text-green-800 mb-3 md:mb-4">🚀 Aggressive (12%)</h3>
                         <div class="space-y-2 md:space-y-3 text-xs md:text-sm">
                             <div>
                                 <span class="text-gray-600">Total Invested:</span>
@@ -514,13 +522,16 @@
                         </div>
                     </div>
                 </div>
-                <p class="text-xs text-gray-500 mt-4 text-center">* NPS contributions: 24% of salary (10% employee + 14% government)</p>
+
+                <p class="text-xs text-gray-500 mt-4 text-center">
+                    * NPS contributions: 24% of (Basic + DA) = 10% employee + 14% government
+                </p>
             </div>
 
             <!-- UPS Results -->
             <div class="bg-white rounded-2xl shadow-xl p-4 md:p-8 mt-6 md:mt-8 border border-gray-200">
                 <h2 class="text-xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
-                    🛡️ UPS Benefits (Guaranteed)
+                    🏛️ UPS Benefits (Guaranteed)
                 </h2>
 
                 <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-4 md:p-6 rounded-xl border-2 border-purple-300">
@@ -553,9 +564,10 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="mt-4 bg-green-50 border-l-4 border-green-500 p-3 md:p-4 rounded text-xs md:text-sm">
                     <p class="text-green-800">
-                        <strong>✓ Benefits:</strong> Government guaranteed, inflation-indexed (Dearness Relief), minimum ₹10,000/month, no market risk, assured family pension
+                        <strong>✅ Benefits:</strong> Government guaranteed, inflation-indexed Dearness Relief, minimum ₹10,000/month, no market risk, assured family pension
                     </p>
                 </div>
             </div>
@@ -591,8 +603,8 @@
                             </tr>
                             <tr>
                                 <td class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 font-semibold">Inflation Protection</td>
-                                <td class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-red-600">✗ No</td>
-                                <td class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-green-600">✓ Yes (DR)</td>
+                                <td class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-red-600">❌ No</td>
+                                <td class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-green-600">✅ Yes (DR)</td>
                                 <td class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center font-bold text-green-600">UPS</td>
                             </tr>
                             <tr class="bg-gray-50">
@@ -622,12 +634,12 @@
             </div>
 
             <div class="mt-6 md:mt-8 text-center space-y-3">
-                <button id="downloadRetirementPDF" 
-                        class="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-lg font-semibold text-sm md:text-base hover:from-red-700 hover:to-red-800 transition-all shadow-lg">
-                    📥 Download Retirement Benefits Report (PDF)
+                <button id="downloadRetirementPDF" class="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-lg font-semibold text-sm md:text-base hover:from-red-700 hover:to-red-800 transition-all shadow-lg">
+                    📄 Download Retirement Benefits Report (PDF)
                 </button>
                 <p class="text-xs text-gray-500">Disclaimer: Estimates based on current policies. Actual benefits may vary.</p>
             </div>
+
         </section>
 
         <!-- Footer -->
@@ -637,715 +649,11 @@
                 Disclaimer: This calculator provides estimates only. Actual salary and benefits depend on future government policies and individual circumstances.
             </p>
         </footer>
+
     </div>
 
-    <script>
-        // ===== MAIN CALCULATOR CLASS =====
-        class RetirementCalculator {
-            constructor() {
-                this.results = [];
-                this.setupEventListeners();
-            }
+    <!-- Load external calculator.js -->
+    <script src="calculator.js"></script>
 
-            setupEventListeners() {
-                document.getElementById('retirementYear').addEventListener('change', () => {
-                    this.updatePayCommissionVisibility();
-                });
-                
-                // Initialize visibility on page load
-                this.updatePayCommissionVisibility();
-            }
-
-            updatePayCommissionVisibility() {
-                const retirementYear = parseInt(document.getElementById('retirementYear').value);
-                
-                document.getElementById('pc8thContainer').classList.toggle('hidden', retirementYear < 2026);
-                document.getElementById('pc9thContainer').classList.toggle('hidden', retirementYear < 2036);
-                document.getElementById('pc10thContainer').classList.toggle('hidden', retirementYear < 2046);
-                document.getElementById('pc11thContainer').classList.toggle('hidden', retirementYear < 2056);
-            }
-
-            calculate() {
-                const inputs = this.getInputs();
-                this.results = [];
-                
-                const currentYear = new Date().getFullYear();
-                let currentBasic = inputs.basicPay;
-                let currentDA = inputs.currentDA;
-                
-                for (let year = currentYear; year <= inputs.retirementYear; year++) {
-                    let payCommission = '';
-                    let isTransition = false;
-                    let oldBasicPay = currentBasic;
-                    let fitmentFactor = 0;
-                    
-                    // Check for pay commission
-                    if (year === 2026 && inputs.retirementYear >= 2026) {
-                        payCommission = '8th CPC';
-                        isTransition = true;
-                        fitmentFactor = parseFloat(document.getElementById('fitment8th').value);
-                        currentBasic = currentBasic * fitmentFactor;
-                        currentDA = 0;
-                    } else if (year === 2036 && inputs.retirementYear >= 2036) {
-                        payCommission = '9th CPC';
-                        isTransition = true;
-                        fitmentFactor = parseFloat(document.getElementById('fitment9th').value);
-                        currentBasic = currentBasic * fitmentFactor;
-                        currentDA = 0;
-                    } else if (year === 2046 && inputs.retirementYear >= 2046) {
-                        payCommission = '10th CPC';
-                        isTransition = true;
-                        fitmentFactor = parseFloat(document.getElementById('fitment10th').value);
-                        currentBasic = currentBasic * fitmentFactor;
-                        currentDA = 0;
-                    } else if (year === 2056 && inputs.retirementYear >= 2056) {
-                        payCommission = '11th CPC';
-                        isTransition = true;
-                        fitmentFactor = parseFloat(document.getElementById('fitment11th').value);
-                        currentBasic = currentBasic * fitmentFactor;
-                        currentDA = 0;
-                    } else if (year > currentYear) {
-                        currentBasic = currentBasic * (1 + inputs.annualIncrement / 100);
-                        currentDA = currentDA + inputs.annualDAGrowth;
-                    }
-                    
-                    const daAmount = currentBasic * (currentDA / 100);
-                    const hraAmount = currentBasic * (inputs.hraPercent / 100);
-                    const grossSalary = currentBasic + daAmount + hraAmount;
-                    
-                    this.results.push({
-                        year,
-                        payCommission,
-                        basicPay: currentBasic,
-                        daPercent: currentDA,
-                        daAmount,
-                        hraAmount,
-                        grossSalary,
-                        isTransition,
-                        oldBasicPay,
-                        fitmentFactor
-                    });
-                }
-                
-                this.displayResults();
-            }
-
-            getInputs() {
-                return {
-                    basicPay: parseFloat(document.getElementById('basicPay').value),
-                    currentDA: parseFloat(document.getElementById('currentDA').value),
-                    retirementYear: parseInt(document.getElementById('retirementYear').value),
-                    hraPercent: parseFloat(document.getElementById('hraPercent').value),
-                    annualDAGrowth: parseFloat(document.getElementById('annualDAGrowth').value),
-                    annualIncrement: parseFloat(document.getElementById('annualIncrement').value) / 100
-                };
-            }
-
-            displayResults() {
-                document.getElementById('resultsSection').classList.remove('hidden');
-                
-                const finalResult = this.results[this.results.length - 1];
-                document.getElementById('finalBasicPay').textContent = `₹${finalResult.basicPay.toLocaleString()}`;
-                document.getElementById('finalDAAmount').textContent = `₹${finalResult.daAmount.toLocaleString()}`;
-                document.getElementById('finalGrossSalary').textContent = `₹${finalResult.grossSalary.toLocaleString()}`;
-                
-                const tableBody = document.getElementById('resultsTableBody');
-                tableBody.innerHTML = '';
-                
-                this.results.forEach((result, index) => {
-                    const row = document.createElement('tr');
-                    row.className = index % 2 === 0 ? 'bg-white' : 'bg-gray-50';
-                    
-                    if (result.payCommission) {
-                        row.classList.add('bg-purple-100', 'font-semibold');
-                    }
-                    
-                    row.innerHTML = `
-                        <td class="border border-gray-300 px-2 md:px-4 py-2">${result.year}</td>
-                        <td class="border border-gray-300 px-2 md:px-4 py-2">${result.payCommission || '-'}</td>
-                        <td class="border border-gray-300 px-2 md:px-4 py-2 text-right">₹${result.basicPay.toLocaleString()}</td>
-                        <td class="border border-gray-300 px-2 md:px-4 py-2 text-right">${result.daPercent.toFixed(1)}%</td>
-                        <td class="border border-gray-300 px-2 md:px-4 py-2 text-right">₹${result.daAmount.toLocaleString()}</td>
-                        <td class="border border-gray-300 px-2 md:px-4 py-2 text-right">₹${result.hraAmount.toLocaleString()}</td>
-                        <td class="border border-gray-300 px-2 md:px-4 py-2 text-right font-semibold">₹${result.grossSalary.toLocaleString()}</td>
-                    `;
-                    tableBody.appendChild(row);
-                    
-                    if (result.isTransition) {
-                        const noteRow = document.createElement('tr');
-                        noteRow.className = 'bg-yellow-50';
-                        noteRow.innerHTML = `
-                            <td colspan="7" class="border border-gray-300 px-2 md:px-4 py-2 text-xs md:text-sm text-yellow-700 italic">
-                                <strong>Note:</strong> Fitment factor applied: ₹${result.oldBasicPay.toLocaleString()} × ${result.fitmentFactor} = ₹${result.basicPay.toLocaleString()}. DA has been reset to 0% after pay commission transition.
-                            </td>
-                        `;
-                        tableBody.appendChild(noteRow);
-                    }
-                });
-                
-                this.createChart();
-                
-                setTimeout(() => {
-                    document.getElementById('resultsSection').scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'start' 
-                    });
-                }, 100);
-            }
-
-            createChart() {
-                const years = this.results.map(r => r.year);
-                const basicPay = this.results.map(r => r.basicPay);
-                const grossSalary = this.results.map(r => r.grossSalary);
-                
-                const trace1 = {
-                    x: years,
-                    y: basicPay,
-                    type: 'scatter',
-                    mode: 'lines+markers',
-                    name: 'Basic Pay',
-                    line: { color: '#2563eb', width: 3 },
-                    marker: { size: 6 }
-                };
-                
-                const trace2 = {
-                    x: years,
-                    y: grossSalary,
-                    type: 'scatter',
-                    mode: 'lines+markers',
-                    name: 'Gross Salary',
-                    line: { color: '#10b981', width: 3 },
-                    marker: { size: 6 }
-                };
-                
-                const layout = {
-                    title: {
-                        text: 'Salary Progression Over Time',
-                        font: { size: 18, family: 'Poppins' }
-                    },
-                    xaxis: {
-                        title: 'Year',
-                        gridcolor: '#e5e7eb'
-                    },
-                    yaxis: {
-                        title: 'Salary (₹)',
-                        gridcolor: '#e5e7eb',
-                        tickformat: '₹,.0f'
-                    },
-                    plot_bgcolor: '#f9fafb',
-                    paper_bgcolor: '#ffffff',
-                    font: { family: 'Inter' },
-                    legend: {
-                        x: 0.02,
-                        y: 0.98,
-                        bgcolor: 'rgba(255,255,255,0.8)'
-                    },
-                    margin: { t: 60, r: 30, b: 60, l: 80 }
-                };
-                
-                Plotly.newPlot('salaryChart', [trace1, trace2], layout, {responsive: true});
-            }
-
-            downloadPDF() {
-                const { jsPDF } = window.jspdf;
-                const doc = new jsPDF();
-                
-                doc.setFontSize(20);
-                doc.text('Salary Projection Report', 20, 30);
-                
-                doc.setFontSize(12);
-                doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 20, 45);
-                
-                doc.setFontSize(14);
-                doc.text('Input Parameters:', 20, 60);
-                doc.setFontSize(10);
-                doc.text(`Current Basic Pay: ₹${document.getElementById('basicPay').value}`, 20, 75);
-                doc.text(`Current DA: ${document.getElementById('currentDA').value}%`, 20, 85);
-                doc.text(`Retirement Year: ${document.getElementById('retirementYear').value}`, 20, 95);
-                doc.text(`HRA: ${document.getElementById('hraPercent').value}%`, 20, 105);
-                
-                const finalResult = this.results[this.results.length - 1];
-                doc.setFontSize(14);
-                doc.text('Final Results:', 20, 125);
-                doc.setFontSize(10);
-                doc.text(`Basic Pay: ₹${finalResult.basicPay.toLocaleString()}`, 20, 140);
-                doc.text(`DA Amount: ₹${finalResult.daAmount.toLocaleString()}`, 20, 150);
-                doc.text(`Gross Salary: ₹${finalResult.grossSalary.toLocaleString()}`, 20, 160);
-                
-                doc.setFontSize(8);
-                doc.text('Disclaimer: This calculator provides estimates only.', 20, 280);
-                
-                doc.save('salary-projection-report.pdf');
-            }
-        }
-
-        // ===== RETIREMENT BENEFITS CALCULATOR =====
-        class RetirementBenefitsCalculator {
-            constructor() {
-                this.salaryResults = [];
-                this.npsResults = null;
-                this.upsResults = null;
-            }
-
-            setSalaryData(results) {
-                this.salaryResults = results;
-            }
-
-            calculateRetirementBenefits() {
-                this.clearRetirementErrors();
-                
-                if (!this.validateRetirementInputs()) {
-                    return;
-                }
-
-                const existingCorpus = parseFloat(document.getElementById('existingNPSCorpus').value) || 0;
-                const expectedReturn = parseFloat(document.getElementById('expectedReturn').value);
-                const annuityRate = parseFloat(document.getElementById('annuityRate').value);
-                
-                this.npsResults = {
-                    conservative: this.calculateNPS(existingCorpus, 8, 5),
-                    moderate: this.calculateNPS(existingCorpus, expectedReturn, annuityRate),
-                    aggressive: this.calculateNPS(existingCorpus, 12, 7)
-                };
-
-                this.upsResults = this.calculateUPS();
-                this.displayRetirementResults();
-            }
-
-            calculateNPS(existingCorpus, returnRate, annuityRate) {
-                let corpus = existingCorpus;
-                let totalInvested = 0;
-                const monthlyReturn = returnRate / 12 / 100;
-                const currentYear = new Date().getFullYear();
-
-                this.salaryResults.forEach(yearData => {
-                    if (yearData.year >= currentYear) {
-                        const grossSalary = yearData.grossSalary;
-                        const monthlyContribution = (grossSalary * 0.24) / 12;
-                        const annualContribution = monthlyContribution * 12;
-                        totalInvested += annualContribution;
-
-                        for (let month = 0; month < 12; month++) {
-                            corpus = corpus * (1 + monthlyReturn) + monthlyContribution;
-                        }
-                    }
-                });
-
-                const lumpSum = corpus * 0.60;
-                const annuityAmount = corpus * 0.40;
-                const monthlyPension = (annuityAmount * annuityRate / 100) / 12;
-
-                return {
-                    totalInvested,
-                    finalCorpus: corpus,
-                    lumpSum,
-                    annuityAmount,
-                    monthlyPension,
-                    returnRate,
-                    annuityRate
-                };
-            }
-
-            calculateUPS() {
-                const finalYearData = this.salaryResults[this.salaryResults.length - 1];
-                const currentYear = new Date().getFullYear();
-                const yearsOfService = finalYearData.year - currentYear;
-
-                const finalBasicPay = finalYearData.basicPay;
-                const finalDAAmount = finalYearData.daAmount;
-                const finalGross = finalBasicPay + finalDAAmount;
-
-                let pensionPercentage = 0.50;
-                if (yearsOfService < 25 && yearsOfService >= 10) {
-                    pensionPercentage = (yearsOfService / 50);
-                }
-
-                const monthlyPension = finalBasicPay * pensionPercentage;
-                const minimumPension = 10000;
-                const actualPension = Math.max(monthlyPension, minimumPension);
-
-                const sixMonthPeriods = yearsOfService * 2;
-                const lumpSum = (finalGross / 10) * sixMonthPeriods;
-                const familyPension = actualPension * 0.60;
-
-                let totalEmployeeContribution = 0;
-                let totalGovtContribution = 0;
-
-                this.salaryResults.forEach(yearData => {
-                    if (yearData.year >= currentYear) {
-                        const annualGross = yearData.grossSalary * 12;
-                        totalEmployeeContribution += annualGross * 0.10;
-                        totalGovtContribution += annualGross * 0.185;
-                    }
-                });
-
-                return {
-                    yearsOfService,
-                    finalBasicPay,
-                    finalDAAmount,
-                    finalGross,
-                    monthlyPension: actualPension,
-                    minimumPension,
-                    lumpSum,
-                    familyPension,
-                    totalEmployeeContribution,
-                    totalGovtContribution,
-                    totalContribution: totalEmployeeContribution + totalGovtContribution
-                };
-            }
-
-            displayRetirementResults() {
-                document.getElementById('retirementResultsSection').classList.remove('hidden');
-                this.displayNPSResults();
-                this.displayUPSResults();
-                this.displayComparison();
-                this.createRetirementChart();
-                
-                setTimeout(() => {
-                    document.getElementById('retirementResultsSection').scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'start' 
-                    });
-                }, 100);
-            }
-
-            displayNPSResults() {
-                const scenarios = ['conservative', 'moderate', 'aggressive'];
-                scenarios.forEach((scenario) => {
-                    const result = this.npsResults[scenario];
-                    document.getElementById(`${scenario}Invested`).textContent = `₹${this.formatCurrency(result.totalInvested)}`;
-                    document.getElementById(`${scenario}Corpus`).textContent = `₹${this.formatCurrency(result.finalCorpus)}`;
-                    document.getElementById(`${scenario}LumpSum`).textContent = `₹${this.formatCurrency(result.lumpSum)}`;
-                    document.getElementById(`${scenario}Pension`).textContent = `₹${this.formatCurrency(result.monthlyPension)}`;
-                });
-            }
-
-            displayUPSResults() {
-                const ups = this.upsResults;
-                document.getElementById('upsYearsService').textContent = ups.yearsOfService;
-                document.getElementById('upsFinalBasic').textContent = `₹${this.formatCurrency(ups.finalBasicPay)}`;
-                document.getElementById('upsMonthlyPension').textContent = `₹${this.formatCurrency(ups.monthlyPension)}`;
-                document.getElementById('upsLumpSum').textContent = `₹${this.formatCurrency(ups.lumpSum)}`;
-                document.getElementById('upsFamilyPension').textContent = `₹${this.formatCurrency(ups.familyPension)}`;
-                document.getElementById('upsTotalContribution').textContent = `₹${this.formatCurrency(ups.totalContribution)}`;
-            }
-
-            displayComparison() {
-                const nps = this.npsResults.moderate;
-                const ups = this.upsResults;
-
-                const pensionRatio = (ups.monthlyPension / nps.monthlyPension).toFixed(1);
-                document.getElementById('comparisonNPSPension').textContent = `₹${this.formatCurrency(nps.monthlyPension)}`;
-                document.getElementById('comparisonUPSPension').textContent = `₹${this.formatCurrency(ups.monthlyPension)}`;
-                document.getElementById('pensionWinner').textContent = 
-                    ups.monthlyPension > nps.monthlyPension ? `UPS (${pensionRatio}x)` : 'NPS';
-
-                const lumpSumRatio = (nps.lumpSum / ups.lumpSum).toFixed(1);
-                document.getElementById('comparisonNPSLumpSum').textContent = `₹${this.formatCurrency(nps.lumpSum)}`;
-                document.getElementById('comparisonUPSLumpSum').textContent = `₹${this.formatCurrency(ups.lumpSum)}`;
-                document.getElementById('lumpSumWinner').textContent = 
-                    nps.lumpSum > ups.lumpSum ? `NPS (${lumpSumRatio}x)` : 'UPS';
-
-                const npsLifetime = nps.lumpSum + (nps.monthlyPension * 12 * 20);
-                const upsLifetime = ups.lumpSum + (ups.monthlyPension * 12 * 20);
-                
-                document.getElementById('npsLifetimeValue').textContent = `₹${this.formatCurrency(npsLifetime)}`;
-                document.getElementById('upsLifetimeValue').textContent = `₹${this.formatCurrency(upsLifetime)}`;
-                document.getElementById('lifetimeWinner').textContent = 
-                    upsLifetime > npsLifetime ? `UPS (+₹${this.formatCurrency(upsLifetime - npsLifetime)})` : `NPS (+₹${this.formatCurrency(npsLifetime - upsLifetime)})`;
-
-                const lumpSumDiff = Math.abs(nps.lumpSum - ups.lumpSum);
-                const pensionDiff = Math.abs(ups.monthlyPension - nps.monthlyPension);
-                const breakevenYears = (lumpSumDiff / (pensionDiff * 12)).toFixed(1);
-                document.getElementById('breakevenYears').textContent = breakevenYears;
-            }
-
-            createRetirementChart() {
-                const years = [15, 20, 25, 30];
-                const nps = this.npsResults.moderate;
-                const ups = this.upsResults;
-
-                const npsValues = years.map(y => nps.lumpSum + (nps.monthlyPension * 12 * y));
-                const upsValues = years.map(y => ups.lumpSum + (ups.monthlyPension * 12 * y));
-
-                const trace1 = {
-                    x: years,
-                    y: npsValues,
-                    type: 'bar',
-                    name: 'NPS',
-                    marker: { color: '#2563eb' }
-                };
-
-                const trace2 = {
-                    x: years,
-                    y: upsValues,
-                    type: 'bar',
-                    name: 'UPS',
-                    marker: { color: '#10b981' }
-                };
-
-                const layout = {
-                    title: 'Lifetime Value Comparison',
-                    xaxis: { title: 'Years After Retirement' },
-                    yaxis: { title: 'Total Value (₹)', tickformat: '₹,.0f' },
-                    barmode: 'group',
-                    font: { family: 'Inter' },
-                    plot_bgcolor: '#f9fafb',
-                    paper_bgcolor: '#ffffff',
-                    margin: { t: 60, r: 30, b: 60, l: 60 }
-                };
-
-                Plotly.newPlot('retirementComparisonChart', [trace1, trace2], layout, {responsive: true});
-            }
-
-            formatCurrency(amount) {
-                if (amount >= 10000000) {
-                    return `${(amount / 10000000).toFixed(2)} Cr`;
-                } else if (amount >= 100000) {
-                    return `${(amount / 100000).toFixed(2)} L`;
-                }
-                return amount.toLocaleString('en-IN', { maximumFractionDigits: 0 });
-            }
-
-            validateRetirementInputs() {
-                let isValid = true;
-                const errorContainer = document.getElementById('retirementValidationErrors');
-                errorContainer.innerHTML = '';
-                errorContainer.classList.add('hidden');
-
-                const existingCorpus = parseFloat(document.getElementById('existingNPSCorpus').value) || 0;
-                const expectedReturn = parseFloat(document.getElementById('expectedReturn').value);
-                const annuityRate = parseFloat(document.getElementById('annuityRate').value);
-
-                if (existingCorpus < 0) {
-                    this.showRetirementError('existingNPSCorpus', 'Existing corpus cannot be negative');
-                    isValid = false;
-                }
-
-                if (isNaN(expectedReturn) || expectedReturn < 5 || expectedReturn > 15) {
-                    this.showRetirementError('expectedReturn', 'Expected return must be between 5% and 15%');
-                    isValid = false;
-                }
-
-                if (isNaN(annuityRate) || annuityRate < 4 || annuityRate > 8) {
-                    this.showRetirementError('annuityRate', 'Annuity rate must be between 4% and 8%');
-                    isValid = false;
-                }
-
-                if (!isValid) {
-                    errorContainer.classList.remove('hidden');
-                    errorContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }
-
-                return isValid;
-            }
-
-            showRetirementError(fieldId, message) {
-                const field = document.getElementById(fieldId);
-                if (field) {
-                    field.classList.add('border-red-500', 'border-2');
-                }
-                
-                const errorContainer = document.getElementById('retirementValidationErrors');
-                const errorItem = document.createElement('li');
-                errorItem.textContent = message;
-                errorContainer.appendChild(errorItem);
-            }
-
-            clearRetirementErrors() {
-                const errorContainer = document.getElementById('retirementValidationErrors');
-                if (errorContainer) {
-                    errorContainer.innerHTML = '';
-                    errorContainer.classList.add('hidden');
-                }
-
-                ['existingNPSCorpus', 'expectedReturn', 'annuityRate'].forEach(id => {
-                    const field = document.getElementById(id);
-                    if (field) {
-                        field.classList.remove('border-red-500', 'border-2');
-                    }
-                });
-            }
-
-            downloadRetirementPDF() {
-                const { jsPDF } = window.jspdf;
-                const doc = new jsPDF();
-                
-                doc.setFontSize(18);
-                doc.text('Retirement Benefits Report', 20, 20);
-                doc.setFontSize(12);
-                doc.text(`Generated: ${new Date().toLocaleDateString()}`, 20, 35);
-                
-                const nps = this.npsResults.moderate;
-                const ups = this.upsResults;
-                
-                doc.setFontSize(14);
-                doc.text('NPS Benefits (Moderate):', 20, 50);
-                doc.setFontSize(10);
-                doc.text(`Final Corpus: ₹${this.formatCurrency(nps.finalCorpus)}`, 25, 60);
-                doc.text(`Lump Sum: ₹${this.formatCurrency(nps.lumpSum)}`, 25, 70);
-                doc.text(`Monthly Pension: ₹${this.formatCurrency(nps.monthlyPension)}`, 25, 80);
-                
-                doc.setFontSize(14);
-                doc.text('UPS Benefits:', 20, 100);
-                doc.setFontSize(10);
-                doc.text(`Monthly Pension: ₹${this.formatCurrency(ups.monthlyPension)}`, 25, 110);
-                doc.text(`Lump Sum: ₹${this.formatCurrency(ups.lumpSum)}`, 25, 120);
-                doc.text(`Family Pension: ₹${this.formatCurrency(ups.familyPension)}`, 25, 130);
-                
-                doc.setFontSize(8);
-                doc.text('Disclaimer: Estimates based on current policies. Actual benefits may vary.', 20, 280);
-                
-                doc.save('retirement-benefits-report.pdf');
-            }
-        }
-
-        // ===== VALIDATION FUNCTIONS =====
-        function clearValidationErrors() {
-            const errorContainer = document.getElementById('validationErrors');
-            if (errorContainer) {
-                errorContainer.classList.add('hidden');
-                errorContainer.innerHTML = '';
-            }
-            
-            const allInputs = document.querySelectorAll('input[type="number"], input[type="text"]');
-            allInputs.forEach(input => {
-                input.classList.remove('border-red-500', 'border-2');
-                input.classList.add('border-gray-300');
-            });
-        }
-
-        function showFieldError(fieldId, errorMessage) {
-            const field = document.getElementById(fieldId);
-            if (field) {
-                field.classList.remove('border-gray-300');
-                field.classList.add('border-red-500', 'border-2');
-                field.setAttribute('aria-invalid', 'true');
-            }
-            
-            const errorContainer = document.getElementById('validationErrors');
-            if (errorContainer) {
-                errorContainer.classList.remove('hidden');
-                const errorItem = document.createElement('li');
-                errorItem.textContent = errorMessage;
-                errorContainer.appendChild(errorItem);
-            }
-        }
-
-        function validateInputs() {
-            clearValidationErrors();
-            
-            let isValid = true;
-            
-            const basicPay = parseFloat(document.getElementById('basicPay').value);
-            const currentDA = parseFloat(document.getElementById('currentDA').value);
-            const retirementYear = parseInt(document.getElementById('retirementYear').value);
-            const hraPercent = parseFloat(document.getElementById('hraPercent').value);
-            const annualDAGrowth = parseFloat(document.getElementById('annualDAGrowth').value);
-            const annualIncrement = parseFloat(document.getElementById('annualIncrement').value);
-            
-            if (!basicPay || isNaN(basicPay) || basicPay <= 0) {
-                showFieldError('basicPay', 'Please enter a valid basic pay amount (must be greater than 0)');
-                isValid = false;
-            }
-            
-            if (isNaN(currentDA) || currentDA < 0 || currentDA > 100) {
-                showFieldError('currentDA', 'DA percentage must be between 0 and 100');
-                isValid = false;
-            }
-            
-            const currentYear = new Date().getFullYear();
-            if (isNaN(retirementYear) || retirementYear < currentYear || retirementYear > 2070) {
-                showFieldError('retirementYear', `Retirement year must be between ${currentYear} and 2070`);
-                isValid = false;
-            }
-            
-            if (isNaN(hraPercent) || hraPercent < 0 || hraPercent > 100) {
-                showFieldError('hraPercent', 'HRA percentage must be between 0 and 100');
-                isValid = false;
-            }
-            
-            if (isNaN(annualDAGrowth) || annualDAGrowth < 0 || annualDAGrowth > 50) {
-                showFieldError('annualDAGrowth', 'Annual DA growth must be between 0 and 50');
-                isValid = false;
-            }
-            
-            if (isNaN(annualIncrement) || annualIncrement < 0 || annualIncrement > 20) {
-                showFieldError('annualIncrement', 'Annual increment must be between 0 and 20');
-                isValid = false;
-            }
-            
-            if (retirementYear >= 2026) {
-                const fitment8th = parseFloat(document.getElementById('fitment8th').value);
-                if (isNaN(fitment8th) || fitment8th <= 0 || fitment8th > 5) {
-                    showFieldError('fitment8th', '8th CPC fitment factor must be between 0 and 5');
-                    isValid = false;
-                }
-            }
-            
-            if (retirementYear >= 2036) {
-                const fitment9th = parseFloat(document.getElementById('fitment9th').value);
-                if (isNaN(fitment9th) || fitment9th <= 0 || fitment9th > 5) {
-                    showFieldError('fitment9th', '9th CPC fitment factor must be between 0 and 5');
-                    isValid = false;
-                }
-            }
-            
-            if (retirementYear >= 2046) {
-                const fitment10th = parseFloat(document.getElementById('fitment10th').value);
-                if (isNaN(fitment10th) || fitment10th <= 0 || fitment10th > 5) {
-                    showFieldError('fitment10th', '10th CPC fitment factor must be between 0 and 5');
-                    isValid = false;
-                }
-            }
-            
-            if (retirementYear >= 2056) {
-                const fitment11th = parseFloat(document.getElementById('fitment11th').value);
-                if (isNaN(fitment11th) || fitment11th <= 0 || fitment11th > 5) {
-                    showFieldError('fitment11th', '11th CPC fitment factor must be between 0 and 5');
-                    isValid = false;
-                }
-            }
-            
-            if (!isValid) {
-                const errorContainer = document.getElementById('validationErrors');
-                if (errorContainer) {
-                    errorContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }
-            }
-            
-            return isValid;
-        }
-
-        // ===== INITIALIZE =====
-        const calculator = new RetirementCalculator();
-        const retirementCalc = new RetirementBenefitsCalculator();
-
-        const originalCalculate = calculator.calculate.bind(calculator);
-        calculator.calculate = function() {
-            originalCalculate();
-            retirementCalc.setSalaryData(this.results);
-            document.getElementById('retirementBenefitsBtn').classList.remove('hidden');
-        };
-
-        // ===== EVENT LISTENERS =====
-        document.getElementById('calculateBtn').addEventListener('click', () => {
-            if (validateInputs()) {
-                calculator.calculate();
-            }
-        });
-
-        document.getElementById('downloadPDF').addEventListener('click', () => {
-            calculator.downloadPDF();
-        });
-
-        document.getElementById('calculateRetirementBtn').addEventListener('click', () => {
-            retirementCalc.calculateRetirementBenefits();
-        });
-
-        document.getElementById('downloadRetirementPDF').addEventListener('click', () => {
-            retirementCalc.downloadRetirementPDF();
-        });
-    </script>
 </body>
 </html>
