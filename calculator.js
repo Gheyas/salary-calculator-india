@@ -523,38 +523,51 @@ class RetirementBenefitsCalculator {
 
     calculateNPS(existingCorpus, returnRate, annuityRate) {
     let corpus = existingCorpus;
-    let totalInvested = existingCorpus;  // Should say existingCorpus, NOT 0
+    let totalInvestedEmployee = 0;
+    let totalInvestedEmployer = 0;
     const monthlyReturn = returnRate / 12 / 100;
     const currentYear = new Date().getFullYear();
+    
+    // Employee and employer contribution rates (Central Government)
+    const empRate = 0.10;   // 10%
+    const emprRate = 0.14;  // 14%
 
-    this.Results.forEach(yearData => {
-        if (yearData.year >= currentYear) {
-            const grossSalary = yearData.grossSalary;
-            const monthlyContribution = grossSalary * 0.24;  // Should NOT have /12
-            const annualContribution = grossSalary * 0.24 * 12;  // Direct calculation
-            totalInvested += annualContribution;
+    // Use this.results instead of this.salaryResults
+    this.results.forEach(yearData => {
+        if (yearData.year >= currentYear && !yearData.isTransition) {
+            // CRITICAL FIX: Use Basic + DA, NOT grossSalary
+            const npsBase = yearData.basicPay + yearData.daAmount;
+            const monthlyEmployee = npsBase * empRate;
+            const monthlyEmployer = npsBase * emprRate;
+            const monthlyTotal = monthlyEmployee + monthlyEmployer;
+            
+            // Add annual contributions to invested totals
+            totalInvestedEmployee += monthlyEmployee * 12;
+            totalInvestedEmployer += monthlyEmployer * 12;
 
-
-                for (let month = 0; month < 12; month++) {
-                    corpus = corpus * (1 + monthlyReturn) + monthlyContribution;
-                }
+            // Compound monthly for 12 months
+            for (let month = 0; month < 12; month++) {
+                corpus = corpus * (1 + monthlyReturn) + monthlyTotal;
             }
-        });
+        }
+    });
 
-        const lumpSum = corpus * 0.60;
-        const annuityAmount = corpus * 0.40;
-        const monthlyPension = (annuityAmount * annuityRate / 100) / 12;
+    const totalInvested = totalInvestedEmployee + totalInvestedEmployer;
+    const lumpSum = corpus * 0.60;
+    const annuityAmount = corpus * 0.40;
+    const monthlyPension = (annuityAmount * annuityRate / 100) / 12;
 
-        return {
-            totalInvested,
-            finalCorpus: corpus,
-            lumpSum,
-            annuityAmount,
-            monthlyPension,
-            returnRate,
-            annuityRate
-        };
-    }
+    return {
+        totalInvested: Math.round(totalInvested),
+        totalInvestedEmployee: Math.round(totalInvestedEmployee),
+        totalInvestedEmployer: Math.round(totalInvestedEmployer),
+        finalCorpus: Math.round(corpus),
+        lumpSum: Math.round(lumpSum),
+        annuityAmount: Math.round(annuityAmount),
+        monthlyPension: Math.round(monthlyPension),
+        returnRate
+    };
+}
 
     calculateUPS() {
         const finalYearData = this.salaryResults[this.salaryResults.length - 1];
