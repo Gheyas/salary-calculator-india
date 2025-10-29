@@ -527,7 +527,7 @@ class RetirementBenefitsCalculator {
     const monthlyReturn = returnRate / 12 / 100;
     const currentYear = new Date().getFullYear();
 
-    this.salaryResults.forEach(yearData => {
+    this.Results.forEach(yearData => {
         if (yearData.year >= currentYear) {
             const grossSalary = yearData.grossSalary;
             const monthlyContribution = grossSalary * 0.24;  // Should NOT have /12
