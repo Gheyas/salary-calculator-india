@@ -569,53 +569,75 @@ class RetirementBenefitsCalculator {
     };
 }
 
+    // ##### THIS IS THE CORRECTED FUNCTION #####
     calculateUPS() {
-        const finalYearData = this.salaryResults[this.salaryResults.length - 1];
-        const currentYear = new Date().getFullYear();
-        const yearsOfService = finalYearData.year - currentYear;
+        // --- STEP 1: Get Total Service Years from the new input field ---
+        const totalServiceYears = parseFloat(document.getElementById('totalServiceYears').value);
 
+        // Get data from the salary calculation
+        const finalYearData = this.salaryResults[this.salaryResults.length - 1];
         const finalBasicPay = finalYearData.basicPay;
         const finalDAAmount = finalYearData.daAmount;
-        const finalGross = finalBasicPay + finalDAAmount;
+        
+        // --- FIX 1: Base for Gratuity/Contribution is Basic + DA ---
+        const finalBasicAndDA = finalBasicPay + finalDAAmount;
 
-        let pensionPercentage = 0.50;
-        if (yearsOfService < 25 && yearsOfService >= 10) {
-            pensionPercentage = (yearsOfService / 50);
+        // --- FIX 2: Correct Pension Calculation ---
+        // Pension is 50% of last basic pay, requires minimum 10 years.
+        // We'll use a common pro-rata rule: (Years of Service / 50) * Basic Pay
+        // Capped at 50% of Basic Pay.
+        let pensionPercentage = 0;
+        if (totalServiceYears >= 10) {
+            // Using (Total Years / 50) logic, capped at 50%
+            pensionPercentage = Math.min(totalServiceYears / 50, 0.50);
         }
 
         const monthlyPension = finalBasicPay * pensionPercentage;
         const minimumPension = 10000;
-        const actualPension = Math.max(monthlyPension, minimumPension);
+        // No pension if < 10 years, otherwise the calculated or minimum.
+        const actualPension = (totalServiceYears < 10) ? 0 : Math.max(monthlyPension, minimumPension);
 
-        const sixMonthPeriods = yearsOfService * 2;
-        const lumpSum = (finalGross / 10) * sixMonthPeriods;
-        const familyPension = actualPension * 0.60;
+        // --- FIX 3: Correct Gratuity (Lump Sum) Calculation ---
+        // Standard formula: (Last Basic + DA) / 26 * 15 * (Years of Service)
+        // The 26 is for working days in a month.
+        const gratuityLumpSum = (finalBasicAndDA / 26) * 15 * totalServiceYears;
+        
+        const familyPension = actualPension * 0.60; // Your logic for this is fine.
 
+        // --- FIX 4: Correct Contribution Calculation ---
+        // Contributions should be on Basic + DA, NOT Gross Salary (which includes HRA).
         let totalEmployeeContribution = 0;
         let totalGovtContribution = 0;
+        const empRate = 0.10;  // 10% Employee
+        const govtRate = 0.185; // 18.5% Government (for UPS)
+        const currentYear = new Date().getFullYear();
 
         this.salaryResults.forEach(yearData => {
-            if (yearData.year >= currentYear) {
-                const annualGross = yearData.grossSalary * 12;
-                totalEmployeeContribution += annualGross * 0.10;
-                totalGovtContribution += annualGross * 0.185;
+            if (yearData.year >= currentYear && !yearData.isTransition) {
+                // Get the monthly Basic + DA for the year
+                const contributionBase = yearData.basicPay + yearData.daAmount;
+                
+                // Add 12 months' worth of contributions for that year
+                totalEmployeeContribution += (contributionBase * empRate * 12);
+                totalGovtContribution += (contributionBase * govtRate * 12);
             }
         });
 
         return {
-            yearsOfService,
-            finalBasicPay,
-            finalDAAmount,
-            finalGross,
-            monthlyPension: actualPension,
-            minimumPension,
-            lumpSum,
-            familyPension,
-            totalEmployeeContribution,
-            totalGovtContribution,
-            totalContribution: totalEmployeeContribution + totalGovtContribution
+            yearsOfService: totalServiceYears,
+            finalBasicPay: finalBasicPay,
+            finalDAAmount: finalDAAmount,
+            finalGross: finalBasicAndDA, // This is Basic + DA
+            monthlyPension: Math.round(actualPension),
+            minimumPension: minimumPension,
+            lumpSum: Math.round(gratuityLumpSum),
+            familyPension: Math.round(familyPension),
+            totalEmployeeContribution: Math.round(totalEmployeeContribution),
+            totalGovtContribution: Math.round(totalGovtContribution),
+            totalContribution: Math.round(totalEmployeeContribution + totalGovtContribution)
         };
     }
+    // ##### END OF CORRECTED FUNCTION #####
 
     displayRetirementResults() {
         document.getElementById('retirementResultsSection').classList.remove('hidden');
@@ -730,6 +752,7 @@ class RetirementBenefitsCalculator {
         return amount.toLocaleString('en-IN', { maximumFractionDigits: 0 });
     }
 
+    // ##### THIS IS THE CORRECTED FUNCTION #####
     validateRetirementInputs() {
         let isValid = true;
         const errorContainer = document.getElementById('retirementValidationErrors');
@@ -739,6 +762,7 @@ class RetirementBenefitsCalculator {
         const existingCorpus = parseFloat(document.getElementById('existingNPSCorpus').value) || 0;
         const expectedReturn = parseFloat(document.getElementById('expectedReturn').value);
         const annuityRate = parseFloat(document.getElementById('annuityRate').value);
+        const totalServiceYears = parseFloat(document.getElementById('totalServiceYears').value); // <-- ADDED
 
         if (existingCorpus < 0) {
             this.showRetirementError('existingNPSCorpus', 'Existing corpus cannot be negative');
@@ -754,6 +778,13 @@ class RetirementBenefitsCalculator {
             this.showRetirementError('annuityRate', 'Annuity rate must be between 4% and 8%');
             isValid = false;
         }
+
+        // <-- ADDED THIS BLOCK -->
+        if (isNaN(totalServiceYears) || totalServiceYears < 10 || totalServiceYears > 50) {
+            this.showRetirementError('totalServiceYears', 'Total service years must be between 10 and 50');
+            isValid = false;
+        }
+        // <-- END OF ADDED BLOCK -->
 
         if (!isValid) {
             errorContainer.classList.remove('hidden');
@@ -775,6 +806,7 @@ class RetirementBenefitsCalculator {
         errorContainer.appendChild(errorItem);
     }
 
+    // ##### THIS IS THE CORRECTED FUNCTION #####
     clearRetirementErrors() {
         const errorContainer = document.getElementById('retirementValidationErrors');
         if (errorContainer) {
@@ -782,7 +814,8 @@ class RetirementBenefitsCalculator {
             errorContainer.classList.add('hidden');
         }
 
-        ['existingNPSCorpus', 'expectedReturn', 'annuityRate'].forEach(id => {
+        // <-- 'totalServiceYears' ADDED TO THIS ARRAY -->
+        ['existingNPSCorpus', 'expectedReturn', 'annuityRate', 'totalServiceYears'].forEach(id => {
             const field = document.getElementById(id);
             if (field) {
                 field.classList.remove('border-red-500', 'border-2');
@@ -841,32 +874,4 @@ document.getElementById('calculateRetirementBtn').addEventListener('click', () =
 
 document.getElementById('downloadRetirementPDF').addEventListener('click', () => {
     retirementCalc.downloadRetirementPDF();
-});
-document.addEventListener("DOMContentLoaded", function() {
-    // Initialize calculators
-    const calculator = new RetirementCalculator();
-    const retirementCalc = new RetirementBenefitsCalculator();
-
-    // Attach event listeners (these must match your HTML IDs)
-    document.getElementById("calculateBtn").addEventListener("click", function() {
-        if (validateInputs()) {
-            calculator.calculate();
-            retirementCalc.setSalaryData(calculator.results);
-            document.getElementById("retirementBenefitsBtn").classList.remove("hidden");
-        }
-    });
-
-    document.getElementById("retirementBenefitsBtn").addEventListener("click", function() {
-        retirementCalc.calculateRetirementBenefits();
-    });
-
-    document.getElementById("downloadPDF").addEventListener("click", function() {
-        calculator.downloadPDF();
-    });
-
-    document.getElementById("downloadRetirementPDF").addEventListener("click", function() {
-        retirementCalc.downloadRetirementPDF();
-    });
-
-    // Any needed initialization!
 });
