@@ -60,6 +60,14 @@
             .text-3xl { font-size: 1.5rem !important; }
             .text-2xl { font-size: 1.25rem !important; }
             body { font-size: 14px; }
+            /* More aggressive link sizing for mobile nav */
+            #mobile-menu a {
+                padding: 10px 12px;
+                font-size: 1rem;
+            }
+            #desktop-menu {
+                font-size: 0.8rem; /* Smaller font on desktop to fit more links */
+            }
         }
         
         /* Touch Targets */
@@ -107,12 +115,15 @@
                 </div>
                 
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="https://paycommissions.in/index.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                        <a href="https://paycommissions.in/about.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">About</a>
-                        <a href="#retirementInputSection" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">NPS vs UPS</a>
-                        <a href="https://paycommissions.in/8th-cpc-news.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">8th CPC News</a>
-                        <a href="https://paycommissions.in/contact.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    <div id="desktop-menu" class="ml-4 flex items-baseline space-x-1">
+                        <a href="https://paycommissions.in/index.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">Home</a>
+                        <a href="https://paycommissions.in/about.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">About</a>
+                        <a href="https://paycommissions.in/pay-commission.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">Pay Commission</a>
+                        <a href="#retirementInputSection" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">NPS vs UPS</a>
+                        <a href="https://paycommissions.in/blog.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">Blog</a>
+                        <a href="https://paycommissions.in/faq.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">FAQ</a>
+                        <a href="https://paycommissions.in/contact.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">Contact</a>
+                        <a href="https://paycommissions.in/privacy.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">Privacy</a>
                     </div>
                 </div>
                 
@@ -134,9 +145,12 @@
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="https://paycommissions.in/index.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Home</a>
                 <a href="https://paycommissions.in/about.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="https://paycommissions.in/pay-commission.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Pay Commission</a>
                 <a href="#retirementInputSection" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">NPS vs UPS</a>
-                <a href="https://paycommissions.in/8th-cpc-news.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">8th CPC News</a>
+                <a href="https://paycommissions.in/blog.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                <a href="https://paycommissions.in/faq.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">FAQ</a>
                 <a href="https://paycommissions.in/contact.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                <a href="https://paycommissions.in/privacy.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Privacy</a>
             </div>
         </div>
     </nav>
@@ -667,11 +681,11 @@
                 </p>
                 <p class="mb-3">
                     As of the latest updates from the Government of India, the final figures will only be confirmed upon the release of an official notification by the 
-                    <a href="https://doe.gov.in/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-medium">Department of Expenditure (DoE)</a>.
+                    <a href="httpshttps://doe.gov.in/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-medium">Department of Expenditure (DoE)</a>.
                 </p>
                 <p class="mb-4">
                     Use these projections for planning purposes only. Always confirm the final amounts from the official circulars issued by the 
-                    <a href="https://doe.gov.in/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-medium">Department of Expenditure (DoE)</a> 
+                    <a href="httpshttps://doe.gov.in/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-medium">Department of Expenditure (DoE)</a> 
                     or the 
                     <a href="https://indianrailways.gov.in/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-medium">Railway Board</a> 
                     before making any financial decisions.
@@ -696,6 +710,18 @@
                 mobileIcon.classList.toggle('block');
                 closeIcon.classList.toggle('hidden');
                 closeIcon.classList.toggle('block');
+            });
+
+            // Close mobile menu when a link is clicked
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileIcon.classList.remove('hidden');
+                    mobileIcon.classList.add('block');
+                    closeIcon.classList.add('hidden');
+                    closeIcon.classList.remove('block');
+                });
             });
         });
     </script>
