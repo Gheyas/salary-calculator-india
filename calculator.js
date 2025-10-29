@@ -529,34 +529,34 @@ class RetirementBenefitsCalculator {
     const currentYear = new Date().getFullYear();
     
     // Employee and employer contribution rates (Central Government)
-    const empRate = 0.10;   // 10%
-    const emprRate = 0.14;  // 14%
-
-    // Use this.results instead of this.salaryResults
-    this.results.forEach(yearData => {
+    const empRate = 0.10; // 10%
+    const emprRate = 0.14; // 14%
+    
+    // FIXED: Use this.salaryResults (not this.results)
+    this.salaryResults.forEach(yearData => {
         if (yearData.year >= currentYear && !yearData.isTransition) {
-            // CRITICAL FIX: Use Basic + DA, NOT grossSalary
+            // Use Basic + DA, NOT grossSalary
             const npsBase = yearData.basicPay + yearData.daAmount;
             const monthlyEmployee = npsBase * empRate;
             const monthlyEmployer = npsBase * emprRate;
             const monthlyTotal = monthlyEmployee + monthlyEmployer;
             
             // Add annual contributions to invested totals
-            totalInvestedEmployee += monthlyEmployee * 12;
-            totalInvestedEmployer += monthlyEmployer * 12;
-
+            totalInvestedEmployee += (monthlyEmployee * 12);
+            totalInvestedEmployer += (monthlyEmployer * 12);
+            
             // Compound monthly for 12 months
             for (let month = 0; month < 12; month++) {
                 corpus = corpus * (1 + monthlyReturn) + monthlyTotal;
             }
         }
     });
-
+    
     const totalInvested = totalInvestedEmployee + totalInvestedEmployer;
     const lumpSum = corpus * 0.60;
     const annuityAmount = corpus * 0.40;
     const monthlyPension = (annuityAmount * annuityRate / 100) / 12;
-
+    
     return {
         totalInvested: Math.round(totalInvested),
         totalInvestedEmployee: Math.round(totalInvestedEmployee),
