@@ -842,3 +842,31 @@ document.getElementById('calculateRetirementBtn').addEventListener('click', () =
 document.getElementById('downloadRetirementPDF').addEventListener('click', () => {
     retirementCalc.downloadRetirementPDF();
 });
+document.addEventListener("DOMContentLoaded", function() {
+    // Initialize calculators
+    const calculator = new RetirementCalculator();
+    const retirementCalc = new RetirementBenefitsCalculator();
+
+    // Attach event listeners (these must match your HTML IDs)
+    document.getElementById("calculateBtn").addEventListener("click", function() {
+        if (validateInputs()) {
+            calculator.calculate();
+            retirementCalc.setSalaryData(calculator.results);
+            document.getElementById("retirementBenefitsBtn").classList.remove("hidden");
+        }
+    });
+
+    document.getElementById("retirementBenefitsBtn").addEventListener("click", function() {
+        retirementCalc.calculateRetirementBenefits();
+    });
+
+    document.getElementById("downloadPDF").addEventListener("click", function() {
+        calculator.downloadPDF();
+    });
+
+    document.getElementById("downloadRetirementPDF").addEventListener("click", function() {
+        retirementCalc.downloadRetirementPDF();
+    });
+
+    // Any needed initialization!
+});
