@@ -482,3 +482,349 @@ if (viewResultsBtn) {
         }
     });
 }
+
+
+// ===== RETIREMENT BENEFITS CALCULATOR =====
+class RetirementBenefitsCalculator {
+    constructor() {
+        this.salaryResults = [];
+        this.npsResults = null;
+        this.upsResults = null;
+    }
+
+    setSalaryData(results) {
+        this.salaryResults = results;
+    }
+
+    calculateRetirementBenefits() {
+        this.clearRetirementErrors();
+
+        if (!this.validateRetirementInputs()) {
+            return;
+        }
+
+        const existingCorpus = parseFloat(document.getElementById('existingNPSCorpus').value) || 0;
+        const expectedReturn = parseFloat(document.getElementById('expectedReturn').value);
+        const annuityRate = parseFloat(document.getElementById('annuityRate').value);
+
+        // Calculate NPS for three scenarios
+        this.npsResults = {
+            conservative: this.calculateNPS(existingCorpus, 8, 5),
+            moderate: this.calculateNPS(existingCorpus, expectedReturn, annuityRate),
+            aggressive: this.calculateNPS(existingCorpus, 12, 7)
+        };
+
+        // Calculate UPS
+        this.upsResults = this.calculateUPS();
+
+        // Display results
+        this.displayRetirementResults();
+    }
+
+    calculateNPS(existingCorpus, returnRate, annuityRate) {
+        let corpus = existingCorpus;
+        let totalInvested = 0;
+        const monthlyReturn = returnRate / 12 / 100;
+        const currentYear = new Date().getFullYear();
+
+        this.salaryResults.forEach(yearData => {
+            if (yearData.year >= currentYear) {
+                const grossSalary = yearData.grossSalary;
+                const monthlyContribution = (grossSalary * 0.24) / 12;
+                const annualContribution = monthlyContribution * 12;
+                totalInvested += annualContribution;
+
+                for (let month = 0; month < 12; month++) {
+                    corpus = corpus * (1 + monthlyReturn) + monthlyContribution;
+                }
+            }
+        });
+
+        const lumpSum = corpus * 0.60;
+        const annuityAmount = corpus * 0.40;
+        const monthlyPension = (annuityAmount * annuityRate / 100) / 12;
+
+        return {
+            totalInvested,
+            finalCorpus: corpus,
+            lumpSum,
+            annuityAmount,
+            monthlyPension,
+            returnRate,
+            annuityRate
+        };
+    }
+
+    calculateUPS() {
+        const finalYearData = this.salaryResults[this.salaryResults.length - 1];
+        const currentYear = new Date().getFullYear();
+        const yearsOfService = finalYearData.year - currentYear;
+
+        const finalBasicPay = finalYearData.basicPay;
+        const finalDAAmount = finalYearData.daAmount;
+        const finalGross = finalBasicPay + finalDAAmount;
+
+        let pensionPercentage = 0.50;
+        if (yearsOfService < 25 && yearsOfService >= 10) {
+            pensionPercentage = (yearsOfService / 50);
+        }
+
+        const monthlyPension = finalBasicPay * pensionPercentage;
+        const minimumPension = 10000;
+        const actualPension = Math.max(monthlyPension, minimumPension);
+
+        const sixMonthPeriods = yearsOfService * 2;
+        const lumpSum = (finalGross / 10) * sixMonthPeriods;
+        const familyPension = actualPension * 0.60;
+
+        let totalEmployeeContribution = 0;
+        let totalGovtContribution = 0;
+
+        this.salaryResults.forEach(yearData => {
+            if (yearData.year >= currentYear) {
+                const annualGross = yearData.grossSalary * 12;
+                totalEmployeeContribution += annualGross * 0.10;
+                totalGovtContribution += annualGross * 0.185;
+            }
+        });
+
+        return {
+            yearsOfService,
+            finalBasicPay,
+            finalDAAmount,
+            finalGross,
+            monthlyPension: actualPension,
+            minimumPension,
+            lumpSum,
+            familyPension,
+            totalEmployeeContribution,
+            totalGovtContribution,
+            totalContribution: totalEmployeeContribution + totalGovtContribution
+        };
+    }
+
+    displayRetirementResults() {
+        document.getElementById('retirementResultsSection').classList.remove('hidden');
+        this.displayNPSResults();
+        this.displayUPSResults();
+        this.displayComparison();
+        this.createRetirementChart();
+
+        setTimeout(() => {
+            document.getElementById('retirementResultsSection').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }, 100);
+    }
+
+    displayNPSResults() {
+        const scenarios = ['conservative', 'moderate', 'aggressive'];
+        scenarios.forEach((scenario) => {
+            const result = this.npsResults[scenario];
+            document.getElementById(`${scenario}Invested`).textContent = `₹${this.formatCurrency(result.totalInvested)}`;
+            document.getElementById(`${scenario}Corpus`).textContent = `₹${this.formatCurrency(result.finalCorpus)}`;
+            document.getElementById(`${scenario}LumpSum`).textContent = `₹${this.formatCurrency(result.lumpSum)}`;
+            document.getElementById(`${scenario}Pension`).textContent = `₹${this.formatCurrency(result.monthlyPension)}`;
+        });
+    }
+
+    displayUPSResults() {
+        const ups = this.upsResults;
+        document.getElementById('upsYearsService').textContent = ups.yearsOfService;
+        document.getElementById('upsFinalBasic').textContent = `₹${this.formatCurrency(ups.finalBasicPay)}`;
+        document.getElementById('upsMonthlyPension').textContent = `₹${this.formatCurrency(ups.monthlyPension)}`;
+        document.getElementById('upsLumpSum').textContent = `₹${this.formatCurrency(ups.lumpSum)}`;
+        document.getElementById('upsFamilyPension').textContent = `₹${this.formatCurrency(ups.familyPension)}`;
+        document.getElementById('upsTotalContribution').textContent = `₹${this.formatCurrency(ups.totalContribution)}`;
+    }
+
+    displayComparison() {
+        const nps = this.npsResults.moderate;
+        const ups = this.upsResults;
+
+        const pensionRatio = (ups.monthlyPension / nps.monthlyPension).toFixed(1);
+        document.getElementById('comparisonNPSPension').textContent = `₹${this.formatCurrency(nps.monthlyPension)}`;
+        document.getElementById('comparisonUPSPension').textContent = `₹${this.formatCurrency(ups.monthlyPension)}`;
+        document.getElementById('pensionWinner').textContent = 
+            ups.monthlyPension > nps.monthlyPension ? `UPS (${pensionRatio}x)` : 'NPS';
+
+        const lumpSumRatio = (nps.lumpSum / ups.lumpSum).toFixed(1);
+        document.getElementById('comparisonNPSLumpSum').textContent = `₹${this.formatCurrency(nps.lumpSum)}`;
+        document.getElementById('comparisonUPSLumpSum').textContent = `₹${this.formatCurrency(ups.lumpSum)}`;
+        document.getElementById('lumpSumWinner').textContent = 
+            nps.lumpSum > ups.lumpSum ? `NPS (${lumpSumRatio}x)` : 'UPS';
+
+        const npsLifetime = nps.lumpSum + (nps.monthlyPension * 12 * 20);
+        const upsLifetime = ups.lumpSum + (ups.monthlyPension * 12 * 20);
+
+        document.getElementById('npsLifetimeValue').textContent = `₹${this.formatCurrency(npsLifetime)}`;
+        document.getElementById('upsLifetimeValue').textContent = `₹${this.formatCurrency(upsLifetime)}`;
+        document.getElementById('lifetimeWinner').textContent = 
+            upsLifetime > npsLifetime ? `UPS (+₹${this.formatCurrency(upsLifetime - npsLifetime)})` : `NPS (+₹${this.formatCurrency(npsLifetime - upsLifetime)})`;
+
+        const lumpSumDiff = Math.abs(nps.lumpSum - ups.lumpSum);
+        const pensionDiff = Math.abs(ups.monthlyPension - nps.monthlyPension);
+        const breakevenYears = (lumpSumDiff / (pensionDiff * 12)).toFixed(1);
+        document.getElementById('breakevenYears').textContent = breakevenYears;
+    }
+
+    createRetirementChart() {
+        const years = [15, 20, 25, 30];
+        const nps = this.npsResults.moderate;
+        const ups = this.upsResults;
+
+        const npsValues = years.map(y => nps.lumpSum + (nps.monthlyPension * 12 * y));
+        const upsValues = years.map(y => ups.lumpSum + (ups.monthlyPension * 12 * y));
+
+        const trace1 = {
+            x: years,
+            y: npsValues,
+            type: 'bar',
+            name: 'NPS',
+            marker: { color: '#2563eb' }
+        };
+
+        const trace2 = {
+            x: years,
+            y: upsValues,
+            type: 'bar',
+            name: 'UPS',
+            marker: { color: '#10b981' }
+        };
+
+        const layout = {
+            title: 'Lifetime Retirement Value Comparison',
+            xaxis: { title: 'Years After Retirement' },
+            yaxis: { title: 'Total Value (₹)', tickformat: '₹,.0f' },
+            barmode: 'group',
+            font: { family: 'Inter' },
+            plot_bgcolor: '#f9fafb',
+            paper_bgcolor: '#ffffff',
+            margin: { t: 60, r: 30, b: 60, l: 60 }
+        };
+
+        Plotly.newPlot('retirementComparisonChart', [trace1, trace2], layout, {responsive: true});
+    }
+
+    formatCurrency(amount) {
+        if (amount >= 10000000) {
+            return `${(amount / 10000000).toFixed(2)} Cr`;
+        } else if (amount >= 100000) {
+            return `${(amount / 100000).toFixed(2)} L`;
+        }
+        return amount.toLocaleString('en-IN', { maximumFractionDigits: 0 });
+    }
+
+    validateRetirementInputs() {
+        let isValid = true;
+        const errorContainer = document.getElementById('retirementValidationErrors');
+        errorContainer.innerHTML = '';
+        errorContainer.classList.add('hidden');
+
+        const existingCorpus = parseFloat(document.getElementById('existingNPSCorpus').value) || 0;
+        const expectedReturn = parseFloat(document.getElementById('expectedReturn').value);
+        const annuityRate = parseFloat(document.getElementById('annuityRate').value);
+
+        if (existingCorpus < 0) {
+            this.showRetirementError('existingNPSCorpus', 'Existing corpus cannot be negative');
+            isValid = false;
+        }
+
+        if (isNaN(expectedReturn) || expectedReturn < 5 || expectedReturn > 15) {
+            this.showRetirementError('expectedReturn', 'Expected return must be between 5% and 15%');
+            isValid = false;
+        }
+
+        if (isNaN(annuityRate) || annuityRate < 4 || annuityRate > 8) {
+            this.showRetirementError('annuityRate', 'Annuity rate must be between 4% and 8%');
+            isValid = false;
+        }
+
+        if (!isValid) {
+            errorContainer.classList.remove('hidden');
+            errorContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        return isValid;
+    }
+
+    showRetirementError(fieldId, message) {
+        const field = document.getElementById(fieldId);
+        if (field) {
+            field.classList.add('border-red-500', 'border-2');
+        }
+
+        const errorContainer = document.getElementById('retirementValidationErrors');
+        const errorItem = document.createElement('li');
+        errorItem.textContent = message;
+        errorContainer.appendChild(errorItem);
+    }
+
+    clearRetirementErrors() {
+        const errorContainer = document.getElementById('retirementValidationErrors');
+        if (errorContainer) {
+            errorContainer.innerHTML = '';
+            errorContainer.classList.add('hidden');
+        }
+
+        ['existingNPSCorpus', 'expectedReturn', 'annuityRate'].forEach(id => {
+            const field = document.getElementById(id);
+            if (field) {
+                field.classList.remove('border-red-500', 'border-2');
+            }
+        });
+    }
+
+    downloadRetirementPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        doc.setFontSize(18);
+        doc.text('Retirement Benefits Report', 20, 20);
+        doc.setFontSize(12);
+        doc.text(`Generated: ${new Date().toLocaleDateString()}`, 20, 35);
+
+        const nps = this.npsResults.moderate;
+        const ups = this.upsResults;
+
+        doc.setFontSize(14);
+        doc.text('NPS Benefits (Moderate):', 20, 50);
+        doc.setFontSize(10);
+        doc.text(`Final Corpus: ₹${this.formatCurrency(nps.finalCorpus)}`, 25, 60);
+        doc.text(`Lump Sum: ₹${this.formatCurrency(nps.lumpSum)}`, 25, 70);
+        doc.text(`Monthly Pension: ₹${this.formatCurrency(nps.monthlyPension)}`, 25, 80);
+
+        doc.setFontSize(14);
+        doc.text('UPS Benefits:', 20, 100);
+        doc.setFontSize(10);
+        doc.text(`Monthly Pension: ₹${this.formatCurrency(ups.monthlyPension)}`, 25, 110);
+        doc.text(`Lump Sum: ₹${this.formatCurrency(ups.lumpSum)}`, 25, 120);
+        doc.text(`Family Pension: ₹${this.formatCurrency(ups.familyPension)}`, 25, 130);
+
+        doc.setFontSize(8);
+        doc.text('Disclaimer: Estimates based on current policies. Actual benefits may vary.', 20, 280);
+
+        doc.save('retirement-benefits-report.pdf');
+    }
+}
+
+// Initialize retirement calculator
+const retirementCalc = new RetirementBenefitsCalculator();
+
+// Modify existing calculate function to show retirement button
+const originalCalculate = calculator.calculate.bind(calculator);
+calculator.calculate = function() {
+    originalCalculate();
+    retirementCalc.setSalaryData(this.results);
+    document.getElementById('retirementBenefitsBtn').classList.remove('hidden');
+};
+
+// Event listeners
+document.getElementById('calculateRetirementBtn').addEventListener('click', () => {
+    retirementCalc.calculateRetirementBenefits();
+});
+
+document.getElementById('downloadRetirementPDF').addEventListener('click', () => {
+    retirementCalc.downloadRetirementPDF();
+});
