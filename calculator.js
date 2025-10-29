@@ -522,17 +522,18 @@ class RetirementBenefitsCalculator {
     }
 
     calculateNPS(existingCorpus, returnRate, annuityRate) {
-        let corpus = existingCorpus;
-        let totalInvested = existingCorpus;
-        const monthlyReturn = returnRate / 12 / 100;
-        const currentYear = new Date().getFullYear();
+    let corpus = existingCorpus;
+    let totalInvested = existingCorpus;  // Should say existingCorpus, NOT 0
+    const monthlyReturn = returnRate / 12 / 100;
+    const currentYear = new Date().getFullYear();
 
-        this.salaryResults.forEach(yearData => {
-            if (yearData.year >= currentYear) {
-                const grossSalary = yearData.grossSalary;
-                const monthlyContribution = grossSalary * 0.24;
-                const annualContribution = grossSalary * 0.24 * 12;
-                totalInvested += annualContribution;
+    this.salaryResults.forEach(yearData => {
+        if (yearData.year >= currentYear) {
+            const grossSalary = yearData.grossSalary;
+            const monthlyContribution = grossSalary * 0.24;  // Should NOT have /12
+            const annualContribution = grossSalary * 0.24 * 12;  // Direct calculation
+            totalInvested += annualContribution;
+
 
                 for (let month = 0; month < 12; month++) {
                     corpus = corpus * (1 + monthlyReturn) + monthlyContribution;
