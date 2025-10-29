@@ -183,9 +183,9 @@ class RetirementCalculator {
         
         // Update summary cards
         const finalResult = this.results[this.results.length - 1];
-        document.getElementById('finalBasicPay').textContent = `₹${finalResult.basicPay.toLocaleString()}`;
-        document.getElementById('finalDAAmount').textContent = `₹${finalResult.daAmount.toLocaleString()}`;
-        document.getElementById('finalGrossSalary').textContent = `₹${finalResult.grossSalary.toLocaleString()}`;
+        document.getElementById('finalBasicPay').textContent = `â‚¹${finalResult.basicPay.toLocaleString()}`;
+        document.getElementById('finalDAAmount').textContent = `â‚¹${finalResult.daAmount.toLocaleString()}`;
+        document.getElementById('finalGrossSalary').textContent = `â‚¹${finalResult.grossSalary.toLocaleString()}`;
         
         // Create table
         const tableBody = document.getElementById('resultsTableBody');
@@ -200,11 +200,11 @@ class RetirementCalculator {
             row.innerHTML = `
                 <td class="border border-gray-300 px-4 py-2">${result.year}</td>
                 <td class="border border-gray-300 px-4 py-2">${result.commission}</td>
-                <td class="border border-gray-300 px-4 py-2 text-right">₹${result.basicPay.toLocaleString()}</td>
+                <td class="border border-gray-300 px-4 py-2 text-right">â‚¹${result.basicPay.toLocaleString()}</td>
                 <td class="border border-gray-300 px-4 py-2 text-right">${result.daPercent.toFixed(1)}%</td>
-                <td class="border border-gray-300 px-4 py-2 text-right">₹${result.daAmount.toLocaleString()}</td>
-                <td class="border border-gray-300 px-4 py-2 text-right">₹${result.hraAmount.toLocaleString()}</td>
-                <td class="border border-gray-300 px-4 py-2 text-right font-semibold">₹${result.grossSalary.toLocaleString()}</td>
+                <td class="border border-gray-300 px-4 py-2 text-right">â‚¹${result.daAmount.toLocaleString()}</td>
+                <td class="border border-gray-300 px-4 py-2 text-right">â‚¹${result.hraAmount.toLocaleString()}</td>
+                <td class="border border-gray-300 px-4 py-2 text-right font-semibold">â‚¹${result.grossSalary.toLocaleString()}</td>
             `;
             
             tableBody.appendChild(row);
@@ -215,7 +215,7 @@ class RetirementCalculator {
                 noteRow.className = 'bg-yellow-50';
                 noteRow.innerHTML = `
                     <td colspan="7" class="border border-gray-300 px-4 py-2 text-sm text-yellow-700 italic">
-                        <strong>Note:</strong> Fitment factor applied: ₹${result.oldBasicPay.toLocaleString()} × ${result.fitmentFactor} = ₹${result.basicPay.toLocaleString()}. DA has been reset to 0% after pay commission transition.
+                        <strong>Note:</strong> Fitment factor applied: â‚¹${result.oldBasicPay.toLocaleString()} Ã— ${result.fitmentFactor} = â‚¹${result.basicPay.toLocaleString()}. DA has been reset to 0% after pay commission transition.
                     </td>
                 `;
                 tableBody.appendChild(noteRow);
@@ -261,9 +261,9 @@ class RetirementCalculator {
                 gridcolor: '#e5e7eb'
             },
             yaxis: {
-                title: 'Salary (₹)',
+                title: 'Salary (â‚¹)',
                 gridcolor: '#e5e7eb',
-                tickformat: '₹,.0f'
+                tickformat: 'â‚¹,.0f'
             },
             plot_bgcolor: '#f9fafb',
             paper_bgcolor: '#ffffff',
@@ -295,7 +295,7 @@ class RetirementCalculator {
         doc.setFontSize(14);
         doc.text('Input Parameters:', 20, 60);
         doc.setFontSize(10);
-        doc.text(`Current Basic Pay: ₹${document.getElementById('basicPay').value}`, 20, 75);
+        doc.text(`Current Basic Pay: â‚¹${document.getElementById('basicPay').value}`, 20, 75);
         doc.text(`Current DA: ${document.getElementById('currentDA').value}%`, 20, 85);
         doc.text(`Retirement Year: ${document.getElementById('retirementYear').value}`, 20, 95);
         doc.text(`HRA: ${document.getElementById('hraPercent').value}%`, 20, 105);
@@ -305,9 +305,9 @@ class RetirementCalculator {
         doc.setFontSize(14);
         doc.text('Final Results:', 20, 125);
         doc.setFontSize(10);
-        doc.text(`Basic Pay: ₹${finalResult.basicPay.toLocaleString()}`, 20, 140);
-        doc.text(`DA Amount: ₹${finalResult.daAmount.toLocaleString()}`, 20, 150);
-        doc.text(`Gross Salary: ₹${finalResult.grossSalary.toLocaleString()}`, 20, 160);
+        doc.text(`Basic Pay: â‚¹${finalResult.basicPay.toLocaleString()}`, 20, 140);
+        doc.text(`DA Amount: â‚¹${finalResult.daAmount.toLocaleString()}`, 20, 150);
+        doc.text(`Gross Salary: â‚¹${finalResult.grossSalary.toLocaleString()}`, 20, 160);
         
         // Disclaimer
         doc.setFontSize(8);
@@ -523,15 +523,15 @@ class RetirementBenefitsCalculator {
 
     calculateNPS(existingCorpus, returnRate, annuityRate) {
         let corpus = existingCorpus;
-        let totalInvested = 0;
+        let totalInvested = existingCorpus;  // Start with existing corpus
         const monthlyReturn = returnRate / 12 / 100;
         const currentYear = new Date().getFullYear();
 
         this.salaryResults.forEach(yearData => {
             if (yearData.year >= currentYear) {
-                const grossSalary = yearData.grossSalary;
-                const monthlyContribution = (grossSalary * 0.24) / 12;
-                const annualContribution = monthlyContribution * 12;
+                const grossSalary = yearData.grossSalary;  // This is MONTHLY gross salary
+                const monthlyContribution = grossSalary * 0.24;  // 24% of monthly salary
+                const annualContribution = grossSalary * 0.24 * 12;  // Annual contribution
                 totalInvested += annualContribution;
 
                 for (let month = 0; month < 12; month++) {
@@ -622,21 +622,21 @@ class RetirementBenefitsCalculator {
         const scenarios = ['conservative', 'moderate', 'aggressive'];
         scenarios.forEach((scenario) => {
             const result = this.npsResults[scenario];
-            document.getElementById(`${scenario}Invested`).textContent = `₹${this.formatCurrency(result.totalInvested)}`;
-            document.getElementById(`${scenario}Corpus`).textContent = `₹${this.formatCurrency(result.finalCorpus)}`;
-            document.getElementById(`${scenario}LumpSum`).textContent = `₹${this.formatCurrency(result.lumpSum)}`;
-            document.getElementById(`${scenario}Pension`).textContent = `₹${this.formatCurrency(result.monthlyPension)}`;
+            document.getElementById(`${scenario}Invested`).textContent = `â‚¹${this.formatCurrency(result.totalInvested)}`;
+            document.getElementById(`${scenario}Corpus`).textContent = `â‚¹${this.formatCurrency(result.finalCorpus)}`;
+            document.getElementById(`${scenario}LumpSum`).textContent = `â‚¹${this.formatCurrency(result.lumpSum)}`;
+            document.getElementById(`${scenario}Pension`).textContent = `â‚¹${this.formatCurrency(result.monthlyPension)}`;
         });
     }
 
     displayUPSResults() {
         const ups = this.upsResults;
         document.getElementById('upsYearsService').textContent = ups.yearsOfService;
-        document.getElementById('upsFinalBasic').textContent = `₹${this.formatCurrency(ups.finalBasicPay)}`;
-        document.getElementById('upsMonthlyPension').textContent = `₹${this.formatCurrency(ups.monthlyPension)}`;
-        document.getElementById('upsLumpSum').textContent = `₹${this.formatCurrency(ups.lumpSum)}`;
-        document.getElementById('upsFamilyPension').textContent = `₹${this.formatCurrency(ups.familyPension)}`;
-        document.getElementById('upsTotalContribution').textContent = `₹${this.formatCurrency(ups.totalContribution)}`;
+        document.getElementById('upsFinalBasic').textContent = `â‚¹${this.formatCurrency(ups.finalBasicPay)}`;
+        document.getElementById('upsMonthlyPension').textContent = `â‚¹${this.formatCurrency(ups.monthlyPension)}`;
+        document.getElementById('upsLumpSum').textContent = `â‚¹${this.formatCurrency(ups.lumpSum)}`;
+        document.getElementById('upsFamilyPension').textContent = `â‚¹${this.formatCurrency(ups.familyPension)}`;
+        document.getElementById('upsTotalContribution').textContent = `â‚¹${this.formatCurrency(ups.totalContribution)}`;
     }
 
     displayComparison() {
@@ -644,24 +644,24 @@ class RetirementBenefitsCalculator {
         const ups = this.upsResults;
 
         const pensionRatio = (ups.monthlyPension / nps.monthlyPension).toFixed(1);
-        document.getElementById('comparisonNPSPension').textContent = `₹${this.formatCurrency(nps.monthlyPension)}`;
-        document.getElementById('comparisonUPSPension').textContent = `₹${this.formatCurrency(ups.monthlyPension)}`;
+        document.getElementById('comparisonNPSPension').textContent = `â‚¹${this.formatCurrency(nps.monthlyPension)}`;
+        document.getElementById('comparisonUPSPension').textContent = `â‚¹${this.formatCurrency(ups.monthlyPension)}`;
         document.getElementById('pensionWinner').textContent = 
             ups.monthlyPension > nps.monthlyPension ? `UPS (${pensionRatio}x)` : 'NPS';
 
         const lumpSumRatio = (nps.lumpSum / ups.lumpSum).toFixed(1);
-        document.getElementById('comparisonNPSLumpSum').textContent = `₹${this.formatCurrency(nps.lumpSum)}`;
-        document.getElementById('comparisonUPSLumpSum').textContent = `₹${this.formatCurrency(ups.lumpSum)}`;
+        document.getElementById('comparisonNPSLumpSum').textContent = `â‚¹${this.formatCurrency(nps.lumpSum)}`;
+        document.getElementById('comparisonUPSLumpSum').textContent = `â‚¹${this.formatCurrency(ups.lumpSum)}`;
         document.getElementById('lumpSumWinner').textContent = 
             nps.lumpSum > ups.lumpSum ? `NPS (${lumpSumRatio}x)` : 'UPS';
 
         const npsLifetime = nps.lumpSum + (nps.monthlyPension * 12 * 20);
         const upsLifetime = ups.lumpSum + (ups.monthlyPension * 12 * 20);
 
-        document.getElementById('npsLifetimeValue').textContent = `₹${this.formatCurrency(npsLifetime)}`;
-        document.getElementById('upsLifetimeValue').textContent = `₹${this.formatCurrency(upsLifetime)}`;
+        document.getElementById('npsLifetimeValue').textContent = `â‚¹${this.formatCurrency(npsLifetime)}`;
+        document.getElementById('upsLifetimeValue').textContent = `â‚¹${this.formatCurrency(upsLifetime)}`;
         document.getElementById('lifetimeWinner').textContent = 
-            upsLifetime > npsLifetime ? `UPS (+₹${this.formatCurrency(upsLifetime - npsLifetime)})` : `NPS (+₹${this.formatCurrency(npsLifetime - upsLifetime)})`;
+            upsLifetime > npsLifetime ? `UPS (+â‚¹${this.formatCurrency(upsLifetime - npsLifetime)})` : `NPS (+â‚¹${this.formatCurrency(npsLifetime - upsLifetime)})`;
 
         const lumpSumDiff = Math.abs(nps.lumpSum - ups.lumpSum);
         const pensionDiff = Math.abs(ups.monthlyPension - nps.monthlyPension);
@@ -696,7 +696,7 @@ class RetirementBenefitsCalculator {
         const layout = {
             title: 'Lifetime Retirement Value Comparison',
             xaxis: { title: 'Years After Retirement' },
-            yaxis: { title: 'Total Value (₹)', tickformat: '₹,.0f' },
+            yaxis: { title: 'Total Value (â‚¹)', tickformat: 'â‚¹,.0f' },
             barmode: 'group',
             font: { family: 'Inter' },
             plot_bgcolor: '#f9fafb',
@@ -791,16 +791,16 @@ class RetirementBenefitsCalculator {
         doc.setFontSize(14);
         doc.text('NPS Benefits (Moderate):', 20, 50);
         doc.setFontSize(10);
-        doc.text(`Final Corpus: ₹${this.formatCurrency(nps.finalCorpus)}`, 25, 60);
-        doc.text(`Lump Sum: ₹${this.formatCurrency(nps.lumpSum)}`, 25, 70);
-        doc.text(`Monthly Pension: ₹${this.formatCurrency(nps.monthlyPension)}`, 25, 80);
+        doc.text(`Final Corpus: â‚¹${this.formatCurrency(nps.finalCorpus)}`, 25, 60);
+        doc.text(`Lump Sum: â‚¹${this.formatCurrency(nps.lumpSum)}`, 25, 70);
+        doc.text(`Monthly Pension: â‚¹${this.formatCurrency(nps.monthlyPension)}`, 25, 80);
 
         doc.setFontSize(14);
         doc.text('UPS Benefits:', 20, 100);
         doc.setFontSize(10);
-        doc.text(`Monthly Pension: ₹${this.formatCurrency(ups.monthlyPension)}`, 25, 110);
-        doc.text(`Lump Sum: ₹${this.formatCurrency(ups.lumpSum)}`, 25, 120);
-        doc.text(`Family Pension: ₹${this.formatCurrency(ups.familyPension)}`, 25, 130);
+        doc.text(`Monthly Pension: â‚¹${this.formatCurrency(ups.monthlyPension)}`, 25, 110);
+        doc.text(`Lump Sum: â‚¹${this.formatCurrency(ups.lumpSum)}`, 25, 120);
+        doc.text(`Family Pension: â‚¹${this.formatCurrency(ups.familyPension)}`, 25, 130);
 
         doc.setFontSize(8);
         doc.text('Disclaimer: Estimates based on current policies. Actual benefits may vary.', 20, 280);
