@@ -635,7 +635,7 @@
     <article id="8th-cpc" class="article-post article-post-8th">
       
       <header>
-          <h1>8th Pay Commission 2025: A Comprehensive Guide to Salary Revisions and Employee Benefits</h1>
+          <h1>8th Pay Commission 2026: A Comprehensive Guide to Salary Revisions and Employee Benefits</h1>
           <p class="subtitle">Expert Analysis of Central Government Employee Compensation, Retirement Benefits, and Financial Planning</p>
       </header>
 
@@ -2003,5 +2003,91 @@
     script.text = JSON.stringify(structuredData);
     document.head.appendChild(script);
   </script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  //========= Listen Button (speech synthesis) =========//
+  const synth = window.speechSynthesis;
+  document.querySelectorAll('.listen-btn').forEach(function(button) {
+    // Enable or disable based on browser support
+    if (!synth) {
+      button.disabled = true;
+      // Find the info paragraph about playback and show error if exists
+      const infoPara = button.parentElement.querySelector('p');
+      if (infoPara) infoPara.textContent = "Sorry, your browser does not support text-to-speech.";
+      return;
+    } else {
+      button.disabled = false;
+    }
+
+    let utterance = null;
+    let speakingBtn = null;
+    // Listen button click
+    button.addEventListener('click', function () {
+      const articleId = button.dataset.articleId;
+      const content = document.getElementById(articleId);
+      if (!content) { console.error('Article content not found:', articleId); return; }
+
+      // If already speaking or pending, stop
+      if (utterance && synth.speaking) {
+        synth.cancel();
+        button.querySelector('span').textContent = 'Listen Now';
+        button.classList.remove('speaking');
+        utterance = null;
+        speakingBtn = null;
+        return;
+      }
+
+      // Start speaking
+      const textToSpeak = content.textContent.trim();
+      utterance = new SpeechSynthesisUtterance(textToSpeak);
+
+      utterance.onstart = function () {
+        button.querySelector('span').textContent = 'Stop Listening';
+        button.classList.add('speaking');
+        speakingBtn = button;
+      };
+      utterance.onend = utterance.onerror = function () {
+        button.querySelector('span').textContent = 'Listen Now';
+        button.classList.remove('speaking');
+        utterance = null;
+        speakingBtn = null;
+      };
+      synth.speak(utterance);
+    });
+  });
+
+  //========= Read More Button (collapsible preview) =========//
+  document.querySelectorAll('.read-more-btn').forEach(function(button) {
+    const content = button.previousElementSibling;
+    if (!content || !content.classList.contains('collapsible-content')) return;
+
+    // Check if content should be collapsible
+    if (content.scrollHeight <= 400) {
+      button.style.display = 'none';
+      content.style.maxHeight = 'none';
+      content.classList.add('expanded');
+      content.style.overflow = 'visible';
+      // Remove fade effect if exists
+      const fadeEffect = content.querySelector(':after');
+      if (fadeEffect) fadeEffect.style.display = 'none';
+    } else {
+      button.addEventListener('click', function () {
+        content.classList.toggle('expanded');
+        if (content.classList.contains('expanded')) {
+          button.textContent = 'Read Less';
+          content.style.maxHeight = '100000px';
+          content.style.overflow = 'visible';
+        } else {
+          button.textContent = 'Read More';
+          content.style.maxHeight = '400px';
+          content.style.overflow = 'hidden';
+        }
+        button.parentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  });
+});
+</script>
 </body>
 </html>
+
