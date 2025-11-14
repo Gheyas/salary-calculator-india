@@ -42,6 +42,20 @@ jobs:
           api_location: ""
           output_location: ""
 
+      # ---------------------------------------------------------
+      # ### INDEXNOW SUBMISSION STEP (NEW) ###
+      # Runs only on push to main, after successful deployment
+      # ---------------------------------------------------------
+      - name: IndexNow Submission
+        if: github.event_name == 'push'
+        uses: bojieyang/indexnow-action@v1
+        with:
+          sitemap-location: 'https://paycommissions.in/sitemap.xml'
+          endpoint: 'www.bing.com'
+          since: 1
+          since-unit: 'day'
+          key: ${{ secrets.INDEXNOW_KEY }}
+
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
