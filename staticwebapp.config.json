@@ -1,5 +1,14 @@
 {
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  },
   "routes": [
+    {
+      "route": "/*.{js,css,png,jpg,jpeg,gif,svg,woff,woff2}",
+      "headers": {
+        "Cache-Control": "max-age=31536000, immutable"
+      }
+    },
     {
       "route": "/about",
       "rewrite": "/about.html"
@@ -23,12 +32,6 @@
     {
       "route": "/blog",
       "rewrite": "/blog.html"
-    },
-    {
-      "route": "/*.{js,css,png,jpg,jpeg,gif,svg,woff,woff2}",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      }
     }
   ],
   "responseOverrides": {
@@ -38,7 +41,8 @@
     }
   },
   "globalHeaders": {
-    "content-security-policy": "default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; object-src 'none'"
+    "Cache-Control": "no-cache",
+    "content-security-policy": "default-src https: 'unsafe-inline' 'unsafe-eval'; object-src 'none'"
   },
   "mimeTypes": {
     ".json": "application/json"
