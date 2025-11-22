@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <title>8th Pay Commission Calculator 2026 | NPS vs UPS Retirement Benefits</title>
+    <meta name="description" content="Calculate your 8th Pay Commission salary salary progression and compare NPS vs UPS retirement benefits. Features fitment factor customization and accurate government formulas.">
+    <meta name="keywords" content="8th pay commission calculator, NPS vs UPS calculator, government employee salary, retirement calculator India, pay commission fitment factor, 7th CPC arrears">
+    <meta name="author" content="PayCommissions.in">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://paycommissions.in/">
+    
+    <meta property="og:title" content="8th Pay Commission & Retirement Benefits Calculator">
+    <meta property="og:description" content="Calculate your future salary and retirement benefits (NPS & UPS) with pay commission projections.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://paycommissions.in/">
+    <meta property="og:site_name" content="PayCommissions.in">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pay Commission Calculator">
+    <meta name="twitter:description" content="Free retirement planning tool for government employees. Compare NPS vs UPS.">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "PayCommissions.in",
+          "url": "https://paycommissions.in/",
+          "sameAs": [
+            "https://x.com/gheyas",
+            "https://www.instagram.com/gheyas_q?igsh=MXVieDAxOWd2eTFtNg==",
+            "https://www.linkedin.com/in/quazi-syed-gheyasuddin-09aba280?trk=contact-info"
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "8th Pay Commission & Retirement Calculator",
+          "description": "A comprehensive tool to calculate salary progression through 8th, 9th, and 10th Pay Commissions and compare NPS vs UPS retirement benefits.",
+          "url": "https://paycommissions.in/",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+          },
+          "featureList": "Salary projection, NPS calculator, UPS calculator, Pay commission, PDF export"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [{
+            "@type": "Question",
+            "name": "How accurate is the 8th Pay Commission projection?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "This calculator allows you to customize the fitment factor (typically 1.6 to 3.0). While no tool can predict government policy with 100% certainty, our default value of 2.0 is based on historical trends from the 6th and 7th CPC."
+            }
+          }, {
+            "@type": "Question",
+            "name": "Should I switch to UPS or stay in NPS?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The calculator provides a mathematical breakeven point. Generally, if you have long service years remaining and high market returns, NPS may generate a larger corpus. However, UPS provides inflation-indexed security."
+            }
+          }]
+        }
+      ]
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="/plotly-2.26.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .text-3xl { font-size: 1.5rem !important; }
+            .text-2xl { font-size: 1.25rem !important; }
+            body { font-size: 14px; }
+            #mobile-menu a { padding: 10px 12px; font-size: 1rem; }
+            #desktop-menu { font-size: 0.8rem; }
+        }
+        
+        /* Touch Targets & Scroll */
+        button, input { min-height: 44px; }
+        html { scroll-behavior: smooth; }
+        
+        /* Animations */
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in { animation: fade-in 0.5s ease-out; }
+        
+        /* Content Expander Styles */
+        .content-expanded { display: block !important; animation: fade-in 0.6s ease-out; }
+        .read-more-btn svg { transition: transform 0.3s ease; }
+        .read-more-btn.active svg { transform: rotate(180deg); }
+        
+        /* Print Styles */
+        @media print {
+            button, .no-print, #seoContentSection, #methodologySection { display: none !important; }
+            .bg-gradient-to-r { background: #fff !important; }
+        }
+        
+        .overflow-x-auto::-webkit-scrollbar { height: 8px; }
+        .overflow-x-auto::-webkit-scrollbar-track { background: #f1f1f1; }
+        .overflow-x-auto::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
+        .overflow-x-auto::-webkit-scrollbar-thumb:hover { background: #555; }
+        
+        /* Typography for SEO Content */
+        .prose h3 { color: #1e40af; font-weight: 700; margin-top: 1.5em; margin-bottom: 0.5em; }
+        .prose p { margin-bottom: 1em; line-height: 1.7; color: #374151; }
+        .prose ul { list-style-type: disc; padding-left: 1.5em; margin-bottom: 1em; }
+        .prose li { margin-bottom: 0.5em; }
+        .prose strong { color: #1f2937; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-screen">
+    
+    <nav class="bg-white shadow-sm sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="https://paycommissions.in/" class="font-bold text-lg text-blue-700">PayCommissions.in</a>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div id="desktop-menu" class="ml-4 flex items-baseline space-x-1">
+                        <a href="index.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">Home</a>
+                        <a href="about.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">About</a>
+                        <a href="pay-commission.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">Pay Commission</a>
+                        <a href="#retirementInputSection" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">NPS vs UPS</a>
+                        <a href="blog.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">Blog</a>
+                        <a href="faq.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">FAQ</a>
+                        <a href="contact.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">Contact</a>
+                        <a href="privacy.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">Privacy</a>
+                    </div>
+                </div>
+                
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-button" type="button" class="bg-blue-50 inline-flex items-center justify-center p-2 rounded-md text-blue-600 hover:text-blue-700 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="about.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="pay-commission.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Pay Commission</a>
+                <a href="#retirementInputSection" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">NPS vs UPS</a>
+                <a href="blog.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                <a href="faq.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">FAQ</a>
+                <a href="contact.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                <a href="privacy.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Privacy</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container mx-auto px-4 py-8 max-w-7xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-5xl font-bold text-gray-800 mb-3">
+                🧮 8th Pay Commission Calculator 2026
+            </h1>
+            
+            <p class="text-sm text-gray-500 mb-6">
+                Last Updated: November 14, 2025
+            </p>
+            <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto mb-4">
+                Calculate your future salary progression with upcoming pay commissions and plan your retirement with NPS & UPS benefits comparison.
+            </p>
+
+            <button id="readMoreBtn" class="read-more-btn inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors mb-4 focus:outline-none">
+                <span id="readMoreText">Read Guide: How This Calculator Helps You Plan</span>
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+
+            <div id="seoContentSection" class="hidden text-left max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-inner border border-gray-100 prose prose-blue">
+                
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">The Ultimate Guide to Future Salary Projection and NPS vs UPS Selection</h2>
+                
+                <p>For a government employee in India, financial planning is often a game of uncertainty. Unlike the private sector, where hikes are performance-based, your financial future is tied to the periodic waves of Central Pay Commissions (CPC) and the evolving landscape of pension schemes. This <strong>salary calculator for government employees</strong> is not just a simple multiplier; it is a time machine designed to project your finances decades into the future.</p>
+
+                <h3>Why "Current Salary" is a Misleading Metric</h3>
+                <p>Most calculators tell you what you earn today. But retirement planning requires knowing what you will earn in 2036 (9th Pay Commission) or 2046 (10th Pay Commission). Inflation erodes the value of money, but the <strong>future pay commission projection</strong> logic embedded in this tool helps you visualize your purchasing power. By accounting for Dearness Allowance (DA) mergers and Fitment Factors, we help you answer the critical question: <em>"Will my salary keep up with my lifestyle?"</em></p>
+
+                <h3>Demystifying the Fitment Factor</h3>
+                <p>The "Fitment Factor" is the magic number that determines your jump in salary when a new commission arrives.
+                <ul>
+                    <li><strong>7th CPC:</strong> The factor was 2.57.</li>
+                    <li><strong>8th CPC Prediction:</strong> Experts anticipate a factor between 1.96 and 2.5.</li>
+                </ul>
+                This tool is unique because it allows you to input your own assumptions. Whether you are optimistic (expecting 2.5x) or conservative (expecting 1.8x), you can see how that single variable impacts your gratuity and pension corpus by millions of rupees.</p>
+
+                <h2 class="text-2xl font-bold text-gray-800 mt-6 mb-4">NPS vs UPS Calculator: The Battle of Benefits</h2>
+                
+                <p>With the introduction of the <strong>Unified Pension Scheme (UPS)</strong>, government staff now face a once-in-a-lifetime choice. Should you stick with the market-linked National Pension System (NPS) or switch to the assured UPS? This <strong>pension benefit comparison</strong> cannot be solved with guesswork.</p>
+
+                <h3>The NPS Strategy: High Risk, High Reward?</h3>
+                <p>The NPS allows your money to grow in the equity and debt markets. If the market performs well (10-12% returns) over a 25-30 year service period, your corpus could be significantly larger than any government guarantee. However, it carries the risk of market crashes exactly when you are about to retire.</p>
+
+                <h3>The UPS Assurance: Inflation-Proof Security</h3>
+                <p>UPS offers a guarantee: 50% of your last 12 months' average basic pay as a pension. Crucially, this is indexed to inflation via Dearness Relief (DR). This eliminates market risk entirely. Our calculator performs a complex <strong>NPS vs UPS comparison</strong> by pitting your potential market returns against the guaranteed UPS formula to find your specific "Breakeven Point."</p>
+
+                <h3>Key Features of This Retirement Planning Tool</h3>
+                <ul>
+                    <li><strong>Multi-Decade Projection:</strong> Unlike standard tools that stop at 5 years, we project up to the 11th Pay Commission (2056).</li>
+                    <li><strong>DA Growth Simulation:</strong> You can customize how fast Dearness Allowance grows (typically 4-5% annually).</li>
+                    <li><strong>HRA Integration:</strong> Adjusts for X, Y, and Z class cities to give a true Gross Salary picture.</li>
+                    <li><strong>PDF Reporting:</strong> Download a detailed report to discuss with your financial advisor or family.</li>
+                </ul>
+
+                <h2 class="text-2xl font-bold text-gray-800 mt-6 mb-4">Frequently Asked Questions (FAQ)</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-bold text-gray-800">Is the 8th Pay Commission confirmed?</h4>
+                        <p class="text-sm">While the government has not officially notified the date, historical precedents suggest a 10-year cycle. The 7th CPC was implemented in 2016, making 2026 the likely year for the 8th CPC.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">Which is better for short service: NPS or UPS?</h4>
+                        <p class="text-sm">For service periods less than 20 years, the compounding effect of NPS often fails to beat the guaranteed 50% pension of UPS, especially given the UPS minimum pension guarantee of ₹10,000.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">Does this calculator account for promotions?</h4>
+                        <p class="text-sm">Currently, the tool calculates based on annual increments (3%) and MACP/Pay Commission jumps. Specific departmental promotions involving grade pay changes should be estimated by increasing your "Annual Increment" percentage slightly.</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-100 text-sm text-blue-800">
+                    <strong>Strategic Tip:</strong> Use the toggle below to run two scenarios. First, calculate with a conservative 8% NPS return. Then, run it with an aggressive 12%. If UPS beats the 8% scenario but loses to the 12% one, your decision depends entirely on your risk appetite.
+                </div>
+            </div>
+        </header>
+
+        <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-6 md:py-8 px-4 md:px-6 rounded-2xl mb-8 shadow-lg">
+            <h2 class="text-xl md:text-2xl font-bold mb-4 text-center">Why Use This Calculator?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs md:text-sm">
+                <div class="flex items-start">
+                    <span class="text-2xl mr-3">📊</span>
+                    <div>
+                        <h3 class="font-bold mb-1">Year-by-Year Salary</h3>
+                        <p class="text-blue-100">See detailed progression through multiple pay commissions</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <span class="text-2xl mr-3">💰</span>
+                    <div>
+                        <h3 class="font-bold mb-1">NPS & UPS Benefits</h3>
+                        <p class="text-blue-100">Compare retirement benefits under both schemes</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <span class="text-2xl mr-3">📱</span>
+                    <div>
+                        <h3 class="font-bold mb-1">Mobile Friendly</h3>
+                        <p class="text-blue-100">Calculate anywhere, anytime on any device</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="bg-gray-100 border-l-4 border-blue-500 p-4 md:p-6 rounded-lg mb-8 text-gray-700 text-sm">
+            <p class="text-gray-600 text-sm">
+    <strong>💡 Note:</strong> This calculator has been developed with the advisory input of 
+    <a href="about.html#expert-panel" class="text-blue-600 hover:text-blue-800 font-semibold underline decoration-2">
+        over 100 serving and retired central government employees
+    </a>, all of whom have witnessed the implementation of at least two Pay Commissions. 
+    The credentials of this expert panel can be reviewed on the 
+    <a href="about.html#expert-panel" class="text-blue-600 hover:text-blue-800 underline">
+        official About Page
+    </a>.
+</p>
+
+        </section>
+        <div class="bg-white rounded-2xl shadow-xl p-4 md:p-8 mb-8 border border-gray-200">
+            <ul id="validationErrors" class="hidden bg-red-50 border-l-4 border-red-500 p-4 mb-6 text-red-700 text-sm space-y-1"></ul>
+
+            <section class="mb-8">
+                <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <span class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">1</span>
+                    Salary Details
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <div>
+                        <label for="basicPay" class="block text-sm font-medium text-gray-700 mb-2">
+                            Your current basic pay as per 7th CPC <span class="text-red-500">*</span>
+                        </label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-3 text-gray-500">₹</span>
+                            <input type="number" id="basicPay" placeholder="43600" 
+                                   class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="currentDA" class="block text-sm font-medium text-gray-700 mb-2">
+                            Current Dearness Allowance percentage <span class="text-red-500">*</span>
+                        </label>
+                        <div class="relative">
+                            <input type="number" id="currentDA" value="58" min="0" max="100" step="1"
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                   required>
+                            <span class="absolute right-3 top-3 text-gray-500">%</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="retirementYear" class="block text-sm font-medium text-gray-700 mb-2">
+                            Year when you plan to retire <span class="text-red-500">*</span>
+                        </label>
+                        <input type="number" id="retirementYear" placeholder="2053" min="2026" max="2070"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                               required>
+                    </div>
+
+                    <div>
+                        <label for="hraPercent" class="block text-sm font-medium text-gray-700 mb-2">
+                            HRA Percentage
+                        </label>
+                        <select id="hraPercent" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                            <option value="30">X-Class Cities (30%)</option>
+                            <option value="20">Y-Class Cities (20%)</option>
+                            <option value="10">Z-Class Cities (10%)</option>
+                            <option value="0">No HRA (0%)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="annualDAGrowth" class="block text-sm font-medium text-gray-700 mb-2">
+                            Expected annual increase in DA
+                        </label>
+                        <div class="relative">
+                            <input type="number" id="annualDAGrowth" value="4" min="0" max="50" step="0.5"
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                            <span class="absolute right-3 top-3 text-gray-500">%</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="annualIncrement" class="block text-sm font-medium text-gray-700 mb-2">
+                            Annual increment to basic pay
+                        </label>
+                        <div class="relative">
+                            <input type="number" id="annualIncrement" value="3" min="0" max="20" step="0.1"
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                            <span class="absolute right-3 top-3 text-gray-500">%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <span class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm">2</span>
+                    Pay Commission Fitment Factors
+                </h2>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6 rounded text-sm">
+                    <p class="text-blue-800 mb-2">
+                        <strong>How it works:</strong> Enter your retirement year above, and only the relevant pay commission fitment factors will appear below. These factors determine your salary increase when a new pay commission is implemented.
+                    </p>
+                    <p class="text-blue-700 text-xs">
+                        💡 <strong>Tip:</strong> The fitment factor is the multiplier applied to your basic pay when a new pay commission is implemented. The 7th CPC used a factor of 2.57. Most experts expect future commissions to use a factor between 2.0 and 2.5.
+                    </p>
+                </div>
+
+                <div id="payCommissionInputs" class="space-y-4">
+                    <div id="fitment8thContainer" class="hidden">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between p-4 bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg border-2 border-purple-300">
+                            <div class="mb-3 md:mb-0">
+                                <h3 class="font-bold text-gray-800">8th Pay Commission</h3>
+                                <p class="text-sm text-gray-600">Expected implementation: January 2026</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <label for="fitment8th" class="text-sm font-medium text-gray-700">Fitment Factor:</label>
+                                <input type="number" id="fitment8th" value="2.0" min="1.6" max="3.5" step="0.1"
+                                       class="w-24 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="fitment9thContainer" class="hidden">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between p-4 bg-gradient-to-r from-green-50 to-green-100 rounded-lg border-2 border-green-300">
+                            <div class="mb-3 md:mb-0">
+                                <h3 class="font-bold text-gray-800">9th Pay Commission</h3>
+                                <p class="text-sm text-gray-600">Expected implementation: January 2036</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <label for="fitment9th" class="text-sm font-medium text-gray-700">Fitment Factor:</label>
+                                <input type="number" id="fitment9th" value="2.0" min="1.4" max="3.5" step="0.1"
+                                       class="w-24 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="fitment10thContainer" class="hidden">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between p-4 bg-gradient-to-r from-orange-50 to-orange-100 rounded-lg border-2 border-orange-300">
+                            <div class="mb-3 md:mb-0">
+                                <h3 class="font-bold text-gray-800">10th Pay Commission</h3>
+                                <p class="text-sm text-gray-600">Expected implementation: January 2046</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <label for="fitment10th" class="text-sm font-medium text-gray-700">Fitment Factor:</label>
+                                <input type="number" id="fitment10th" value="2.0" min="1.4" max="3.5" step="0.1"
+                                       class="w-24 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="fitment11thContainer" class="hidden">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between p-4 bg-gradient-to-r from-pink-50 to-pink-100 rounded-lg border-2 border-pink-300">
+                            <div class="mb-3 md:mb-0">
+                                <h3 class="font-bold text-gray-800">11th Pay Commission</h3>
+                                <p class="text-sm text-gray-600">Expected implementation: January 2056</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <label for="fitment11th" class="text-sm font-medium text-gray-700">Fitment Factor:</label>
+                                <input type="number" id="fitment11th" value="2.0" min="1.4" max="3.5" step="0.1"
+                                       class="w-24 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="text-center">
+                <button id="calculateBtn" 
+                        class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 md:px-12 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 duration-200">
+                    🧮 Calculate Salary Projection
+                </button>
+            </div>
+        </div>
+
+        <div id="resultsSection" class="hidden">
+            <div class="bg-gradient-to-r from-green-600 to-green-700 text-white rounded-2xl shadow-xl p-6 md:p-8 mb-8">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">Your Retirement Salary Projection</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                    <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-xl p-4 md:p-6">
+                        <h3 class="text-sm md:text-base font-semibold mb-2 text-green-100">Final Basic Pay</h3>
+                        <p id="finalBasicPay" class="text-2xl md:text-4xl font-bold">₹0</p>
+                    </div>
+                    <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-xl p-4 md:p-6">
+                        <h3 class="text-sm md:text-base font-semibold mb-2 text-green-100">Final DA Amount</h3>
+                        <p id="finalDAAmount" class="text-2xl md:text-4xl font-bold">₹0</p>
+                    </div>
+                    <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-xl p-4 md:p-6">
+                        <h3 class="text-sm md:text-base font-semibold mb-2 text-green-100">Final Gross Salary</h3>
+                        <p id="finalGrossSalary" class="text-2xl md:text-4xl font-bold">₹0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl p-4 md:p-8 mb-8 border border-gray-200">
+                <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-4">Salary Progression Chart</h3>
+                <div id="salaryChart" style="width: 100%; height: 400px;"></div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl p-4 md:p-8 mb-8 border border-gray-200">
+                <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-4">Detailed Year-wise Breakdown</h3>
+                
+                <div class="overflow-x-auto -mx-4 md:mx-0">
+                    <table class="w-full border-collapse text-xs md:text-sm min-w-[800px]">
+                        <thead>
+                            <tr class="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+                                <th class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-left">Year</th>
+                                <th class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-left">Pay Commission</th>
+                                <th class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-right">Basic Pay</th>
+                                <th class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-right">DA %</th>
+                                <th class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-right">DA Amount</th>
+                                <th class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-right">HRA Amount</th>
+                                <th class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-right">Gross Salary</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsTableBody">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="text-center mb-8">
+                <button id="downloadPDF" 
+                        class="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 md:px-10 py-3 md:py-4 rounded-xl font-bold text-base md:text-lg hover:from-red-700 hover:to-red-800 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 duration-200">
+                    📥 Download Salary Report (PDF)
+                </button>
+                
+                <button id="viewResultsBtn" class="hidden"></button>
+            </div>
+        </div>
+
+        <div id="retirementBenefitsBtn" class="hidden mt-8 text-center animate-fade-in">
+            <button onclick="document.getElementById('retirementInputSection').scrollIntoView({behavior: 'smooth'})" 
+                    class="bg-gradient-to-r from-green-600 to-green-700 text-white px-6 py-3 md:px-10 md:py-4 rounded-xl font-bold text-base md:text-lg hover:from-green-700 hover:to-green-800 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 duration-200">
+                💰 Calculate Retirement Benefits (NPS & UPS)
+            </button>
+        </div>
+
+        <section id="retirementInputSection" class="bg-white rounded-2xl shadow-xl p-4 md:p-8 mt-8 border border-gray-200">
+            <h2 class="text-xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6 flex items-center">
+                <span class="text-2xl md:text-3xl mr-2 md:mr-3">💼</span>
+                <span>Retirement Benefits Calculator</span>
+            </h2>
+
+            <ul id="retirementValidationErrors" class="hidden bg-red-50 border-l-4 border-red-500 p-4 mb-6 text-red-700 text-sm space-y-1"></ul>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                <div>
+                    <label for="existingNPSCorpus" class="block text-sm font-medium text-gray-700 mb-2">
+                        Existing NPS Corpus <span class="text-gray-500">(₹)</span>
+                    </label>
+                    <input type="number" id="existingNPSCorpus" value="0" min="0" step="10000"
+                           class="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm md:text-base">
+                    <p class="text-xs text-gray-500 mt-1">Enter 0 if starting fresh</p>
+                </div>
+
+                <div>
+                    <label for="expectedReturn" class="block text-sm font-medium text-gray-700 mb-2">
+                        Expected Annual Return <span class="text-gray-500">(%)</span>
+                    </label>
+                    <input type="number" id="expectedReturn" value="10" min="5" max="15" step="0.5"
+                           class="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm md:text-base">
+                    <p class="text-xs text-gray-500 mt-1">Range: 8-12% typical</p>
+                </div>
+
+                <div>
+                    <label for="annuityRate" class="block text-sm font-medium text-gray-700 mb-2">
+                        Annuity Rate <span class="text-gray-500">(%)</span>
+                    </label>
+                    <input type="number" id="annuityRate" value="6" min="4" max="8" step="0.5"
+                           class="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm md:text-base">
+                    <p class="text-xs text-gray-500 mt-1">Range: 5-7% typical</p>
+                </div>
+
+                <div>
+                    <label for="totalServiceYears" class="block text-sm font-medium text-gray-700 mb-2">
+                        Total Years of Service (at retirement) <span class="text-red-500">*</span>
+                    </label>
+                    <input type="number" id="totalServiceYears" value="30" min="10" max="50" step="1"
+                           class="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm md:text-base">
+                    <p class="text-xs text-gray-500 mt-1">Min 10 years for pension/gratuity</p>
+                </div>
+                </div>
+
+            <div class="mt-4 md:mt-6 bg-blue-50 border-l-4 border-blue-500 p-3 md:p-4 rounded text-sm">
+                <p class="text-blue-800">
+                    <strong>💡 Note:</strong> This calculator compares NPS (National Pension System) and UPS (Unified Pension Scheme) benefits based on your salary progression above.
+                </p>
+            </div>
+
+            <div class="mt-4 md:mt-6 text-center">
+                <button id="calculateRetirementBtn" 
+                        class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 md:px-10 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 duration-200">
+                    Calculate Retirement Benefits
+                </button>
+            </div>
+        </section>
+
+        <section id="retirementResultsSection" class="hidden mt-8">
+            <div class="bg-white rounded-2xl shadow-xl p-4 md:p-8 border border-gray-200">
+                <h2 class="text-xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
+                    📊 NPS Benefits (3 Scenarios)
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                    <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-4 md:p-6 rounded-xl border-2 border-yellow-300">
+                        <h3 class="font-bold text-base md:text-lg text-yellow-800 mb-3 md:mb-4">Conservative (8%)</h3>
+                        <div class="space-y-2 md:space-y-3 text-xs md:text-sm">
+                            <div>
+                                <span class="text-gray-600">Total Invested:</span>
+                                <span id="conservativeInvested" class="font-bold text-gray-800 block text-sm md:text-lg">-</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-600">Final Corpus:</span>
+                                <span id="conservativeCorpus" class="font-bold text-gray-800 block text-sm md:text-lg">-</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-600">Lump Sum (60%):</span>
+                                <span id="conservativeLumpSum" class="font-bold text-green-600 block text-base md:text-xl">-</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-600">Monthly Pension:</span>
+                                <span id="conservativePension" class="font-bold text-blue-600 block text-base md:text-xl">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-4 md:p-6 rounded-xl border-2 border-blue-400 ring-2 md:ring-4 ring-blue-200">
+                        <h3 class="font-bold text-base md:text-lg text-blue-800 mb-3 md:mb-4">Moderate (10%) ⭐</h3>
+                        <div class="space-y-2 md:space-y-3 text-xs md:text-sm">
+                            <div>
+                                <span class="text-gray-600">Total Invested:</span>
+                                <span id="moderateInvested" class="font-bold text-gray-800 block text-sm md:text-lg">-</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-600">Final Corpus:</span>
+                                <span id="moderateCorpus" class="font-bold text-gray-800 block text-sm md:text-lg">-</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-600">Lump Sum (60%):</span>
+                                <span id="moderateLumpSum" class="font-bold text-green-600 block text-base md:text-xl">-</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-600">Monthly Pension:</span>
+                                <span id="moderatePension" class="font-bold text-blue-600 block text-base md:text-xl">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 p-4 md:p-6 rounded-xl border-2 border-green-300">
+                        <h3 class="font-bold text-base md:text-lg text-green-800 mb-3 md:mb-4">Aggressive (12%)</h3>
+                        <div class="space-y-2 md:space-y-3 text-xs md:text-sm">
+                            <div>
+                                <span class="text-gray-600">Total Invested:</span>
+                                <span id="aggressiveInvested" class="font-bold text-gray-800 block text-sm md:text-lg">-</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-600">Final Corpus:</span>
+                                <span id="aggressiveCorpus" class="font-bold text-gray-800 block text-sm md:text-lg">-</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-600">Lump Sum (60%):</span>
+                                <span id="aggressiveLumpSum" class="font-bold text-green-600 block text-base md:text-xl">-</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-600">Monthly Pension:</span>
+                                <span id="aggressivePension" class="font-bold text-blue-600 block text-base md:text-xl">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 mt-4 text-center">* NPS contributions: 24% of salary (10% employee + 14% government)</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl p-4 md:p-8 mt-6 md:mt-8 border border-gray-200">
+                <h2 class="text-xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
+                    🛡️ UPS Benefits (Guaranteed)
+                </h2>
+
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-4 md:p-6 rounded-xl border-2 border-purple-300">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-sm md:text-base">
+                        <div>
+                            <span class="text-gray-600 text-xs md:text-sm">Years of Service:</span>
+                            <span id="upsYearsService" class="font-bold text-gray-800 block text-base md:text-lg">-</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600 text-xs md:text-sm">Final Basic Pay:</span>
+                            <span id="upsFinalBasic" class="font-bold text-gray-800 block text-base md:text-lg">-</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600 text-xs md:text-sm">Monthly Pension:</span>
+                            <span id="upsMonthlyPension" class="font-bold text-blue-600 block text-lg md:text-2xl">-</span>
+                            <span class="text-xs text-gray-500">(50% of basic)</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600 text-xs md:text-sm">Lump Sum:</span>
+                            <span id="upsLumpSum" class="font-bold text-green-600 block text-lg md:text-2xl">-</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600 text-xs md:text-sm">Family Pension:</span>
+                            <span id="upsFamilyPension" class="font-bold text-purple-600 block text-base md:text-lg">-</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600 text-xs md:text-sm">Total Contribution:</span>
+                            <span id="upsTotalContribution" class="font-bold text-gray-800 block text-base md:text-lg">-</span>
+                            <span class="text-xs text-gray-500">(28.5% salary)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 bg-green-50 border-l-4 border-green-500 p-3 md:p-4 rounded text-xs md:text-sm">
+                    <p class="text-green-800">
+                        <strong>✓ Benefits:</strong> Government guaranteed, inflation-indexed (Dearness Relief), minimum ₹10,000/month, no market risk, assured family pension
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl p-4 md:p-8 mt-6 md:mt-8 border border-gray-200">
+                <h2 class="text-xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
+                    ⚖️ NPS vs UPS Comparison
+                </h2>
+
+                <div class="overflow-x-auto -mx-4 md:mx-0">
+                    <table class="w-full border-collapse text-xs md:text-base min-w-[600px]">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-left">Benefit</th>
+                                <th class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center">NPS</th>
+                                <th class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center">UPS</th>
+                                <th class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center">Winner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 font-semibold">Monthly Pension</td>
+                                <td id="comparisonNPSPension" class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center">-</td>
+                                <td id="comparisonUPSPension" class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center">-</td>
+                                <td id="pensionWinner" class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center font-bold text-green-600">-</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 font-semibold">Lump Sum</td>
+                                <td id="comparisonNPSLumpSum" class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center">-</td>
+                                <td id="comparisonUPSLumpSum" class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center">-</td>
+                                <td id="lumpSumWinner" class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center font-bold text-green-600">-</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 font-semibold">Inflation Protection</td>
+                                <td class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-red-600">✗ No</td>
+                                <td class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-green-600">✓ Yes (DR)</td>
+                                <td class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center font-bold text-green-600">UPS</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 font-semibold">Market Risk</td>
+                                <td class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-red-600">Yes</td>
+                                <td class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-green-600">No</td>
+                                <td class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center font-bold text-green-600">UPS</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 font-semibold">20-Yr Total Value</td>
+                                <td id="npsLifetimeValue" class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center">-</td>
+                                <td id="upsLifetimeValue" class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center">-</td>
+                                <td id="lifetimeWinner" class="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center font-bold text-green-600">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-4 md:mt-6 bg-yellow-50 border-l-4 border-yellow-500 p-3 md:p-4 rounded text-xs md:text-sm">
+                    <p class="text-yellow-800">
+                        <strong>⏱️ Breakeven:</strong> <span id="breakevenYears" class="font-bold">-</span> years after retirement
+                        <br><span class="text-xs">Time needed for UPS's higher pension to compensate for NPS's higher lump sum</span>
+                    </p>
+                </div>
+
+                <div id="retirementComparisonChart" class="mt-4 md:mt-6" style="height: 350px;"></div>
+            </div>
+
+            <div class="mt-6 md:mt-8 text-center space-y-3">
+                <button id="downloadRetirementPDF" 
+                        class="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-lg font-semibold text-sm md:text-base hover:from-red-700 hover:to-red-800 transition-all shadow-lg">
+                    📥 Download Retirement Benefits Report (PDF)
+                </button>
+                <p class="text-xs text-gray-500">Disclaimer: Estimates based on current policies. Actual benefits may vary.</p>
+            </div>
+        </section>
+
+        <section id="methodologySection" class="max-w-4xl mx-auto mt-12 mb-8 bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+            <div class="p-6 bg-gray-50 border-b border-gray-200">
+                <h2 class="text-xl font-bold text-gray-800 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    How This Calculator Works & Assumptions
+                </h2>
+            </div>
+            
+            <div class="p-6">
+                <div class="prose prose-sm text-gray-600">
+                    <p>This tool uses the official 7th CPC Pay Matrix logic and projects it forward using standard government formulas.</p>
+                    <p><strong>Core Formula:</strong> <em>New Basic Pay = (Current Basic Pay × Fitment Factor)</em> rounded to the nearest cell in the Pay Matrix.</p>
+                    
+                    <div id="methodologyContent" class="hidden mt-4 pt-4 border-t border-gray-100">
+                        <h3 class="text-gray-800 font-bold text-lg mt-2">Detailed Calculation Logic</h3>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li><strong>Fitment Factor:</strong> We use a default factor of <strong>2.0</strong> for the 8th CPC. The 7th CPC used 2.57. You can adjust this in the settings.</li>
+                            <li><strong>DA Calculation:</strong> <br><code>DA Amount = Basic Pay × (Current DA Rate / 100)</code>.<br> Note: When DA crosses 50%, allowances (HRA, etc.) are automatically revised as per DoE circulars.</li>
+                            <li><strong>UPS Pension Formula:</strong> <br><code>Pension = 50% of Average Basic Pay (Last 12 Months)</code>. <br>Guaranteed Minimum Pension: ₹10,000/month.</li>
+                            <li><strong>NPS Projection:</strong> Uses Compound Interest formula: <br><code>A = P(1 + r/n)^(nt)</code> assuming monthly contributions (10% Employee + 14% Govt).</li>
+                        </ul>
+
+                        <h3 class="text-gray-800 font-bold text-lg mt-4">Citations & Official Sources</h3>
+                        <ul class="list-disc pl-5 space-y-1 text-xs">
+                            <li><strong>7th CPC Gazette Notification:</strong> <a href="https://doe.gov.in/" target="_blank" class="text-blue-600 hover:underline" rel="nofollow">Ministry of Finance Notification No. 1-2/2016-IC</a></li>
+                            <li><strong>Unified Pension Scheme (UPS):</strong> <a href="https://pib.gov.in/" target="_blank" class="text-blue-600 hover:underline" rel="nofollow">Cabinet Decision dated Aug 24, 2024</a></li>
+                            <li><strong>Dearness Allowance Rules:</strong> Based on Consumer Price Index (IW) data released by <a href="https://labourbureau.gov.in/" target="_blank" class="text-blue-600 hover:underline" rel="nofollow">Labour Bureau</a>.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <button id="toggleMethodologyBtn" class="mt-4 text-blue-600 font-semibold text-sm hover:text-blue-800 flex items-center focus:outline-none">
+                    <span id="methodologyBtnText">Read Full Calculation Details</span>
+                    <svg id="methodologyArrow" class="w-4 h-4 ml-1 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+            </div>
+        </section>
+
+        <footer class="mt-12 text-gray-600 text-sm">
+            <div class="max-w-4xl mx-auto bg-gray-100 p-6 rounded-lg border border-gray-200">
+                <p class="font-semibold text-base text-gray-800 mb-3">Disclaimer:</p>
+                <p class="mb-3">
+                    The details regarding the 8th Central Pay Commission (8th CPC)—including its implementation date and fitment factor—are currently projections only.
+                </p>
+                <p class="mb-3">
+                    As of the latest updates from the Government of India, the final figures will only be confirmed upon the release of an official notification by the 
+                    <a href="https://doe.gov.in/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-medium">Department of Expenditure (DoE)</a>.
+                </p>
+                <p class="mb-4">
+                    Use these projections for planning purposes only. Always confirm the final amounts from the official circulars issued by the 
+                    <a href="https://doe.gov.in/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-medium">Department of Expenditure (DoE)</a> 
+                    or the 
+                    <a href="https://indianrailways.gov.in/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-medium">Railway Board</a> 
+                    before making any financial decisions.
+                </p>
+            </div>
+            <p class="text-center mt-6 text-xs text-gray-500">
+                © 2025 PayCommissions.in - Free Government Employee Salary Calculator
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileIcon = menuButton ? menuButton.querySelector('svg.block') : null;
+            const closeIcon = menuButton ? menuButton.querySelector('svg.hidden') : null;
+
+            if (menuButton) {
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    mobileIcon.classList.toggle('hidden');
+                    mobileIcon.classList.toggle('block');
+                    closeIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('block');
+                });
+            }
+
+            // Close mobile menu when a link is clicked
+            if (mobileMenu) {
+                const mobileLinks = mobileMenu.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        if (mobileIcon) {
+                            mobileIcon.classList.remove('hidden');
+                            mobileIcon.classList.add('block');
+                        }
+                        if (closeIcon) {
+                            closeIcon.classList.add('hidden');
+                            closeIcon.classList.remove('block');
+                        }
+                    });
+                });
+            }
+
+            // Top "Read More" Logic
+            const readMoreBtn = document.getElementById('readMoreBtn');
+            const seoContentSection = document.getElementById('seoContentSection');
+            const readMoreText = document.getElementById('readMoreText');
+            
+            if(readMoreBtn && seoContentSection) {
+                readMoreBtn.addEventListener('click', () => {
+                    seoContentSection.classList.toggle('hidden');
+                    seoContentSection.classList.toggle('content-expanded');
+                    readMoreBtn.classList.toggle('active');
+                    
+                    if (seoContentSection.classList.contains('hidden')) {
+                        readMoreText.textContent = "Read Guide: How This Calculator Helps You Plan";
+                    } else {
+                        readMoreText.textContent = "Hide Guide";
+                    }
+                });
+            }
+
+            // BOTTOM "How it Works" Toggle Logic (New Feature)
+            const toggleMethodologyBtn = document.getElementById('toggleMethodologyBtn');
+            const methodologyContent = document.getElementById('methodologyContent');
+            const methodologyBtnText = document.getElementById('methodologyBtnText');
+            const methodologyArrow = document.getElementById('methodologyArrow');
+
+            if(toggleMethodologyBtn && methodologyContent) {
+                toggleMethodologyBtn.addEventListener('click', () => {
+                    methodologyContent.classList.toggle('hidden');
+                    methodologyContent.classList.toggle('animate-fade-in');
+                    
+                    if (methodologyContent.classList.contains('hidden')) {
+                        methodologyBtnText.textContent = "Read Full Calculation Details";
+                        methodologyArrow.style.transform = "rotate(0deg)";
+                    } else {
+                        methodologyBtnText.textContent = "Hide Calculation Details";
+                        methodologyArrow.style.transform = "rotate(180deg)";
+                    }
+                });
+            }
+        });
+    </script>
+    
+    <script src="calculator.js"></script>
+
+</body>
+</html>

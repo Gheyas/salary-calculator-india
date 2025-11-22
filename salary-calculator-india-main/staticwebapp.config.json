@@ -1,0 +1,50 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  },
+  "routes": [
+    {
+      "route": "/*.{js,css,png,jpg,jpeg,gif,svg,woff,woff2}",
+      "headers": {
+        "Cache-Control": "max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/about",
+      "rewrite": "/about.html"
+    },
+    {
+      "route": "/contact",
+      "rewrite": "/contact.html"
+    },
+    {
+      "route": "/faq",
+      "rewrite": "/faq.html"
+    },
+    {
+      "route": "/privacy",
+      "rewrite": "/privacy.html"
+    },
+    {
+      "route": "/pay-commission",
+      "rewrite": "/pay-commission.html"
+    },
+    {
+      "route": "/blog",
+      "rewrite": "/blog.html"
+    }
+  ],
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/404.html",
+      "statusCode": 404
+    }
+  },
+  "globalHeaders": {
+    "Cache-Control": "no-cache",
+    "content-security-policy": "default-src https: 'unsafe-inline' 'unsafe-eval'; object-src 'none'"
+  },
+  "mimeTypes": {
+    ".json": "application/json"
+  }
+}
