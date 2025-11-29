@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>8th Pay Commission Calculator 2026 | NPS & UPS Retirement Benefits</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon.png">
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     
     <title>8th Pay Commission Calculator 2026 | NPS vs UPS Retirement Benefits</title>
@@ -1108,38 +1100,48 @@
 </footer>
     </div>
 
-    <script>
+        <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Mobile Menu Toggle
+            // Mobile Menu Elements
             const menuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            const mobileIcon = menuButton ? menuButton.querySelector('svg.block') : null;
-            const closeIcon = menuButton ? menuButton.querySelector('svg.hidden') : null;
+            // Icons inside the button
+            const mobileIcon = menuButton ? menuButton.querySelector('svg:first-child') : null; // Hamburger
+            const closeIcon = menuButton ? menuButton.querySelector('svg:last-child') : null;  // X icon
 
-            if (menuButton) {
-                menuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                    mobileIcon.classList.toggle('hidden');
-                    mobileIcon.classList.toggle('block');
-                    closeIcon.classList.toggle('hidden');
-                    closeIcon.classList.toggle('block');
-                });
+            // Helper function to force menu state
+            function setMenuState(isOpen) {
+                if (isOpen) {
+                    mobileMenu.classList.remove('hidden');
+                    if (mobileIcon) { mobileIcon.classList.add('hidden'); mobileIcon.classList.remove('block'); }
+                    if (closeIcon) { closeIcon.classList.remove('hidden'); closeIcon.classList.add('block'); }
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    if (mobileIcon) { mobileIcon.classList.remove('hidden'); mobileIcon.classList.add('block'); }
+                    if (closeIcon) { closeIcon.classList.add('hidden'); closeIcon.classList.remove('block'); }
+                }
             }
 
-            // Close mobile menu when a link is clicked
-            if (mobileMenu) {
+            if (menuButton && mobileMenu) {
+                // Toggle on Button Click
+                menuButton.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Stop bubbling
+                    const isHidden = mobileMenu.classList.contains('hidden');
+                    setMenuState(isHidden); // If hidden, open it. If open, close it.
+                });
+
+                // Close when clicking OUTSIDE the menu
+                document.addEventListener('click', (e) => {
+                    if (!mobileMenu.contains(e.target) && !menuButton.contains(e.target)) {
+                        setMenuState(false); // Force close
+                    }
+                });
+
+                // Close when clicking a LINK inside the menu
                 const mobileLinks = mobileMenu.querySelectorAll('a');
                 mobileLinks.forEach(link => {
                     link.addEventListener('click', () => {
-                        mobileMenu.classList.add('hidden');
-                        if (mobileIcon) {
-                            mobileIcon.classList.remove('hidden');
-                            mobileIcon.classList.add('block');
-                        }
-                        if (closeIcon) {
-                            closeIcon.classList.add('hidden');
-                            closeIcon.classList.remove('block');
-                        }
+                        setMenuState(false); // Force close
                     });
                 });
             }
@@ -1163,7 +1165,7 @@
                 });
             }
 
-            // BOTTOM "How it Works" Toggle Logic (New Feature)
+            // Bottom "How it Works" Toggle Logic
             const toggleMethodologyBtn = document.getElementById('toggleMethodologyBtn');
             const methodologyContent = document.getElementById('methodologyContent');
             const methodologyBtnText = document.getElementById('methodologyBtnText');
@@ -1185,6 +1187,7 @@
             }
         });
     </script>
+
     
     <script src="calculator.js"></script>
 
