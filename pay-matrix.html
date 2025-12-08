@@ -9,7 +9,21 @@
 
     <link rel="canonical" href="https://paycommissions.in/pay-matrix.html">
 
-    <!-- WebPage Schema -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+        /* Keep article specific styles */
+        .article-content p { margin-bottom: 1.25rem; line-height: 1.75; color: #374151; }
+        .article-content h1 { font-size: 2.25rem; font-weight: 700; color: #111827; margin-bottom: 1.5rem; }
+        .article-content h2 { font-size: 1.5rem; font-weight: 600; color: #1e40af; margin-top: 2rem; margin-bottom: 1rem; }
+        .article-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; }
+        .article-content li { margin-bottom: 0.5rem; color: #374151; }
+    </style>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -27,7 +41,6 @@
     }
     </script>
 
-    <!-- Article Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -61,7 +74,6 @@
     }
     </script>
 
-    <!-- AI Search / FAQ Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -94,48 +106,70 @@
       ]
     }
     </script>
-
-    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="bg-gray-50">
 
-    <!-- HEADER + NAVIGATION (from homepage, generalized but ready-to-use) -->
-    <header class="site-header">
-        <div class="container header-inner">
-            <a href="index.html" class="logo">
-                <img src="images/logo.png" alt="PayCommissions.in logo">
-            </a>
-            <nav class="main-nav" id="mainNav">
-                <ul class="nav-list">
-                    <li><a href="index.html">Calculator</a></li>
-                    <li><a href="pay-commission.html">Pay Commissions</a></li>
-                    <li><a href="blog.html">Insights</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="privacy.html">Privacy</a></li>
-                </ul>
-            </nav>
-            <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.getElementById('mainNav').classList.toggle('open')">
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-            </button>
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="https://paycommissions.in" class="font-bold text-lg text-blue-700">
+                        PayCommissions.in
+                    </a>
+                </div>
+    
+                <div class="hidden md:block">
+                    <div id="desktop-menu" class="ml-4 flex items-baseline space-x-1">
+                        <a href="index.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">Home</a>
+                        <a href="about.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">About</a>
+                        <a href="pay-commission.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">Pay Commission</a>
+                        <a href="index.html#retirementInputSection" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">NPS vs UPS</a>
+                        <a href="blog.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">Blog</a>
+                        <a href="faq.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">FAQ</a>
+                        <a href="contact.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 px-2 py-2 rounded-md text-xs lg:text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+    
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-button" type="button" class="bg-blue-50 inline-flex items-center justify-center p-2 rounded-md text-blue-600 hover:text-blue-700 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
-    </header>
+    
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
+                <a href="index.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="about.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="pay-commission.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Pay Commission</a>
+                <a href="index.html#retirementInputSection" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">NPS vs UPS</a>
+                <a href="blog.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                <a href="faq.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">FAQ</a>
+                <a href="contact.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-    <main>
-        <article class="article-page container">
+    <main class="py-12">
+        <article class="container mx-auto px-4 max-w-4xl bg-white p-8 rounded-lg shadow-md article-content">
 
             <h1>7th Pay Matrix Explained: Complete Guide for Central Government Employees</h1>
             
             <p>The 7th Pay Commission introduced a revolutionary Pay Matrix system that replaced the complex Grade Pay structure of the 6th Pay Commission. This simplified framework affects over 30 lakh central government employees and pensioners across India.</p>
 
-            <!-- IMAGE INSERTED -->
-            <figure class="article-image">
+            <figure class="my-8">
                 <img src="images/paymatrix.png"
+                     onerror="this.src='https://placehold.co/800x400?text=7th+Pay+Matrix+Chart'"
                      alt="Visualization of 7th Pay Matrix levels and salary progression"
-                     style="max-width:100%;height:auto;display:block;margin:1.5rem auto;">
-                <figcaption>Visual overview of pay levels and increments in the 7th Pay Matrix.</figcaption>
+                     class="w-full h-auto rounded-lg shadow-sm">
+                <figcaption class="text-center text-gray-500 text-sm mt-2">Visual overview of pay levels and increments in the 7th Pay Matrix.</figcaption>
             </figure>
 
             <h2>What is the 7th Pay Matrix?</h2>
@@ -146,7 +180,7 @@
             
             <p>The Pay Matrix comprises 19 distinct levels, starting from Level 1 and extending to Level 18, including Level 13A. Each level corresponds to specific pay bands and grade pays from the previous system:</p>
             
-            <ul>
+            <ul class="list-disc pl-6 mb-6 text-gray-700">
                 <li><strong>Level 1-5:</strong> Former Grade Pay 1800-2800 (Pay Band 5200-20200)</li>
                 <li><strong>Level 6-9:</strong> Former Grade Pay 4200-5400 (Pay Band 9300-34800)</li>
                 <li><strong>Level 10-12:</strong> Former Grade Pay 5400-7600 (Pay Band 15600-39100)</li>
@@ -166,29 +200,31 @@
             
             <p>This matrix-based approach offers unprecedented transparency in pay structure, making it easy for employees to understand their current position and future earning potential. The standardized 3% annual increment ensures predictable salary growth, while the simplified level-based classification removes the complexities of multiple pay bands and grade pays.</p>
             
-            <hr>
+            <hr class="my-8 border-gray-200">
             
-            <p><em>This article provides comprehensive information about the 7th Pay Matrix structure for central government employees in India.</em></p>
+            <p class="italic text-gray-500">This article provides comprehensive information about the 7th Pay Matrix structure for central government employees in India.</p>
 
-            <!-- AUTHOR DETAILS - READY TO USE (generic but matching your site style) -->
-            <section class="author-box">
-                <div class="author-inner">
-                    <div class="author-avatar">
-                        <img src="images/author-syed-mashkoor.jpg" alt="Author Syed Mashkoor">
+            <section class="bg-blue-50 border-l-4 border-blue-500 p-6 mt-8 rounded-r-lg">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-4">
+                    <div class="flex-shrink-0">
+                        <img src="images/author-syed-mashkoor.jpg" 
+                             onerror="this.src='https://placehold.co/100?text=SM'"
+                             alt="Author Syed Mashkoor" 
+                             class="w-16 h-16 rounded-full object-cover shadow-sm">
                     </div>
-                    <div class="author-meta">
-                        <h3 class="author-name">Syed Mashkoor</h3>
-                        <p class="author-title">Founder, PayCommissions.in &amp; Government Pay Commission Analyst</p>
-                        <p class="author-bio">
+                    <div class="flex-1 text-center md:text-left">
+                        <h3 class="text-xl font-bold text-gray-900">Syed Mashkoor</h3>
+                        <p class="text-sm text-blue-700 font-medium mb-2">Founder, PayCommissions.in &amp; Government Pay Commission Analyst</p>
+                        <p class="text-sm text-gray-600 mb-3">
                             Syed Mashkoor is a Central Government employee and retirement policy enthusiast
                             who writes about pay commissions, NPS vs UPS, and salary projection strategies
-                            for Indian government staff. His guides simplify complex pay commission
-                            notifications into practical, step-by-step explanations for employees and pensioners.
+                            for Indian government staff.
                         </p>
-                        <ul class="author-social">
-                            <li><a href="https://paycommissions.in/about.html" target="_blank" rel="noopener">About the author</a></li>
-                            <li><a href="https://paycommissions.in/contact.html" target="_blank" rel="noopener">Contact</a></li>
-                        </ul>
+                        <div class="flex justify-center md:justify-start gap-4 text-sm font-medium text-blue-600">
+                            <a href="about.html" class="hover:underline">About the author</a>
+                            <span class="text-gray-300">|</span>
+                            <a href="contact.html" class="hover:underline">Contact</a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -196,18 +232,41 @@
         </article>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <p>&copy; 2025 PayCommissions.in. All rights reserved.</p>
-            <nav class="footer-nav">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="contact.html">Contact</a>
-            </nav>
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-4">PayCommissions.in</h3>
+                    <p class="text-gray-400 text-sm">Empowering government employees with accurate retirement planning tools and financial insights.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Calculator</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="pay-commission.html" class="hover:text-white transition-colors">Pay Commission</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="blog.html" class="hover:text-white transition-colors">HRA Guide 2025</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Retirement Planning</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact</h4>
+                    <a href="contact.html" class="text-gray-400 hover:text-white transition-colors text-sm">Get in touch</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 PayCommissions.in. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Minimal JS for nav toggle; keep or replace with your main.js -->
-      <script>
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Mobile Menu Elements
             const menuButton = document.getElementById('mobile-menu-button');
@@ -241,54 +300,6 @@
                 document.addEventListener('click', (e) => {
                     if (!mobileMenu.contains(e.target) && !menuButton.contains(e.target)) {
                         setMenuState(false); // Force close
-                    }
-                });
-
-                // Close when clicking a LINK inside the menu
-                const mobileLinks = mobileMenu.querySelectorAll('a');
-                mobileLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        setMenuState(false); // Force close
-                    });
-                });
-            }
-
-            // Top "Read More" Logic
-            const readMoreBtn = document.getElementById('readMoreBtn');
-            const seoContentSection = document.getElementById('seoContentSection');
-            const readMoreText = document.getElementById('readMoreText');
-            
-            if(readMoreBtn && seoContentSection) {
-                readMoreBtn.addEventListener('click', () => {
-                    seoContentSection.classList.toggle('hidden');
-                    seoContentSection.classList.toggle('content-expanded');
-                    readMoreBtn.classList.toggle('active');
-                    
-                    if (seoContentSection.classList.contains('hidden')) {
-                        readMoreText.textContent = "Read Guide: How This Calculator Helps You Plan";
-                    } else {
-                        readMoreText.textContent = "Hide Guide";
-                    }
-                });
-            }
-
-            // Bottom "How it Works" Toggle Logic
-            const toggleMethodologyBtn = document.getElementById('toggleMethodologyBtn');
-            const methodologyContent = document.getElementById('methodologyContent');
-            const methodologyBtnText = document.getElementById('methodologyBtnText');
-            const methodologyArrow = document.getElementById('methodologyArrow');
-
-            if(toggleMethodologyBtn && methodologyContent) {
-                toggleMethodologyBtn.addEventListener('click', () => {
-                    methodologyContent.classList.toggle('hidden');
-                    methodologyContent.classList.toggle('animate-fade-in');
-                    
-                    if (methodologyContent.classList.contains('hidden')) {
-                        methodologyBtnText.textContent = "Read Full Calculation Details";
-                        methodologyArrow.style.transform = "rotate(0deg)";
-                    } else {
-                        methodologyBtnText.textContent = "Hide Calculation Details";
-                        methodologyArrow.style.transform = "rotate(180deg)";
                     }
                 });
             }
